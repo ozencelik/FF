@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FF.Data.Entities.Base
 {
@@ -14,5 +15,15 @@ namespace FF.Data.Entities.Base
         /// Determine the entity is deleted
         /// </summary>
         public bool Deleted { get; set; } = false;
+
+        /// <summary>
+        /// Created date of an entity
+        /// </summary>
+        public DateTime Created { get; protected set; } = DateTime.Now;
+
+        /// <summary>
+        /// Updated date of an entity
+        /// </summary>
+        public DateTime Updated { get; set; }
     }
 }

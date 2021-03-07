@@ -2,16 +2,12 @@
 
 namespace FF.Data.Entities.Teachers
 {
-    public class Teacher : BaseEntity
+    public class Teacher : Person
     {
         /// <summary>
-        /// Teacher name
+        /// Student's school
         /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Customer unique user name.
-        /// </summary>
-        public string Username { get; set; }
+        [ForeignKey("SchoolId")]
+        public School School { get; set; }
     }
 }
