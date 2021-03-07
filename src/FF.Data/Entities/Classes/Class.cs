@@ -13,10 +13,20 @@ namespace FF.Data.Entities.Classes
         public string Name { get; set; }
 
         /// <summary>
+        /// Class's school id
+        /// </summary>
+        public int SchoolId { get; set; }
+
+        /// <summary>
         /// Class's school
         /// </summary>
         [ForeignKey("SchoolId")]
         public School School { get; set; }
+
+        /// <summary>
+        /// Class's teacher id
+        /// </summary>
+        public int TeacherId { get; set; }
 
         /// <summary>
         /// Class's teacher

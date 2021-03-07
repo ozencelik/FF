@@ -1,8 +1,6 @@
-﻿using FF.Data.Entities.Base;
-
-namespace FF.Data.Entities.StudentActivities
+﻿namespace FF.Data.Entities.StudentActivities
 {
-    public class Sleep : BaseEntity
+    public class Sleep : StudentActivity
     {
     }
 }

@@ -2,17 +2,12 @@
 using FF.Data.Entities.Schools;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FF.Data.Entities.SchoolBusAttendants
+namespace FF.Data.Entities.Teachers
 {
-    public class SchoolBusAttendant : Person
+    public class Teacher : Person
     {
         /// <summary>
-        /// Class's school id
-        /// </summary>
-        public int SchoolId { get; set; }
-
-        /// <summary>
-        /// SchoolBusAttendant's school
+        /// Student's school
         /// </summary>
         [ForeignKey("SchoolId")]
         public School School { get; set; }

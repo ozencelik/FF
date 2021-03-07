@@ -12,6 +12,11 @@ namespace FF.Data.Entities.StudentActivities
         public string Description { get; set; }
 
         /// <summary>
+        /// Student Activities' student id
+        /// </summary>
+        public int StudentId { get; set; }
+
+        /// <summary>
         /// Student's activity
         /// </summary>
         [ForeignKey("StudentId")]
