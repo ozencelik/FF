@@ -1,22 +1,29 @@
-﻿using FF.Web.Models;
+﻿using FF.Core.Services.Students;
+using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace FF.Web.Controllers
 {
-    public class HomeController : Controller
+    public class StudentController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IStudentService _studentService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public StudentController(ILogger<HomeController> logger,
+            IStudentService studentService)
         {
             _logger = logger;
+            _studentService = studentService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var students = await _studentService.GetAllStudentsAsync();
+
+            return View(students);
         }
 
         public IActionResult Privacy()

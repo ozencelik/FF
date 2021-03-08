@@ -21,6 +21,10 @@ namespace FF.Web
         {
             services.AddControllersWithViews();
 
+            #region Dependencies
+            services.RegisterDependencies();
+            #endregion
+
             #region Db
             //Add Db Connection
             string connectionString = Configuration.GetConnectionString("live_ff");
@@ -54,7 +58,7 @@ namespace FF.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Student}/{action=Index}/{id?}");
             });
         }
     }

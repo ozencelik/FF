@@ -1,4 +1,6 @@
-﻿using FF.Data.Context.MySql;
+﻿using FF.Core.Services.Students;
+using FF.Data.Context.MySql;
+using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,12 +16,9 @@ namespace FF.Core.Infrastructure
 
         public static void RegisterDependencies(this IServiceCollection services)
         {
-            //services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
 
-            //services.AddScoped<ICustomerService, CustomerService>();
-            //services.AddScoped<IBookService, BookService>();
-            //services.AddScoped<IOrderService, OrderService>();
-            //services.AddScoped<IStockService, StockService>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         public static void EnsureDatabaseCreated(this IServiceCollection services)
