@@ -9,10 +9,10 @@ namespace FF.Web.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<StudentController> _logger;
         private readonly IStudentService _studentService;
 
-        public StudentController(ILogger<HomeController> logger,
+        public StudentController(ILogger<StudentController> logger,
             IStudentService studentService)
         {
             _logger = logger;
