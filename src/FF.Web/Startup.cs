@@ -20,6 +20,8 @@ namespace FF.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc()
+                .AddRazorRuntimeCompilation();
 
             #region Dependencies
             services.RegisterDependencies();
