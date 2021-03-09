@@ -1,14 +1,14 @@
 ﻿{
   "sidebarMenu": [
     {
-      "text": "Navigation",
+      "text": "Aktiviteler",
       "is_header": true
     },
     {
-      "controller": "Dashboard",
+      "controller": "",
       "action": "Index",
-      "icon": "fa fa-laptop",
-      "text": "sjdhbfhjsdbfj"
+      "icon": "fa fa-utensils",
+      "text": "Yemek Aktivitesi"
     },
     {
       "controller": "Analytics",
