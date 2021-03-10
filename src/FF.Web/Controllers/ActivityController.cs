@@ -23,6 +23,7 @@ namespace FF.Web.Controllers
             _studentService = studentService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> MealActivity()
         {
             var students = await _studentService.GetAllStudentsAsync();
