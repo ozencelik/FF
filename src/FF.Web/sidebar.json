@@ -5,10 +5,16 @@
       "is_header": true
     },
     {
-      "controller": "",
-      "action": "Index",
+      "controller": "Activity",
+      "action": "MealActivity",
       "icon": "fa fa-utensils",
       "text": "Yemek Aktivitesi"
+    },
+    {
+      "controller": "Student",
+      "action": "Index",
+      "icon": "fa fa-users",
+      "text": "Öğrenci Listesi"
     },
     {
       "controller": "Analytics",

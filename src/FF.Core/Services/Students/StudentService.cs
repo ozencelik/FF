@@ -24,6 +24,7 @@ namespace FF.Core.Services.Students
         public async Task<IList<Student>> GetAllStudentsAsync()
         {
             return await _studentRepository.Table
+                .Include(s => s.Class)
                 .Where(x => !x.Deleted).ToListAsync();
         }
 

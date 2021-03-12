@@ -19,6 +19,7 @@ namespace FF.Web.Controllers
             _studentService = studentService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var students = await _studentService.GetAllStudentsAsync();
