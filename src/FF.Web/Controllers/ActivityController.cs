@@ -4,6 +4,7 @@ using FF.Web.Models;
 using FF.Web.Models.Activity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,19 +28,21 @@ namespace FF.Web.Controllers
         public async Task<IActionResult> MealActivity()
         {
             var students = await _studentService.GetAllStudentsAsync();
-
-            var createMealActivity = students.Select(s => new CreateMealActivityModel()
+            var getMealActivity = new GetMealActivityModel()
             {
-                Student = s,
-                MealAmount = MealAmount.NeverEaten
-            }).ToList();
+                Students = students,
+                MealAmounts = Enum
+                                .GetValues(typeof(MealAmount))
+                                .OfType<MealAmount>()
+                                .ToList()
+            };
 
-            return View(createMealActivity);
+            return View(getMealActivity);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MealActivity([FromBody] List<CreateMealActivityModel> model)
+        public async Task<IActionResult> MealActivity([FromBody] CreateMealActivityModel model)
         {
             var students = await _studentService.GetAllStudentsAsync();
 

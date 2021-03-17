@@ -1,4 +1,4 @@
-﻿@model List<FF.Web.Models.Activity.CreateMealActivityModel>
+﻿@model FF.Web.Models.Activity.GetMealActivityModel
 @{
     ViewData["Title"] = "Yemek Aktivitesi";
 }
@@ -31,28 +31,30 @@
                     <hr class="mb-4" />
 
                     <!-- BEGIN #cardGroups -->
-                    <form asp-action="MealActivity">
+                    @using (Html.BeginForm("MealActivity", "Activity", FormMethod.Post))
+                    {
                         <div id="cardGroups" class="mb-5">
                             <div class="card">
                                 <div class="card-body">
-                                    @if (Model != null)
+                                    @if (Model.Students != null)
                                     {
                                         <div class="card-columns">
-                                            @foreach (var mealActivity in Model)
+                                            @foreach (var student in Model.Students)
                                             {
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">@mealActivity.Student.FullName</h5>
+                                                        <h5 class="card-title">@student.Id</h5>
+                                                        <h5 class="card-title">@student.FullName</h5>
                                                         <p class="card-text"><small class="text-muted">Yemek miktarları</small></p>
                                                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
                                                             <label class="btn btn-outline-success">
-                                                                <input type="radio" name="options" id="option1" autocomplete="off" value=2> Bitirdi
+                                                                <input type="radio" asp-for="MealAmounts" name="options" id="option1" autocomplete="off" value=2> Bitirdi
                                                             </label>
                                                             <label class="btn btn-outline-warning">
-                                                                <input type="radio" name="options" id="option2" autocomplete="off" value=1> Kısmen
+                                                                <input type="radio" asp-for="MealAmounts" name="options" id="option2" autocomplete="off" value=1> Kısmen
                                                             </label>
                                                             <label class="btn btn-outline-danger">
-                                                                <input type="radio" name="options" id="option3" autocomplete="off" checked value=0> Yemedi
+                                                                <input type="radio" asp-for="MealAmounts" name="options" id="option3" autocomplete="off" checked value=0> Yemedi
                                                             </label>
                                                         </div>
                                                     </div>
@@ -65,11 +67,11 @@
                                         <p>Öğrenci bulunamadı !!!</p>
                                     }
 
-                                    <button type="submit" value="Submit" class="btn btn-primary">Kaydet</button>
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    }
                     <!-- END #cardGroups -->
                 </div>
                 <!-- END col-3 -->
