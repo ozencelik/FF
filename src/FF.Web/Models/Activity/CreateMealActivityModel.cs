@@ -4,7 +4,7 @@ namespace FF.Web.Models.Activity
 {
     public class CreateMealActivityModel
     {
-        public int StudentId { get; set; }
+        public int Id { get; set; }
 
         public MealAmount MealAmount { get; set; }
     }

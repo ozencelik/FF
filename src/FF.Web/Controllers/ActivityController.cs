@@ -42,7 +42,7 @@ namespace FF.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MealActivity(List<CreateMealActivityModel> model)
+        public async Task<IActionResult> MealActivity([FromForm] CreateMealActivityModel model)
         {
             return Ok();
         }
