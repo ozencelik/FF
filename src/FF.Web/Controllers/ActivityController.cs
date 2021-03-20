@@ -1,29 +1,43 @@
-﻿using FF.Core.Services.Students;
+﻿using AutoMapper;
+using FF.Core.Services.Activities;
+using FF.Core.Services.Students;
+using FF.Data.Entities.StudentActivities;
 using FF.Data.Enums.MealAmounts;
+using FF.Data.Models.Activity;
 using FF.Web.Models;
-using FF.Web.Models.Activity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Activity = System.Diagnostics.Activity;
 
 namespace FF.Web.Controllers
 {
     public class ActivityController : Controller
     {
+        #region Fields
         private readonly ILogger<ActivityController> _logger;
         private readonly IStudentService _studentService;
+        private readonly IMealActivityService _mealActivityService;
+        private readonly IMapper _mapper;
+        #endregion Fields
 
+        #region Ctor
         public ActivityController(ILogger<ActivityController> logger,
-            IStudentService studentService)
+            IStudentService studentService,
+            IMealActivityService mealActivityService,
+            IMapper mapper)
         {
             _logger = logger;
             _studentService = studentService;
+            _mealActivityService = mealActivityService;
+            _mapper = mapper;
         }
+        #endregion
 
+        #region Methods
         [HttpGet]
         public async Task<IActionResult> MealActivity()
         {
@@ -44,7 +58,12 @@ namespace FF.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MealActivity([FromForm] MealActivityModel model)
         {
-            return Ok();
+            var mealActivities = _mapper.Map<IList<Meal>>(model.Activities);
+
+            foreach (var mealActivity in mealActivities)
+                await _mealActivityService.InsertMealActivityAsync(mealActivity);
+
+            return await MealActivity();
         }
 
         public IActionResult Privacy()
@@ -57,5 +76,6 @@ namespace FF.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
     }
 }

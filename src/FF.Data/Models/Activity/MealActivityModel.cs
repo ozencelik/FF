@@ -2,7 +2,7 @@
 using FF.Data.Enums.MealAmounts;
 using System.Collections.Generic;
 
-namespace FF.Web.Models.Activity
+namespace FF.Data.Models.Activity
 {
     public class MealActivityModel
     {

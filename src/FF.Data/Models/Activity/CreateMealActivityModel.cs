@@ -1,6 +1,6 @@
 ﻿using FF.Data.Enums.MealAmounts;
 
-namespace FF.Web.Models.Activity
+namespace FF.Data.Models.Activity
 {
     public class CreateMealActivityModel
     {

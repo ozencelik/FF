@@ -1,3 +1,4 @@
+using AutoMapper;
 using FF.Core.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,12 @@ namespace FF.Web
 
             #region Dependencies
             services.RegisterDependencies();
+            #endregion
+
+            #region AutoMapper
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new AutoMapperProfile()); });
+            services.AddSingleton(mappingConfig.CreateMapper());
             #endregion
 
             #region Db

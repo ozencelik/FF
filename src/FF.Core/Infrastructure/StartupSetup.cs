@@ -1,4 +1,5 @@
-﻿using FF.Core.Services.Students;
+﻿using FF.Core.Services.Activities;
+using FF.Core.Services.Students;
 using FF.Data.Context.MySql;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace FF.Core.Infrastructure
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
 
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IMealActivityService, MealActivityService>();
         }
 
         public static void EnsureDatabaseCreated(this IServiceCollection services)
