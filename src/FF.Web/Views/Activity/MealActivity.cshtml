@@ -1,4 +1,4 @@
-﻿@model FF.Web.Models.Activity.GetMealActivityModel
+﻿@model FF.Web.Models.Activity.MealActivityModel
 @{
     ViewData["Title"] = "Yemek Aktivitesi";
 }
@@ -10,33 +10,28 @@
 }
 
 
-@if (Model.Students != null)
+@if (Model != null)
 {
-
-    @using (Html.BeginForm("MealActivity", "Activity", FormMethod.Post))
-    {
-        @for (var i = 0; i < 1; i++)
+    <form asp-controller="Activity" asp-action="MealActivity" method="post">
+        @for (var i = 0; i < Model.Students.Count; i++)
         {
-            <table class="table">
-                <tr>
-                    <td>@Model.Students[i].Id</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @for (var j = 0; j < 3; j++)
-                        {
-                            <label class="btn btn-outline-success">
-                                <input type="radio" name="@Model.Students[i].Id" id="option1" autocomplete="off" value=@Model.MealAmounts[j]>
-                            </label>
-                        }
-                    </td>
-                </tr>
-            </table>
+            <input type="hidden" asp-for="Activities[i].StudentId" value="@Model.Students[i].Id" />
+            <div>
+                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[0]" />
+                <label>A</label>
+            </div>
+            <div>
+                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[1]" />
+                <label>B</label>
+            </div>
+            <div>
+                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[2]" />
+                <label>C</label>
+            </div>
         }
-        <input type="submit" value="Submit" class="btn btn-primary" />
+        <button type="submit" value="Submit" class="btn btn-primary" />
 
-    }
+    </form>
 }
 else
 {

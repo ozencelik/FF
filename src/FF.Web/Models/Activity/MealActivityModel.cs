@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace FF.Web.Models.Activity
 {
-    public class GetMealActivityModel
+    public class MealActivityModel
     {
         public IList<Student> Students { get; set; }
 
         public IList<MealAmount> MealAmounts { get; set; }
+
+        public IList<CreateMealActivityModel> Activities { get; set; }
     }
 }

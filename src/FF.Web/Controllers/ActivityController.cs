@@ -28,7 +28,7 @@ namespace FF.Web.Controllers
         public async Task<IActionResult> MealActivity()
         {
             var students = await _studentService.GetAllStudentsAsync();
-            var getMealActivity = new GetMealActivityModel()
+            var getMealActivity = new MealActivityModel
             {
                 Students = students,
                 MealAmounts = Enum
@@ -42,7 +42,7 @@ namespace FF.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MealActivity([FromForm] CreateMealActivityModel model)
+        public async Task<IActionResult> MealActivity([FromForm] MealActivityModel model)
         {
             return Ok();
         }
