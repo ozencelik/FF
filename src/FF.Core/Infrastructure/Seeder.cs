@@ -82,7 +82,6 @@ namespace FF.Core.Infrastructure
                 FirstName = "Ahmet I",
                 LastName = "",
                 Birthday = new DateTime(2018, 06, 12),
-                School = school,
                 Class = kindergartenClass,
                 Parent = parent
             });
@@ -92,7 +91,6 @@ namespace FF.Core.Infrastructure
                 FirstName = "Ahmet II",
                 LastName = "",
                 Birthday = new DateTime(2017, 05, 12),
-                School = school,
                 Class = kindergartenClass,
                 Parent = parent
             });
@@ -102,7 +100,6 @@ namespace FF.Core.Infrastructure
                 FirstName = "Hasan II",
                 LastName = "",
                 Birthday = new DateTime(2018, 04, 17),
-                School = school,
                 Class = kindergartenClass,
                 Parent = parent
             });
@@ -112,7 +109,6 @@ namespace FF.Core.Infrastructure
                 FirstName = "Hüseyin II",
                 LastName = "",
                 Birthday = new DateTime(2015, 06, 12),
-                School = school,
                 Class = kindergartenClass,
                 Parent = parent
             });
@@ -122,7 +118,6 @@ namespace FF.Core.Infrastructure
                 FirstName = "Merve II",
                 LastName = "",
                 Birthday = new DateTime(2018, 03, 12),
-                School = school,
                 Class = kindergartenClass,
                 Parent = parent
             });
