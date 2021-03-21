@@ -67,7 +67,7 @@ namespace FF.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Activity}/{action=MealActivity}/{id?}");
+                    pattern: "{controller=Student}/{action=Index}/{id?}");
             });
         }
     }

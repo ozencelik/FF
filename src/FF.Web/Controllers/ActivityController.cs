@@ -66,6 +66,7 @@ namespace FF.Web.Controllers
             return await MealActivity();
         }
 
+
         public IActionResult Privacy()
         {
             return View();
