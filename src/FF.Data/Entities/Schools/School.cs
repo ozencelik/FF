@@ -25,11 +25,6 @@ namespace FF.Data.Entities.Schools
         public IList<SchoolBusAttendant> SchoolBusAttendants { get; set; }
 
         /// <summary>
-        /// School's student
-        /// </summary>
-        public IList<Student> Students { get; set; }
-
-        /// <summary>
         /// School's teacher
         /// </summary>
         public IList<Teacher> Teachers { get; set; }
