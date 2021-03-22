@@ -88,36 +88,9 @@ namespace FF.Core.Infrastructure
 
             dbContext.Student.Add(new Student
             {
-                FirstName = "Ahmet II",
-                LastName = "",
-                Birthday = new DateTime(2017, 05, 12),
-                Class = kindergartenClass,
-                Parent = parent
-            });
-
-            dbContext.Student.Add(new Student
-            {
-                FirstName = "Hasan II",
-                LastName = "",
-                Birthday = new DateTime(2018, 04, 17),
-                Class = kindergartenClass,
-                Parent = parent
-            });
-
-            dbContext.Student.Add(new Student
-            {
-                FirstName = "Hüseyin II",
-                LastName = "",
-                Birthday = new DateTime(2015, 06, 12),
-                Class = kindergartenClass,
-                Parent = parent
-            });
-
-            dbContext.Student.Add(new Student
-            {
                 FirstName = "Merve II",
                 LastName = "",
-                Birthday = new DateTime(2018, 03, 12),
+                Birthday = new DateTime(2017, 05, 12),
                 Class = kindergartenClass,
                 Parent = parent
             });
