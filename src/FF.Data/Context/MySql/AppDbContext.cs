@@ -1,8 +1,8 @@
-﻿using FF.Data.Entities.Classes;
+﻿using FF.Data.Entities.Activities;
+using FF.Data.Entities.Classes;
 using FF.Data.Entities.Parents;
 using FF.Data.Entities.SchoolBusAttendants;
 using FF.Data.Entities.Schools;
-using FF.Data.Entities.StudentActivities;
 using FF.Data.Entities.Students;
 using FF.Data.Entities.Teachers;
 using Microsoft.EntityFrameworkCore;
@@ -24,13 +24,9 @@ namespace FF.Data.Context.MySql
 
         public DbSet<Activity> Activity { get; set; }
 
-        public DbSet<Meal> Meal { get; set; }
+        public DbSet<ActivityOption> ActivityOption { get; set; }
 
-        public DbSet<Medicine> Medicine { get; set; }
-
-        public DbSet<Service> Service { get; set; }
-
-        public DbSet<Sleep> Sleep { get; set; }
+        public DbSet<StudentActivity> StudentActivity { get; set; }
 
         public DbSet<Student> Student { get; set; }
 

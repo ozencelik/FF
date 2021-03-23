@@ -44,6 +44,12 @@ namespace FF.Core.Services.Students
         {
             return await _studentRepository.UpdateAsync(student);
         }
+
+        public async Task<int> DeleteStudentAsync(Student student)
+        {
+            student.Deleted = true;
+            return await _studentRepository.UpdateAsync(student);
+        }
         #endregion
     }
 }
