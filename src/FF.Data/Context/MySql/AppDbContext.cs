@@ -1,7 +1,6 @@
 ﻿using FF.Data.Entities.Activities;
 using FF.Data.Entities.Classes;
-using FF.Data.Entities.Parents;
-using FF.Data.Entities.SchoolBusAttendants;
+using FF.Data.Entities.SchoolBuses;
 using FF.Data.Entities.Schools;
 using FF.Data.Entities.Students;
 using FF.Data.Entities.Teachers;
@@ -16,9 +15,9 @@ namespace FF.Data.Context.MySql
         #region Fields
         public DbSet<Class> Class { get; set; }
 
-        public DbSet<Parent> Parent { get; set; }
+        public DbSet<SchoolBus> SchoolBus { get; set; }
 
-        public DbSet<SchoolBusAttendant> SchoolBusAttendant { get; set; }
+        public DbSet<SchoolBusStudent> SchoolBusStudent { get; set; }
 
         public DbSet<School> School { get; set; }
 

@@ -1,7 +1,6 @@
 ﻿using FF.Data.Context.MySql;
 using FF.Data.Entities.Activities;
 using FF.Data.Entities.Classes;
-using FF.Data.Entities.Parents;
 using FF.Data.Entities.Schools;
 using FF.Data.Entities.Students;
 using FF.Data.Entities.Teachers;
@@ -39,28 +38,15 @@ namespace FF.Core.Infrastructure
             };
 
             dbContext.School.Add(school);
-            #endregion
-
-            #region Create Parent
-            var parent = new Parent
-            {
-                FirstName = "Büyük Veli",
-                LastName = "Hazretleri",
-                Birthday = new DateTime(1965, 06, 01)
-            };
-
-            dbContext.Parent.Add(parent);
             dbContext.SaveChanges();
             #endregion
-
 
             #region Create Teacher
             var teacher = new Teacher
             {
                 FirstName = "İlk",
                 LastName = "Öğretmen",
-                Birthday = new DateTime(1980, 06, 01),
-                SchoolId = school.Id
+                Birthday = new DateTime(1980, 06, 01)
             };
 
             dbContext.Teacher.Add(teacher);
@@ -86,7 +72,10 @@ namespace FF.Core.Infrastructure
                 LastName = "",
                 Birthday = new DateTime(2018, 06, 12),
                 Class = kindergartenClass,
-                Parent = parent
+                ParentFirstName = "Büyük Veli",
+                ParentLastName = "Hazretleri",
+                ParentPhoneNumber = "111111111",
+                ParentEmail = "abc@mail.com"
             });
 
             dbContext.Student.Add(new Student
@@ -95,7 +84,10 @@ namespace FF.Core.Infrastructure
                 LastName = "",
                 Birthday = new DateTime(2017, 05, 12),
                 Class = kindergartenClass,
-                Parent = parent
+                ParentFirstName = "Büyük Veli",
+                ParentLastName = "Hazretleri",
+                ParentPhoneNumber = "111111111",
+                ParentEmail = "abc@mail.com"
             });
             #endregion
 
@@ -154,7 +146,6 @@ namespace FF.Core.Infrastructure
             dbContext.ActivityOption.Add(medicineActivityOption1);
             dbContext.ActivityOption.Add(medicineActivityOption2);
             #endregion
-
 
             dbContext.SaveChanges();
         }

@@ -1,6 +1,5 @@
 ﻿using FF.Data.Entities.Base;
 using FF.Data.Entities.Classes;
-using FF.Data.Entities.Parents;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FF.Data.Entities.Students
@@ -19,14 +18,23 @@ namespace FF.Data.Entities.Students
         public Class Class { get; set; }
 
         /// <summary>
-        /// Student's parent id
+        /// Student's parent first name
         /// </summary>
-        public int ParentId { get; set; }
+        public string ParentFirstName { get; set; }
 
         /// <summary>
-        /// Student's parent
+        /// Student's parent last name
         /// </summary>
-        [ForeignKey("ParentId")]
-        public Parent Parent { get; set; }
+        public string ParentLastName { get; set; }
+
+        /// <summary>
+        /// Student's parent phone number
+        /// </summary>
+        public string ParentPhoneNumber { get; set; }
+
+        /// <summary>
+        /// Student's parent email
+        /// </summary>
+        public string ParentEmail { get; set; }
     }
 }
