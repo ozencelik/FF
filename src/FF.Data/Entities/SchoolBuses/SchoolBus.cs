@@ -37,7 +37,6 @@ namespace FF.Data.Entities.SchoolBuses
         /// <summary>
         /// SchoolBuses students
         /// </summary>
-        [NotMapped]
-        public IList<Student> Students { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }

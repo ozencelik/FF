@@ -33,8 +33,7 @@ namespace FF.Core.Services.Activities
         {
             return await _activityRepository
                 .Table
-                //.Include(a => a.ActivityOptions)
-                //.Include(a => a.StudentActivities)
+                .Include(a => a.ActivityOptions)
                 .FirstOrDefaultAsync(x => x.Id == activityId && !x.Deleted);
         }
 

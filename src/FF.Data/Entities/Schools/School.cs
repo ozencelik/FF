@@ -17,19 +17,16 @@ namespace FF.Data.Entities.Schools
         /// <summary>
         /// School's class
         /// </summary>
-        [NotMapped]
-        public IList<Class> Classes { get; set; }
+        public ICollection<Class> Classes { get; set; }
 
         /// <summary>
         /// School's schoolBusAttendant
         /// </summary>
-        [NotMapped]
-        public IList<SchoolBus> SchoolBuses { get; set; }
+        public ICollection<SchoolBus> SchoolBuses { get; set; }
 
         /// <summary>
         /// School's teacher
         /// </summary>
-        [NotMapped]
-        public IList<Teacher> Teachers { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
     }
 }

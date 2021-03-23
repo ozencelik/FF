@@ -14,13 +14,12 @@ namespace FF.Data.Entities.Activities
         /// <summary>
         /// Activity's studentActivitiesOptions
         /// </summary>
-        [NotMapped]
-        public IList<ActivityOption> ActivityOptions { get; set; }
+        public ICollection<ActivityOption> ActivityOptions { get; set; }
 
         /// <summary>
         /// Activity's studentActivities
         /// </summary>
         [NotMapped]
-        public IList<StudentActivity> StudentActivities { get; set; }
+        public ICollection<StudentActivity> StudentActivities { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace FF.Data.Entities.Teachers
         /// <summary>
         /// Teacher's class
         /// </summary>
-        [NotMapped]
-        public IList<Class> Classes { get; set; }
+        public ICollection<Class> Classes { get; set; }
     }
 }
