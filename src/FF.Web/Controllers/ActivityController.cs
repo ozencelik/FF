@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
 using FF.Core.Services.Activities;
 using FF.Core.Services.Students;
-using FF.Data.Entities.StudentActivities;
-using FF.Data.Enums.MealAmounts;
+using FF.Data.Entities.Activities;
 using FF.Data.Models.Activity;
+using FF.Data.Models.StudentModels;
 using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Activity = System.Diagnostics.Activity;
 
@@ -20,50 +18,54 @@ namespace FF.Web.Controllers
         #region Fields
         private readonly ILogger<ActivityController> _logger;
         private readonly IStudentService _studentService;
-        private readonly IMealActivityService _mealActivityService;
+        private readonly IActivityService _activityService;
+        private readonly IStudentActivityService _studentActivityService;
         private readonly IMapper _mapper;
         #endregion Fields
 
         #region Ctor
         public ActivityController(ILogger<ActivityController> logger,
             IStudentService studentService,
-            IMealActivityService mealActivityService,
+            IActivityService activityService,
+            IStudentActivityService studentActivityService,
             IMapper mapper)
         {
             _logger = logger;
             _studentService = studentService;
-            _mealActivityService = mealActivityService;
+            _activityService = activityService;
+            _studentActivityService = studentActivityService;
             _mapper = mapper;
         }
         #endregion
 
         #region Methods
         [HttpGet]
-        public async Task<IActionResult> MealActivity()
+        public async Task<IActionResult> Index()
         {
-            var students = await _studentService.GetAllStudentsAsync();
-            var getMealActivity = new MealActivityModel
-            {
-                Students = students,
-                MealAmounts = Enum
-                                .GetValues(typeof(MealAmount))
-                                .OfType<MealAmount>()
-                                .ToList()
-            };
+            // Get Meal Activity
+            var mealActivity = await _activityService.GetActivityByIdAsync(1);
 
-            return View(getMealActivity);
+            // Get all students.
+            // TODO : In the future, students get by using their classes.
+            // We do not need all students in the system.
+            var students = await _studentService.GetAllStudentsAsync();
+
+            var activity = _mapper.Map<ActivityModel>(mealActivity);
+            activity.Students = _mapper.Map<IList<StudentModel>>(students);
+
+            return View(activity);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MealActivity([FromForm] MealActivityModel model)
+        public async Task<IActionResult> CreateActivity([FromForm] ActivityModel model)
         {
-            var mealActivities = _mapper.Map<IList<Meal>>(model.Activities);
+            var studentActivities = _mapper.Map<IList<StudentActivity>>(model.StudentActivities);
 
-            foreach (var mealActivity in mealActivities)
-                await _mealActivityService.InsertMealActivityAsync(mealActivity);
+            foreach (var activity in studentActivities)
+                await _studentActivityService.InsertStudentActivityAsync(activity);
 
-            return await MealActivity();
+            return await Index();
         }
 
 

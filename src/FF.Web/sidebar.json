@@ -6,7 +6,7 @@
     },
     {
       "controller": "Activity",
-      "action": "MealActivity",
+      "action": "Index",
       "icon": "fa fa-utensils",
       "text": "Yemek Aktivitesi"
     },

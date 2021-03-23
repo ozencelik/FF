@@ -1,4 +1,4 @@
-﻿@model FF.Data.Models.Activity.MealActivityModel
+﻿@model FF.Data.Models.Activity.ActivityModel
 @{
     ViewData["Title"] = "Yemek Aktivitesi";
 }
@@ -36,24 +36,24 @@
                             <div class="card-body">
                                 @if (Model.Students != null)
                                 {
-                                    <form asp-controller="Activity" asp-action="MealActivity" method="post">
+                                    <form asp-controller="Activity" asp-action="CreateActivity" method="post">
                                         <div class="card-columns">
                                             @for (var i = 0; i < Model.Students.Count; i++)
                                             {
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <input type="hidden" asp-for="Activities[i].StudentId" value="@Model.Students[i].Id" />
+                                                        <input type="hidden" asp-for="StudentActivities[i].StudentId" value="@Model.Students[i].Id" />
                                                         <h5 class="card-title">@Model.Students[i].FullName</h5>
                                                         <p class="card-text"><small class="text -muted">Yemek miktarları</small></p>
                                                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
                                                             <label class="btn btn-outline-danger">
-                                                                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[0]" checked />Yemedi
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[0]" checked />Yemedi
                                                             </label>
                                                             <label class="btn btn-outline-warning">
-                                                                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[1]" /> Kısmen
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[1]" /> Kısmen
                                                             </label>
                                                             <label class="btn btn-outline-success">
-                                                                <input type="radio" asp-for="Activities[i].MealAmount" value="@Model.MealAmounts[2]" /> Bitirdi
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[2]" /> Bitirdi
                                                             </label>
                                                         </div>
                                                     </div>

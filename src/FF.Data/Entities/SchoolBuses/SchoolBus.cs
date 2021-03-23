@@ -1,5 +1,6 @@
 ﻿using FF.Data.Entities.Base;
 using FF.Data.Entities.Schools;
+using FF.Data.Entities.Students;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -34,8 +35,9 @@ namespace FF.Data.Entities.SchoolBuses
         public string CompanyName { get; set; }
 
         /// <summary>
-        /// SchoolBues's students
+        /// SchoolBuses students
         /// </summary>
-        public IList<SchoolBusStudent> SchoolBusStudents { get; set; }
+        [NotMapped]
+        public IList<Student> Students { get; set; }
     }
 }

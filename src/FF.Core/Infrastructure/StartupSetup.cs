@@ -20,7 +20,8 @@ namespace FF.Core.Infrastructure
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
 
             services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<IMealActivityService, MealActivityService>();
+            services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<IStudentActivityService, StudentActivityService>();
         }
 
         public static void EnsureDatabaseCreated(this IServiceCollection services)

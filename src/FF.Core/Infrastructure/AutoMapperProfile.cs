@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FF.Data.Entities.StudentActivities;
+using FF.Data.Entities.Activities;
 using FF.Data.Entities.Students;
 using FF.Data.Models.Activity;
 using FF.Data.Models.StudentModels;
@@ -11,13 +11,19 @@ namespace FF.Core.Infrastructure
         public AutoMapperProfile()
         {
             #region Activity
-            CreateMap<CreateMealActivityModel, Meal>();
-            //CreateMap<Meal, CreateMealActivityModel>();
+            CreateMap<ActivityModel, Activity>();
+            CreateMap<Activity, ActivityModel>();
+
+            CreateMap<ActivityOptionModel, ActivityOption>();
+            CreateMap<ActivityOption, ActivityOptionModel>();
+
+            CreateMap<StudentActivityModel, StudentActivity>();
+            CreateMap<StudentActivity, StudentActivityModel>();
             #endregion
+
             #region Student
             CreateMap<StudentModel, Student>();
-            CreateMap<Student, StudentModel>();
-            
+            CreateMap<Student, StudentModel>();            
             #endregion
         }
     }

@@ -31,6 +31,10 @@ namespace FF.Core.Services.Students
         /// <returns>Student Id</returns>
         Task<int> UpdateStudentAsync(Student student);
 
+        /// <summary>
+        /// Deletes the student
+        /// </summary>
+        /// <returns>Student Id</returns>
         Task<int> DeleteStudentAsync(Student student);
     }
 }

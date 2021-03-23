@@ -12,6 +12,8 @@ namespace FF.Data.Models.StudentModels
 
         public string LastName { get; set; }
 
+        public string FullName => $"{FirstName} {LastName}";
+
         public DateTime Birthday { get; set; }
 
         public int ClassId { get; set; }

@@ -1,5 +1,6 @@
 ﻿using FF.Data.Entities.Base;
 using FF.Data.Entities.Classes;
+using FF.Data.Entities.SchoolBuses;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FF.Data.Entities.Students
@@ -16,6 +17,17 @@ namespace FF.Data.Entities.Students
         /// </summary>
         [ForeignKey("ClassId")]
         public Class Class { get; set; }
+
+        /// <summary>
+        /// Student's schoolBus id
+        /// </summary>
+        public int SchoolBusId { get; set; }
+
+        /// <summary>
+        /// Student's schoolBus
+        /// </summary>
+        [ForeignKey("SchoolBusId")]
+        public SchoolBus SchoolBus { get; set; }
 
         /// <summary>
         /// Student's parent first name

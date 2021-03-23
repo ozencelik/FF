@@ -1,6 +1,7 @@
 ﻿using FF.Data.Context.MySql;
 using FF.Data.Entities.Activities;
 using FF.Data.Entities.Classes;
+using FF.Data.Entities.SchoolBuses;
 using FF.Data.Entities.Schools;
 using FF.Data.Entities.Students;
 using FF.Data.Entities.Teachers;
@@ -53,10 +54,26 @@ namespace FF.Core.Infrastructure
             dbContext.SaveChanges();
             #endregion
 
+            #region Create School Bus
+            var schoolBus = new SchoolBus
+            {
+                FirstName = "İlk",
+                LastName = "Öğretmen",
+                Birthday = new DateTime(1980, 06, 01),
+                LicensePlate = "35 ABC 78",
+                PhoneNumber = "0555 555 55 55",
+                CompanyName = "Hızlı Servis",
+                SchoolId = school.Id
+            };
+
+            dbContext.SchoolBus.Add(schoolBus);
+            dbContext.SaveChanges();
+            #endregion
+
             #region Create Class
             var kindergartenClass = new Class
             {
-                Name = "İlk Okul",
+                Name = "1-A",
                 School = school,
                 Teacher = teacher
             };
@@ -72,6 +89,7 @@ namespace FF.Core.Infrastructure
                 LastName = "",
                 Birthday = new DateTime(2018, 06, 12),
                 Class = kindergartenClass,
+                SchoolBus = schoolBus,
                 ParentFirstName = "Büyük Veli",
                 ParentLastName = "Hazretleri",
                 ParentPhoneNumber = "111111111",
@@ -84,6 +102,7 @@ namespace FF.Core.Infrastructure
                 LastName = "",
                 Birthday = new DateTime(2017, 05, 12),
                 Class = kindergartenClass,
+                SchoolBus = schoolBus,
                 ParentFirstName = "Büyük Veli",
                 ParentLastName = "Hazretleri",
                 ParentPhoneNumber = "111111111",

@@ -13,17 +13,15 @@ namespace FF.Data.Context.MySql
     public class AppDbContext : DbContext
     {
         #region Fields
+        public DbSet<Activity> Activity { get; set; }
+
+        public DbSet<ActivityOption> ActivityOption { get; set; }
+
         public DbSet<Class> Class { get; set; }
 
         public DbSet<SchoolBus> SchoolBus { get; set; }
 
-        public DbSet<SchoolBusStudent> SchoolBusStudent { get; set; }
-
         public DbSet<School> School { get; set; }
-
-        public DbSet<Activity> Activity { get; set; }
-
-        public DbSet<ActivityOption> ActivityOption { get; set; }
 
         public DbSet<StudentActivity> StudentActivity { get; set; }
 
