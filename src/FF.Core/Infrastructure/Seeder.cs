@@ -1,4 +1,5 @@
 ﻿using FF.Data.Context.MySql;
+using FF.Data.Entities.Activities;
 using FF.Data.Entities.Classes;
 using FF.Data.Entities.Parents;
 using FF.Data.Entities.Schools;
@@ -52,6 +53,7 @@ namespace FF.Core.Infrastructure
             dbContext.SaveChanges();
             #endregion
 
+
             #region Create Teacher
             var teacher = new Teacher
             {
@@ -77,6 +79,7 @@ namespace FF.Core.Infrastructure
             dbContext.SaveChanges();
             #endregion
 
+            #region Create Student
             dbContext.Student.Add(new Student
             {
                 FirstName = "Ahmet I",
@@ -121,6 +124,64 @@ namespace FF.Core.Infrastructure
                 Class = kindergartenClass,
                 Parent = parent
             });
+            #endregion
+
+            #region Create Activities
+            var mealActivity = new Activity
+            {
+                Name = "Yemek Aktivitesi"
+            };
+            var sleepActivity = new Activity
+            {
+                Name = "Uyku Aktivitesi"
+            };
+            var serviceActivity = new Activity
+            {
+                Name = "Servis Aktivitesi"
+            };
+            var medicineActivity = new Activity
+            {
+                Name = "İlaç Aktivitesi"
+            };
+
+            dbContext.Activity.Add(mealActivity);
+            dbContext.Activity.Add(sleepActivity);
+            dbContext.Activity.Add(serviceActivity);
+            dbContext.Activity.Add(medicineActivity);
+
+            dbContext.SaveChanges();
+            #endregion
+
+            #region Create Activity Options
+            var mealActivityOption1 = new ActivityOption { Name = "Yemedi", ActivityId = mealActivity.Id };
+            var mealActivityOption2 = new ActivityOption { Name = "Kısmen", ActivityId = mealActivity.Id };
+            var mealActivityOption3 = new ActivityOption { Name = "Bitirdi", ActivityId = mealActivity.Id };
+
+            var sleepActivityOption1 = new ActivityOption { Name = "Uyumadı", ActivityId = sleepActivity.Id };
+            var sleepActivityOption2 = new ActivityOption { Name = "Uyudu", ActivityId = sleepActivity.Id };
+
+            var serviceActivityOption1 = new ActivityOption { Name = "Binmedi", ActivityId = serviceActivity.Id };
+            var serviceActivityOption2 = new ActivityOption { Name = "Bindi", ActivityId = serviceActivity.Id };
+            var serviceActivityOption3 = new ActivityOption { Name = "İndi", ActivityId = serviceActivity.Id };
+
+            var medicineActivityOption1 = new ActivityOption { Name = "Aldı", ActivityId = medicineActivity.Id };
+            var medicineActivityOption2 = new ActivityOption { Name = "Almadı", ActivityId = medicineActivity.Id };
+
+            dbContext.ActivityOption.Add(mealActivityOption1);
+            dbContext.ActivityOption.Add(mealActivityOption2);
+            dbContext.ActivityOption.Add(mealActivityOption3);
+
+            dbContext.ActivityOption.Add(sleepActivityOption1);
+            dbContext.ActivityOption.Add(sleepActivityOption2);
+
+            dbContext.ActivityOption.Add(serviceActivityOption1);
+            dbContext.ActivityOption.Add(serviceActivityOption2);
+            dbContext.ActivityOption.Add(serviceActivityOption3);
+
+            dbContext.ActivityOption.Add(medicineActivityOption1);
+            dbContext.ActivityOption.Add(medicineActivityOption2);
+            #endregion
+
 
             dbContext.SaveChanges();
         }
