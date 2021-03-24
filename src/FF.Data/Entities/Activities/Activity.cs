@@ -19,7 +19,6 @@ namespace FF.Data.Entities.Activities
         /// <summary>
         /// Activity's studentActivities
         /// </summary>
-        [NotMapped]
         public ICollection<StudentActivity> StudentActivities { get; set; }
     }
 }

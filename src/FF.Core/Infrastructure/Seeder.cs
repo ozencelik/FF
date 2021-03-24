@@ -154,16 +154,20 @@ namespace FF.Core.Infrastructure
             dbContext.ActivityOption.Add(mealActivityOption1);
             dbContext.ActivityOption.Add(mealActivityOption2);
             dbContext.ActivityOption.Add(mealActivityOption3);
+            dbContext.SaveChanges();
 
             dbContext.ActivityOption.Add(sleepActivityOption1);
             dbContext.ActivityOption.Add(sleepActivityOption2);
+            dbContext.SaveChanges();
 
             dbContext.ActivityOption.Add(serviceActivityOption1);
             dbContext.ActivityOption.Add(serviceActivityOption2);
             dbContext.ActivityOption.Add(serviceActivityOption3);
+            dbContext.SaveChanges();
 
             dbContext.ActivityOption.Add(medicineActivityOption1);
             dbContext.ActivityOption.Add(medicineActivityOption2);
+            dbContext.SaveChanges();
             #endregion
 
             dbContext.SaveChanges();

@@ -1,6 +1,8 @@
-﻿using FF.Data.Entities.Base;
+﻿using FF.Data.Entities.Activities;
+using FF.Data.Entities.Base;
 using FF.Data.Entities.Classes;
 using FF.Data.Entities.SchoolBuses;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FF.Data.Entities.Students
@@ -48,5 +50,10 @@ namespace FF.Data.Entities.Students
         /// Student's parent email
         /// </summary>
         public string ParentEmail { get; set; }
+
+        /// <summary>
+        /// Activity's studentActivities
+        /// </summary>
+        public ICollection<StudentActivity> StudentActivities { get; set; }
     }
 }

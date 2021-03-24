@@ -31,7 +31,7 @@ namespace FF.Data.Entities.Activities
         /// Student's activity option
         /// </summary>
         [ForeignKey("ActivityOptionId")]
-        public Activity ActivityOption { get; set; }
+        public ActivityOption ActivityOption { get; set; }
 
         /// <summary>
         /// Student Activities' student id

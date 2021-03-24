@@ -8,6 +8,7 @@ using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Activity = System.Diagnostics.Activity;
 
@@ -52,6 +53,7 @@ namespace FF.Web.Controllers
 
             var activity = _mapper.Map<ActivityModel>(mealActivity);
             activity.Students = _mapper.Map<IList<StudentModel>>(students);
+            activity.StudentActivities = null;
 
             return View(activity);
         }
@@ -62,8 +64,19 @@ namespace FF.Web.Controllers
         {
             var studentActivities = _mapper.Map<IList<StudentActivity>>(model.StudentActivities);
 
-            foreach (var activity in studentActivities)
-                await _studentActivityService.InsertStudentActivityAsync(activity);
+            foreach (var studentActivity in studentActivities)
+            {
+                /*
+                var activity = await _activityService.GetActivityByIdAsync(studentActivity.ActivityId);
+                var student = await _studentService.GetStudentByIdAsync(studentActivity.StudentId);
+
+                studentActivity.Student = student;
+                studentActivity.Activity = activity;
+                studentActivity.ActivityOption = activity.ActivityOptions
+                    .FirstOrDefault(ao => ao.Id == studentActivity.ActivityOptionId);
+                */
+                await _studentActivityService.InsertStudentActivityAsync(studentActivity);
+            }
 
             return await Index();
         }

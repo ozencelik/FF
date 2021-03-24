@@ -42,18 +42,19 @@
                                             {
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <input type="hidden" asp-for="StudentActivities" value="@Model.Students[i].Id" />
+                                                        <input type="hidden" asp-for="StudentActivities[i].ActivityId" value="@Model.Id" />
+                                                        <input type="hidden" asp-for="StudentActivities[i].StudentId" value="@Model.Students[i].Id" />
                                                         <h5 class="card-title">@Model.Students[i].FullName</h5>
                                                         <p class="card-text"><small class="text -muted">Yemek miktarları</small></p>
                                                         <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
                                                             <label class="btn btn-outline-danger">
-                                                                <input type="radio" asp-for="StudentActivities" value="@Model.ActivityOptions[0].Id" checked />Yemedi
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[0].Id" checked />Yemedi
                                                             </label>
                                                             <label class="btn btn-outline-warning">
-                                                                <input type="radio" asp-for="StudentActivities" value="@Model.ActivityOptions[1].Id" /> Kısmen
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[1].Id" /> Kısmen
                                                             </label>
                                                             <label class="btn btn-outline-success">
-                                                                <input type="radio" asp-for="StudentActivities" value="@Model.ActivityOptions[2].Id" /> Bitirdi
+                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.ActivityOptions[2].Id" /> Bitirdi
                                                             </label>
                                                         </div>
                                                     </div>

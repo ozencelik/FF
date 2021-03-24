@@ -37,9 +37,9 @@ namespace FF.Core.Services.Activities
                 && !x.Deleted);
         }
 
-        public async Task<int> InsertStudentActivityAsync(StudentActivity mealAcitivty)
+        public async Task<int> InsertStudentActivityAsync(StudentActivity studentAcitivty)
         {
-            return await _studentActivityRepository.InsertAsync(mealAcitivty);
+            return await _studentActivityRepository.InsertAsync(studentAcitivty);
         }
 
         public async Task<int> UpdateStudentActivityAsync(StudentActivity studentActivity)
