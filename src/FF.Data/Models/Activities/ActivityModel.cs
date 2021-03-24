@@ -1,7 +1,8 @@
-﻿using FF.Data.Models.StudentModels;
+﻿using FF.Data.Models.Actions;
+using FF.Data.Models.Students;
 using System.Collections.Generic;
 
-namespace FF.Data.Models.Activity
+namespace FF.Data.Models.Activities
 {
     public class ActivityModel
     {
@@ -11,7 +12,7 @@ namespace FF.Data.Models.Activity
 
         public IList<ActivityOptionModel> ActivityOptions { get; set; }
 
-        public IList<StudentActivityModel> StudentActivities { get; set; }
+        public IList<ActionModel> Actions { get; set; }
 
         public IList<StudentModel> Students { get; set; }
     }

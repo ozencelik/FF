@@ -1,4 +1,5 @@
-﻿using FF.Data.Entities.Base;
+﻿using FF.Data.Entities.Actions;
+using FF.Data.Entities.Base;
 using FF.Data.Entities.Students;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,15 +13,15 @@ namespace FF.Data.Entities.Activities
         public string Description { get; set; }
 
         /// <summary>
-        /// Student Activities' activity id
+        /// Student Activities' action id
         /// </summary>
-        public int ActivityId { get; set; }
+        public int ActionId { get; set; }
 
         /// <summary>
-        /// Student's activity
+        /// Student's action
         /// </summary>
-        [ForeignKey("ActivityId")]
-        public Activity Activity { get; set; }
+        [ForeignKey("ActionId")]
+        public Action Action { get; set; }
 
         /// <summary>
         /// Student Activities' activity option id

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using FF.Data.Models.StudentModels;
+using FF.Data.Models.Students;
 
 namespace FF.Web.Controllers
 {

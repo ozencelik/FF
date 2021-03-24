@@ -1,6 +1,6 @@
-﻿using FF.Data.Models.StudentModels;
+﻿using FF.Data.Models.Students;
 
-namespace FF.Data.Models.Activity
+namespace FF.Data.Models.Activities
 {
     public class StudentActivityModel
     {

@@ -1,4 +1,5 @@
-﻿using FF.Data.Entities.Activities;
+﻿using FF.Data.Entities.Actions;
+using FF.Data.Entities.Activities;
 using FF.Data.Entities.Classes;
 using FF.Data.Entities.SchoolBuses;
 using FF.Data.Entities.Schools;
@@ -18,6 +19,8 @@ namespace FF.Data.Context.MySql
         public DbSet<ActivityOption> ActivityOption { get; set; }
 
         public DbSet<StudentActivity> StudentActivity { get; set; }
+
+        public DbSet<Action> Action { get; set; }
 
         public DbSet<Class> Class { get; set; }
 

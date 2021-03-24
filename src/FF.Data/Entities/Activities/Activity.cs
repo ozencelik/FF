@@ -1,6 +1,6 @@
-﻿using FF.Data.Entities.Base;
+﻿using FF.Data.Entities.Actions;
+using FF.Data.Entities.Base;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FF.Data.Entities.Activities
 {
@@ -19,6 +19,6 @@ namespace FF.Data.Entities.Activities
         /// <summary>
         /// Activity's studentActivities
         /// </summary>
-        public ICollection<StudentActivity> StudentActivities { get; set; }
+        public ICollection<Action> Actions { get; set; }
     }
 }

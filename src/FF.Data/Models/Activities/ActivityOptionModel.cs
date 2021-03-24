@@ -1,4 +1,4 @@
-﻿namespace FF.Data.Models.Activity
+﻿namespace FF.Data.Models.Activities
 {
     public class ActivityOptionModel
     {
