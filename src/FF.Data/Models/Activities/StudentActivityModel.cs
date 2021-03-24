@@ -1,4 +1,5 @@
-﻿using FF.Data.Models.Students;
+﻿using FF.Data.Models.Actions;
+using FF.Data.Models.Students;
 
 namespace FF.Data.Models.Activities
 {
@@ -8,9 +9,9 @@ namespace FF.Data.Models.Activities
 
         public string Description { get; set; }
 
-        public int ActivityId { get; set; }
+        public int ActionId { get; set; }
 
-        public ActivityModel Activity { get; set; }
+        public ActionModel Action { get; set; }
 
         public int ActivityOptionId { get; set; }
 

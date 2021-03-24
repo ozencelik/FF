@@ -51,6 +51,7 @@ namespace FF.Web.Controllers
             var students = await _studentService.GetAllStudentsAsync();
             var action = new ActionModel()
             {
+                ActivityId = activity.Id,
                 Activity = _mapper.Map<ActivityModel>(activity),
                 Students = _mapper.Map<IList<StudentModel>>(students),
             };
