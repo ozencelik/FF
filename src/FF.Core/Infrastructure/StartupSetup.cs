@@ -1,4 +1,5 @@
-﻿using FF.Core.Services.Activities;
+﻿using FF.Core.Services.Actions;
+using FF.Core.Services.Activities;
 using FF.Core.Services.Students;
 using FF.Data.Context.MySql;
 using FF.Data.Repositories;
@@ -22,6 +23,7 @@ namespace FF.Core.Infrastructure
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IActivityService, ActivityService>();
             services.AddScoped<IStudentActivityService, StudentActivityService>();
+            services.AddScoped<IActionService, ActionService>();
         }
 
         public static void EnsureDatabaseCreated(this IServiceCollection services)

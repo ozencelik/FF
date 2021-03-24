@@ -13,4 +13,8 @@
     <ProjectReference Include="..\FF.Core\FF.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Activity\" />
+  </ItemGroup>
+
 </Project>

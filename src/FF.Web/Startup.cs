@@ -67,7 +67,7 @@ namespace FF.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Activity}/{action=Index}/{id?}");
+                    pattern: "{controller=Action}/{action=Create}/1");
             });
         }
     }
