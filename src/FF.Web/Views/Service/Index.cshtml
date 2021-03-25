@@ -34,17 +34,14 @@
 
                     <!-- BEGIN #cardGroups -->
                     <div id="cardGroups" class="mb-5">
-                        <div class="card">
+                        <div class="card" >
                             <div class="card-body">
-                                <input id="btnHide" type="button" name="answer" class="btn btn-primary btn-sm" value="Gizle" onclick="lock()" />
-
-                                <div id="content1" class="card ">
+                                <div id="cardContent" class="card ">
                                     <div class="card-body">
-                                        
+                                        <i class="fas fa-unlock-alt" style="float:right;" onclick="enablecard()"></i>
                                         <h5 class="card-title">hasan berk</h5>
-                                        <button id="bindi-button" type="button" class="btn btn-primary btn-sm" onclick="lock()">Bindi</button>
-                                        <button id="binmedi-button" type="button" class="btn btn-danger btn-sm" onclick="lock()">Binmedi</button>
-
+                                        <button id="bindi-button" type="button" class="btn btn-primary btn-sm" onclick="disableCard()">Bindi</button>
+                                        <button id="binmedi-button" type="button" class="btn btn-danger btn-sm" onclick="disableCard()">Binmedi</button>
                                     </div>
                                 </div>
                             </div>
@@ -64,24 +61,38 @@
 
 
 <script>
+    function enablecard() {
+        var element = document.getElementById("cardContent");
+        element.classList.remove("special-card");
+        document.getElementById("bindi-button").disabled = false;
+        document.getElementById("binmedi-button").disabled = false;
+        console.log("kilitli değil")
+
+    }
     
-    function lock() {
-        var element = document.getElementById("content1");
-        element.classList.add("special-card");
-        document.getElementById("bindi-button").disabled = true;
+
+    function disableCard() {
+        var element = document.getElementById("cardContent");
+
+        
+            element.classList.add("special-card");
+            document.getElementById("bindi-button").disabled = true;
         document.getElementById("binmedi-button").disabled = true;
-
-
-    };
-
-
-    $("#content1").click(function () {
-        var lockedElement = document.getElementById("content1");
+        console.log("kilitli")
+        
+    }
+    /*
+     * Kartın herhangi bir yerine basınca kilidi açıyor
+     * 
+    $("#cardContent").click(function () {
+        var lockedElement = document.getElementById("cardContent");
         lockedElement.classList.remove("special-card");
         document.getElementById("bindi-button").disabled = false;
         document.getElementById("binmedi-button").disabled = false;
-    });
+        console.log("kilitli değil")
 
+    });
+    */
 
 </script>
 
