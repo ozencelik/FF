@@ -15,6 +15,10 @@
 
   <ItemGroup>
     <Folder Include="Views\Activity\" />
+    <Folder Include="Views\Service\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Service\Index.cshtml" />
+  </ItemGroup>
 </Project>

@@ -23,6 +23,12 @@
       "text": "Analytics"
     },
     {
+      "controller": "Service",
+      "action": "Index",
+      "icon": "fa fa-chart-pie",
+      "text": "Service"
+    },
+    {
       "controller": "Email",
       "icon": "fa fa-envelope",
       "text": "Email",
