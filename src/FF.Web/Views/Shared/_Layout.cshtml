@@ -32,6 +32,7 @@
         @if (ViewData["AppWithoutContainer"] == null)
         {
             <div id="content" class="app-content @ViewData["AppContentClass"]">
+                @(await Component.InvokeAsync("Alert"))
                 @RenderBody()
 
                 <!-- BEGIN btn-scroll-top -->

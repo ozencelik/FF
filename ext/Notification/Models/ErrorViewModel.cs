@@ -1,6 +1,6 @@
 using System;
 
-namespace Notification.Models
+namespace Alert.Models
 {
     public class ErrorViewModel
     {

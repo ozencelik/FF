@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Notification.Features.Alerts;
-using Notification.Models;
+using Alert.Features.Alerts;
+using Alert.Models;
 using System.Diagnostics;
 
-namespace Notification.Controllers
+namespace Alert.Controllers
 {
     public class HomeController : Controller
     {

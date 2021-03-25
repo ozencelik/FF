@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FF.Data", "src\FF.Data\FF.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ext", "ext", "{2E076C61-D68B-4ADB-91EB-069D23078CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification", "ext\Notification\Notification.csproj", "{802D9241-B410-45ED-AF23-8F3D8FED0BA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alert", "ext\Notification\Alert.csproj", "{802D9241-B410-45ED-AF23-8F3D8FED0BA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

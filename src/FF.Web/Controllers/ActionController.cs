@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Alert.Features.Alerts;
+using AutoMapper;
 using FF.Core.Services.Actions;
 using FF.Core.Services.Activities;
 using FF.Core.Services.Students;
@@ -19,6 +20,7 @@ namespace FF.Web.Controllers
         private readonly IStudentService _studentService;
         private readonly IActionService _actionService;
         private readonly IActivityService _activityService;
+        private readonly AlertService _alertService;
         private readonly IMapper _mapper;
         #endregion Fields
 
@@ -70,6 +72,8 @@ namespace FF.Web.Controllers
             action.StudentActivities = studentActivities;
 
             await _actionService.InsertActionAsync(action);
+
+            _alertService.Success("sadad");
 
             return await Create(action.ActivityId);
         }

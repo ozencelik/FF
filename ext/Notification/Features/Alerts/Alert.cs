@@ -1,4 +1,4 @@
-﻿namespace Notification.Features.Alerts
+﻿namespace Alert.Features.Alerts
 {
     public class Alert
     {

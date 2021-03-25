@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Collections.Generic;
 
-namespace Notification.Features.Alerts
+namespace Alert.Features.Alerts
 {
     public class AlertService
     {

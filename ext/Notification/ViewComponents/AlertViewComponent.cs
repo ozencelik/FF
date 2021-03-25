@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Notification.Features.Alerts;
-using System.Collections.Generic;
+using Alert.Features.Alerts;
 using System.Threading.Tasks;
 
-namespace Notification.ViewComponents
+namespace Alert.ViewComponents
 {
     public class AlertViewComponent : ViewComponent
     {
