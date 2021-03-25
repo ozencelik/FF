@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ext\Notification\Alert.csproj" />
     <ProjectReference Include="..\FF.Core\FF.Core.csproj" />
   </ItemGroup>
 

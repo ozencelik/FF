@@ -1,5 +1,6 @@
 using AutoMapper;
 using FF.Core.Infrastructure;
+using FF.Web.Extensions.Alerts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,11 +21,13 @@ namespace FF.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddMvc()
                 .AddRazorRuntimeCompilation();
 
             #region Dependencies
+            services.AddTransient<AlertService>();
             services.RegisterDependencies();
             #endregion
 

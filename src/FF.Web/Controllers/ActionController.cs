@@ -1,5 +1,4 @@
-﻿using Alert.Features.Alerts;
-using AutoMapper;
+﻿using AutoMapper;
 using FF.Core.Services.Actions;
 using FF.Core.Services.Activities;
 using FF.Core.Services.Students;
@@ -8,6 +7,7 @@ using FF.Data.Entities.Activities;
 using FF.Data.Models.Actions;
 using FF.Data.Models.Activities;
 using FF.Data.Models.Students;
+using FF.Web.Extensions.Alerts;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,11 +28,13 @@ namespace FF.Web.Controllers
         public ActionController(IStudentService studentService,
             IActionService actionService,
             IActivityService activityService,
+            AlertService alertService,
             IMapper mapper)
         {
             _studentService = studentService;
             _actionService = actionService;
             _activityService = activityService;
+            _alertService = alertService;
             _mapper = mapper;
         }
         #endregion
@@ -41,6 +43,7 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(int activityId)
         {
+            _alertService.Success("Deneme success");
             // Get activity 
             var activity = await _activityService.GetActivityByIdAsync(activityId);
 
