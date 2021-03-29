@@ -16,6 +16,7 @@ namespace FF.Web.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var alerts = _alertService.GetAlerts();
+            _alertService.DeleteAlerts();
 
             return await Task.FromResult((IViewComponentResult)View(alerts));
         }

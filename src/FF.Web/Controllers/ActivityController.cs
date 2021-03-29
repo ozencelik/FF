@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using FF.Core.Services.Activities;
 using FF.Core.Services.Students;
-using FF.Data.Entities.Activities;
 using FF.Data.Models.Activities;
-using FF.Data.Models.Students;
 using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,23 +15,17 @@ namespace FF.Web.Controllers
     {
         #region Fields
         private readonly ILogger<ActivityController> _logger;
-        private readonly IStudentService _studentService;
         private readonly IActivityService _activityService;
-        private readonly IStudentActivityService _studentActivityService;
         private readonly IMapper _mapper;
         #endregion Fields
 
         #region Ctor
         public ActivityController(ILogger<ActivityController> logger,
-            IStudentService studentService,
             IActivityService activityService,
-            IStudentActivityService studentActivityService,
             IMapper mapper)
         {
             _logger = logger;
-            _studentService = studentService;
             _activityService = activityService;
-            _studentActivityService = studentActivityService;
             _mapper = mapper;
         }
         #endregion
@@ -42,44 +34,11 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            // Get Meal Activity
-            var mealActivity = await _activityService.GetActivityByIdAsync(1);
+            // Get all acitivities
+            var activities = await _activityService.GetAllActivitiesAsync();
 
-            // Get all students.
-            // TODO : In the future, students get by using their classes.
-            // We do not need all students in the system.
-            var students = await _studentService.GetAllStudentsAsync();
-
-            var activity = _mapper.Map<ActivityModel>(mealActivity);
-            activity.Students = _mapper.Map<IList<StudentModel>>(students);
-
-            return View(activity);
+            return View(_mapper.Map<IList<ActivityModel>>(activities));
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateActivity([FromForm] ActivityModel model)
-        {
-            /*
-            var studentActivities = _mapper.Map<IList<StudentActivity>>(model.StudentActivities);
-
-            foreach (var studentActivity in studentActivities)
-            {
-                var activity = await _activityService.GetActivityByIdAsync(studentActivity.ActivityId);
-                var student = await _studentService.GetStudentByIdAsync(studentActivity.StudentId);
-
-                studentActivity.Student = student;
-                studentActivity.Activity = activity;
-                studentActivity.ActivityOption = activity.ActivityOptions
-                    .FirstOrDefault(ao => ao.Id == studentActivity.ActivityOptionId);
-                
-                await _studentActivityService.InsertStudentActivityAsync(studentActivity);
-            }
-            */
-
-            return await Index();
-        }
-
 
         public IActionResult Privacy()
         {

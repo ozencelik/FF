@@ -21,7 +21,7 @@
                 <div class="col-xl-9">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Aktiviteler</a></li>
-                        <li class="breadcrumb-item active">Yemek Aktivitesi</li>
+                        <li class="breadcrumb-item active">@Model.Activity.Name</li>
                     </ul>
 
                     <h1 class="page-header">
@@ -46,17 +46,21 @@
                                                         <input type="hidden" asp-for="StudentActivities[i].StudentId" value="@Model.Students[i].Id" />
                                                         <h5 class="card-title">@Model.Students[i].FullName</h5>
                                                         <p class="card-text"><small class="text -muted">Yemek miktarları</small></p>
-                                                        <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                                                            <label class="btn btn-outline-danger">
-                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.Activity.ActivityOptions[0].Id" checked />Yemedi
-                                                            </label>
-                                                            <label class="btn btn-outline-warning">
-                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.Activity.ActivityOptions[1].Id" /> Kısmen
-                                                            </label>
-                                                            <label class="btn btn-outline-success">
-                                                                <input type="radio" asp-for="StudentActivities[i].ActivityOptionId" value="@Model.Activity.ActivityOptions[2].Id" /> Bitirdi
-                                                            </label>
-                                                        </div>
+                                                        @if (Model.Activity.ActivityOptions != null)
+                                                        {
+                                                            <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                                                                @for (int j = 0; j < Model.Activity.ActivityOptions.Count; j++)
+                                                                {
+                                                                    <label class="btn btn-outline-primary">
+                                                                        <input type="radio"
+                                                                               asp-for="StudentActivities[i].ActivityOptionId"
+                                                                               value="@Model.Activity.ActivityOptions[j].Id" />
+                                                                        @Model.Activity.ActivityOptions[j].Name
+                                                                    </label>
+                                                                }
+                                                            </div>
+
+                                                        }
                                                     </div>
                                                 </div>
                                             }

@@ -43,7 +43,6 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(int activityId)
         {
-            _alertService.Success("Deneme success");
             // Get activity 
             var activity = await _activityService.GetActivityByIdAsync(activityId);
 
@@ -68,7 +67,6 @@ namespace FF.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] ActionModel model)
         {
-
             var action = _mapper.Map<Action>(model);
             var studentActivities = _mapper.Map<IList<StudentActivity>>(model.StudentActivities);
 
@@ -76,7 +74,8 @@ namespace FF.Web.Controllers
 
             await _actionService.InsertActionAsync(action);
 
-            _alertService.Success("sadad");
+            action.Activity = await _activityService.GetActivityByIdAsync(action.ActivityId);
+            _alertService.Success($"<strong>{action.Activity.Name}</strong> başarılı bir şekilde kaydedildi ✓");
 
             return await Create(action.ActivityId);
         }

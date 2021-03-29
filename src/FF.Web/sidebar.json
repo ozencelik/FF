@@ -5,28 +5,22 @@
       "is_header": true
     },
     {
-      "controller": "Action",
-      "action": "Create/1",
-      "icon": "fa fa-utensils",
-      "text": "Yemek Aktivitesi"
-    },
-    {
       "controller": "Student",
       "action": "Index",
       "icon": "fa fa-users",
       "text": "Öğrenci Listesi"
     },
     {
-      "controller": "Analytics",
-      "action": "Index",
-      "icon": "fa fa-chart-pie",
-      "text": "Analytics"
-    },
-    {
       "controller": "Service",
       "action": "Index",
       "icon": "fa fa-bus",
       "text": "Servis"
+    },
+    {
+      "controller": "Analytics",
+      "action": "Index",
+      "icon": "fa fa-chart-pie",
+      "text": "Analytics"
     },
     {
       "controller": "Email",

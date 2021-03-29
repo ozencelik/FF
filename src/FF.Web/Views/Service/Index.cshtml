@@ -1,15 +1,15 @@
 ﻿@section Styles {
-<link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
 }
 
 @section Scripts {
-<script src="~/lib/chart.js/dist/Chart.min.js"></script>
-<script src="~/lib/moment/min/moment.min.js"></script>
-<script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="~/js/demo/analytics.demo.js"></script>
-<script src="~/lib/highlight.js/highlight.min.js"></script>
-<script src="~/js/demo/highlightjs.demo.js"></script>
-<script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
+    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
+    <script src="~/lib/moment/min/moment.min.js"></script>
+    <script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/demo/analytics.demo.js"></script>
+    <script src="~/lib/highlight.js/highlight.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
 }
 
 <div class="container">
@@ -34,7 +34,7 @@
 
                     <!-- BEGIN #cardGroups -->
                     <div id="cardGroups" class="mb-5">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
                                 <div id="cardContent" class="card ">
                                     <div class="card-body">
@@ -66,34 +66,26 @@
         element.classList.remove("special-card");
         document.getElementById("bindi-button").disabled = false;
         document.getElementById("binmedi-button").disabled = false;
-        console.log("kilitli değil")
-
     }
-    
+
 
     function disableCard() {
         var element = document.getElementById("cardContent");
-
-        
-            element.classList.add("special-card");
-            document.getElementById("bindi-button").disabled = true;
+        element.classList.add("special-card");
+        document.getElementById("bindi-button").disabled = true;
         document.getElementById("binmedi-button").disabled = true;
-        console.log("kilitli")
-        
     }
     /*
      * Kartın herhangi bir yerine basınca kilidi açıyor
-     * 
+     *
     $("#cardContent").click(function () {
         var lockedElement = document.getElementById("cardContent");
         lockedElement.classList.remove("special-card");
         document.getElementById("bindi-button").disabled = false;
         document.getElementById("binmedi-button").disabled = false;
         console.log("kilitli değil")
-
     });
     */
-
 </script>
 
 <style>

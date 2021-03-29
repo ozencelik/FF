@@ -58,5 +58,10 @@ namespace FF.Web.Extensions.Alerts
                 ? JsonConvert.DeserializeObject<List<Alert>>(_tempData[Alert.TempDataKey].ToString())
                 : new List<Alert>();
         }
+
+        public void DeleteAlerts()
+        {
+            _tempData[Alert.TempDataKey] = JsonConvert.SerializeObject(new List<Alert>());
+        }
     }
 }

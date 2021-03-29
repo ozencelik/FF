@@ -1,0 +1,46 @@
+﻿@model List<FF.Data.Models.Activities.ActivityModel>
+@{
+    ViewData["Title"] = "Aktiviteler";
+}
+
+@section Scripts {
+    <script src="~/lib/highlight.js/highlight.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
+}
+
+
+<!-- page header -->
+<h1 class="page-header">
+    Aktiviteler <small>bir aktivite seçin ve öğrencileri takip etmeye başlayın !</small>
+</h1>
+
+<!-- BEGIN card-columns -->
+<div class="card-columns mb-4">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var activitiy in Model)
+        {
+            <!-- BEGIN card -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- title -->
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="flex-fill font-weight-600 fs-16px">@activitiy.Name</div>
+                        <a asp-controller="Action"
+                           asp-action="Create"
+                           asp-route-activityId="@activitiy.Id"
+                           class="btn btn-sm btn-primary rounded-0">İncele</a>
+                    </div>
+                </div>
+            </div>
+            <!-- END card -->
+        }
+    }
+    else
+    {
+        <p>Aktivite bulunamadı !!!</p>
+    }
+
+</div>
+<!-- END card-columns -->
