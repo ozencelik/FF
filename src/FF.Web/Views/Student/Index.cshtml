@@ -43,8 +43,8 @@
             });
             PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
                 PlaceHolderElement.find('.modal').modal('hide');
-                window.Student.reload();
             });
+            window.Student.reload();
         });
         $('.UpdateStudentButton').click(function (event) {
 
@@ -57,8 +57,8 @@
             });
             PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
                 PlaceHolderElement.find('.modal').modal('hide');
-                window.Student.reload();
             });
+            window.Student.reload();
         });
 
 
@@ -104,7 +104,7 @@
                                 Öğrenci Bilgileri <small> </small>
                             </div>
                             <div class="col-xl-3">
-                                <a class="btn btn-outline-success float-right" id="CreateStudentButton" data-toggle="modal" data-target="#AddStudentForm" data-url='@Url.Action("StudentCreate","Student")'>Yeni Öğrenci</a>
+                                <a class="btn btn-outline-success float-right" id="CreateStudentButton" data-toggle="modal" data-target="#AddStudentForm" data-url='@Url.Action("Create","Student")'>Yeni Öğrenci</a>
                             </div>
                         </div>
                     </h1>
@@ -135,8 +135,8 @@
                                                     <td>@student.Class.Name</td>
                                                     <td>@student.Birthday</td>
                                                     <td>
-                                                        <a class="text-primary ml-1 UpdateStudentButton" data-toggle="modal" data-target="#UpdateStudentForm" data-id="@student.Id" data-url='@Url.Action("StudentUpdate","Student")'><i class="fa fa-marker" type="button"></i></a>
-                                                        <a class="text-danger ml-1 DeleteStudentButton" data-toggle="modal" data-target="#DeleteStudentForm" data-id="@student.Id" data-url='@Url.Action("StudentDelete","Student")'><i class="fa fa-trash-alt" type="button"></i></a>
+                                                        <a class="text-primary ml-1 UpdateStudentButton" data-toggle="modal" data-target="#UpdateStudentForm" data-id="@student.Id" data-url='@Url.Action("Update","Student")'><i class="fa fa-marker" type="button"></i></a>
+                                                        <a class="text-danger ml-1 DeleteStudentButton" data-toggle="modal" data-target="#DeleteStudentForm" data-id="@student.Id" data-url='@Url.Action("Delete","Student")'><i class="fa fa-trash-alt" type="button"></i></a>
                                                     </td>
                                                 </tr>
                                             }

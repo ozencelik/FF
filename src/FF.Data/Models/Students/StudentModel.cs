@@ -14,9 +14,17 @@ namespace FF.Data.Models.Students
 
         public DateTime Birthday { get; set; }
 
+        public string ParentFirstName { get; set; }
+
+        public string ParentLastName { get; set; }
+
+        public string ParentPhoneNumber { get; set; }
+
+        public string ParentEmail { get; set; }
+
         public int ClassId { get; set; }
 
-        public int ParentId { get; set; }
+        public int SchoolBusId { get; set; }
 
         public int SchoolId { get; set; }
     }

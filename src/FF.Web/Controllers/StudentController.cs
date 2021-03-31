@@ -12,10 +12,13 @@ namespace FF.Web.Controllers
 {
     public class StudentController : Controller
     {
+        #region Fields
         private readonly ILogger<StudentController> _logger;
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
+        #endregion
 
+        #region Ctor
         public StudentController(ILogger<StudentController> logger,
             IStudentService studentService, IMapper mapper)
         {
@@ -23,7 +26,9 @@ namespace FF.Web.Controllers
             _studentService = studentService;
             _mapper = mapper;
         }
+        #endregion
 
+        #region Methods
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -34,18 +39,18 @@ namespace FF.Web.Controllers
 
 
         [HttpGet]
-        public ActionResult StudentCreate()
+        public ActionResult Create()
         {
-            return View("StudentCreate");
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> StudentCreate([FromForm] StudentModel model)
+        public async Task<IActionResult> Create([FromForm] StudentModel model)
         {
             if (ModelState.IsValid)
-            {  
-            var student = _mapper.Map<Student>(model);
+            {
+                var student = _mapper.Map<Student>(model);
 
                 await _studentService.InsertStudentAsync(student);
             }
@@ -53,16 +58,16 @@ namespace FF.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> StudentUpdate(int id)
+        public async Task<IActionResult> Update(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
             var studentModel = _mapper.Map<StudentModel>(student);
-            return View("StudentUpdate", studentModel);
+            return View(studentModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> StudentUpdate(int id, [FromForm] StudentModel model)
+        public async Task<IActionResult> Update(int id, [FromForm] StudentModel model)
         {
             if (ModelState.IsValid)
             {
@@ -75,16 +80,16 @@ namespace FF.Web.Controllers
 
         //İki kez almak ve ordan oraya çevirip durmak çok gereksiz oldu. Silme işlemi yalnızca id ve student modeli üzerinden form tarafında halledilebilir.
         [HttpGet]
-        public async Task<ActionResult> StudentDelete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
             var studentModel = _mapper.Map<StudentModel>(student);
-            return View("StudentDelete", studentModel);
+            return View("Delete", studentModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> StudentDelete(int id, string student_name)
+        public async Task<IActionResult> Delete(int id, string student_name)
         {
             if (ModelState.IsValid)
             {
@@ -104,5 +109,6 @@ namespace FF.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
     }
 }

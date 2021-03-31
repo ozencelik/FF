@@ -1,10 +1,10 @@
 ﻿@model FF.Data.Models.Students.StudentModel
-<!-- modal-lg AddLocationForm-->
+
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="modal fade" id="AddLocationForm">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form method="post" asp-controller="Student" asp-action="StudentCreate">
+            <form method="post" asp-controller="Student" asp-action="StudentUpdate">
 
                 <!-- Modal Header-->
                 <div class="modal-header">
@@ -26,31 +26,31 @@
                         <div class="row">
                             <div class="col-6">
                                 <label name="FirstName">Ad</label>
-                                <input type="text" class="form-control" id="FirstName" name="FirstName">
+                                <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName">
                             </div>
                             <div class="col-6">
                                 <label name="LastName">Soyad</label>
-                                <input type="text" class="form-control" id="LastName" name="LastName">
+                                <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label name="Birthday">Doğum Günü</label>
-                                <input type="date" class="form-control" id="Birthday" name="Birthday">
+                                <input type="date" class="form-control" id="Birthday" name="Birthday" value="@Model.Birthday">
                             </div>
                             <div class="col-6">
                                 <label name="ClassId">Sınıfı</label>
-                                <input type="text" class="form-control" id="ClassId" name="ClassId">
+                                <input type="text" class="form-control" id="ClassId" name="ClassId" value="@Model.ClassId">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label name="ParentId">Velisi</label>
-                                <input type="text" class="form-control" id="ParentId" name="ParentId">
+                                @*<input type="text" class="form-control" id="ParentId" name="ParentId" value="@Model.ParentId">*@
                             </div>
                             <div class="col-6">
                                 <label name="SchoolId">Okulu</label>
-                                <input type="text" class="form-control" id="SchoolId" name="SchoolId">
+                                <input type="text" class="form-control" id="SchoolId" name="SchoolId" value="@Model.SchoolId">
                             </div>
                         </div>
                     </div>
