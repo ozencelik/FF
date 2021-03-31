@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using FF.Data.Models.Students;
+using FF.Core.Services.Classes;
 
 namespace FF.Web.Controllers
 {
@@ -15,15 +16,19 @@ namespace FF.Web.Controllers
         #region Fields
         private readonly ILogger<StudentController> _logger;
         private readonly IStudentService _studentService;
+        private readonly IClassService _classService;
         private readonly IMapper _mapper;
         #endregion
 
         #region Ctor
         public StudentController(ILogger<StudentController> logger,
-            IStudentService studentService, IMapper mapper)
+            IStudentService studentService,
+            IClassService classService,
+            IMapper mapper)
         {
             _logger = logger;
             _studentService = studentService;
+            _classService = classService;
             _mapper = mapper;
         }
         #endregion
@@ -41,12 +46,16 @@ namespace FF.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            var createStudentModel = new CreateStudentModel()
+            {
+                Classes = _classService.GetAllClasssAsync();
+            };
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm] StudentModel model)
+        public async Task<IActionResult> Create([FromForm] CreateStudentModel model)
         {
             if (ModelState.IsValid)
             {

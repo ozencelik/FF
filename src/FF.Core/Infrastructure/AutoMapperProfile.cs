@@ -31,6 +31,9 @@ namespace FF.Core.Infrastructure
             #region Student
             CreateMap<StudentModel, Student>();
             CreateMap<Student, StudentModel>();
+
+            CreateMap<CreateStudentModel, Student>();
+            CreateMap<Student, CreateStudentModel>();
             #endregion
         }
     }
