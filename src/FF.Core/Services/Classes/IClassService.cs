@@ -7,7 +7,7 @@ namespace FF.Core.Services.Classes
     public interface IClassService
     {
         /// <summary>
-        /// Gets all categories
+        /// Gets all classes
         /// </summary>
         /// <returns>Classes</returns>
         Task<IList<Class>> GetAllClasssAsync();
@@ -15,9 +15,9 @@ namespace FF.Core.Services.Classes
         /// <summary>
         /// Gets a class
         /// </summary>
-        /// <param name="studentId">Class identifier</param>
+        /// <param name="classId">Class identifier</param>
         /// <returns>Class</returns>
-        Task<Class> GetClassByIdAsync(int studentId);
+        Task<Class> GetClassByIdAsync(int classId);
 
         /// <summary>
         /// Insert the class

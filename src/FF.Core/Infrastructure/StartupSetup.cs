@@ -1,7 +1,10 @@
 ﻿using FF.Core.Services.Actions;
 using FF.Core.Services.Activities;
 using FF.Core.Services.Classes;
+using FF.Core.Services.SchoolBuses;
+using FF.Core.Services.Schools;
 using FF.Core.Services.Students;
+using FF.Core.Services.Teachers;
 using FF.Data.Context.MySql;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +29,9 @@ namespace FF.Core.Infrastructure
             services.AddScoped<IStudentActivityService, StudentActivityService>();
             services.AddScoped<IActionService, ActionService>();
             services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<ISchoolBusService, SchoolBusService>();
+            services.AddScoped<ISchoolService, SchoolService>();
+            services.AddScoped<ITeacherService, TeacherService>();
         }
 
         public static void EnsureDatabaseCreated(this IServiceCollection services)
