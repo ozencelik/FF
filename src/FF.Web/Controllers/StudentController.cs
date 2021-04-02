@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using FF.Data.Models.Students;
 using FF.Core.Services.Classes;
+using FF.Core.Services.Schools;
+using FF.Core.Services.SchoolBuses;
 
 namespace FF.Web.Controllers
 {
@@ -16,6 +18,8 @@ namespace FF.Web.Controllers
         #region Fields
         private readonly ILogger<StudentController> _logger;
         private readonly IStudentService _studentService;
+        private readonly ISchoolService _schoolService;
+        private readonly ISchoolBusService _schoolBusService;
         private readonly IClassService _classService;
         private readonly IMapper _mapper;
         #endregion
@@ -23,11 +27,15 @@ namespace FF.Web.Controllers
         #region Ctor
         public StudentController(ILogger<StudentController> logger,
             IStudentService studentService,
+            ISchoolService schoolService,
+            ISchoolBusService schoolBusService,
             IClassService classService,
             IMapper mapper)
         {
             _logger = logger;
             _studentService = studentService;
+            _schoolService = schoolService;
+            _schoolBusService = schoolBusService;
             _classService = classService;
             _mapper = mapper;
         }
@@ -44,13 +52,15 @@ namespace FF.Web.Controllers
 
 
         [HttpGet]
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var createStudentModel = new CreateStudentModel()
             {
-                Classes = _classService.GetAllClasssAsync();
+                SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync(),
+                Classes = await _classService.GetAllClasssAsync(),
             };
-            return View();
+
+            return View(createStudentModel);
         }
 
         [HttpPost]
@@ -89,7 +99,7 @@ namespace FF.Web.Controllers
 
         //İki kez almak ve ordan oraya çevirip durmak çok gereksiz oldu. Silme işlemi yalnızca id ve student modeli üzerinden form tarafında halledilebilir.
         [HttpGet]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
             var studentModel = _mapper.Map<StudentModel>(student);

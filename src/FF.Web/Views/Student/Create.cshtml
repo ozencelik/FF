@@ -1,4 +1,4 @@
-﻿@model FF.Data.Models.Students.StudentModel
+﻿@model FF.Data.Models.Students.CreateStudentModel
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="modal fade" id="AddLocationForm">
@@ -18,7 +18,6 @@
                 <div class="modal-body">
                     <!-- text input -->
                     <div class="form-location">
-
                         <div>
                             <h4> Öğrenci Bilgileri </h4>
                         </div>
@@ -26,31 +25,47 @@
                         <div class="row">
                             <div class="col-6">
                                 <label name="FirstName">Ad</label>
-                                <input type="text" class="form-control" id="FirstName" name="FirstName">
+                                <input class="form-control" type="text" asp-for="FirstName" />
                             </div>
                             <div class="col-6">
                                 <label name="LastName">Soyad</label>
-                                <input type="text" class="form-control" id="LastName" name="LastName">
+                                <input class="form-control" type="text" asp-for="LastName" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label name="Birthday">Doğum Günü</label>
-                                <input type="date" class="form-control" id="Birthday" name="Birthday">
+                                <input class="form-control" type="date" asp-for="Birthday" />
                             </div>
                             <div class="col-6">
-                                <label name="ClassId">Sınıfı</label>
-                                <input type="text" class="form-control" id="ClassId" name="ClassId">
+                                <label>Sınıfı</label>
+                                <select class="form-control" asp-for="ClassId">
+                                    @for (int i = 0; i < Model.Classes.Count; i++)
+                                    {
+                                        <option value="@Model.Classes[i].Id">@Model.Classes[i].Name</option>
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <label name="">Velisi</label>
-                                <input type="text" class="form-control" id="ParentId" name="ParentId">
+                                <label>Okul Servisi</label>
+                                <select class="form-control" asp-for="SchoolBusId">
+                                    @for (int i = 0; i < Model.SchoolBuses.Count; i++)
+                                    {
+                                        <option value="@Model.SchoolBuses[i].Id">@Model.SchoolBuses[i].CompanyName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Veli Adı</label>
+                                <input class="form-control" type="text" asp-for="ParentFirstName" />
                             </div>
                             <div class="col-6">
-                                <label name="SchoolId">Okulu</label>
-                                <input type="text" class="form-control" id="SchoolId" name="SchoolId">
+                                <label name="">Veli Soyadı</label>
+                                <input class="form-control" type="text" asp-for="ParentLastName" />
                             </div>
                         </div>
                     </div>

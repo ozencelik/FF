@@ -29,9 +29,5 @@ namespace FF.Data.Models.Students
         public int SchoolBusId { get; set; }
 
         public IList<SchoolBus> SchoolBuses { get; set; }
-
-        public int SchoolId { get; set; }
-
-        public IList<School> Schools { get; set; }
     }
 }
