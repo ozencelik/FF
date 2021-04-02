@@ -36,7 +36,7 @@
                         <div class="row form-group">
                             <div class="col-6">
                                 <label name="Birthday">Doğum Günü</label>
-                                <input class="form-control" type="date" asp-for="Birthday" value="@Model.Birthday" />
+                                <input class="form-control" type="date" asp-for="Birthday" value="@Model.Birthday.ToString("yyyy-MM-dd")" />
                             </div>
                             <div class="col-6">
                                 <label>Sınıfı</label>
