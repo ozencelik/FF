@@ -20,6 +20,13 @@ namespace FF.Core.Services.Students
         Task<Student> GetStudentByIdAsync(int studentId);
 
         /// <summary>
+        /// Gets a student
+        /// </summary>
+        /// <param name="code">Student profile access code</param>
+        /// <returns>Student</returns>
+        Task<Student> GetStudentByProfileAccessCodeAsync(string code);
+
+        /// <summary>
         /// Insert the student
         /// </summary>
         /// <returns>Student Id</returns>

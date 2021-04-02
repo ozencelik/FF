@@ -1,6 +1,7 @@
 ﻿using FF.Data.Entities.Students;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,8 +36,16 @@ namespace FF.Core.Services.Students
                 && !x.Deleted);
         }
 
+        public async Task<Student> GetStudentByProfileAccessCodeAsync(string code)
+        {
+            return await _studentRepository.Table
+                .FirstOrDefaultAsync(x => x.ProfileAccessCode.Equals(code)
+                && !x.Deleted);
+        }
+
         public async Task<int> InsertStudentAsync(Student student)
         {
+            student.ProfileAccessCode = Guid.NewGuid().ToString();
             return await _studentRepository.InsertAsync(student);
         }
 

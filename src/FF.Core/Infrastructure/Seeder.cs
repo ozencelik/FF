@@ -113,7 +113,8 @@ namespace FF.Core.Infrastructure
                 ParentFirstName = "Büyük Veli",
                 ParentLastName = "Hazretleri",
                 ParentPhoneNumber = "111111111",
-                ParentEmail = "abc@mail.com"
+                ParentEmail = "abc@mail.com",
+                ProfileAccessCode = Guid.NewGuid().ToString()
             });
 
             dbContext.Student.Add(new Student
@@ -126,7 +127,8 @@ namespace FF.Core.Infrastructure
                 ParentFirstName = "Büyük Veli",
                 ParentLastName = "Hazretleri",
                 ParentPhoneNumber = "111111111",
-                ParentEmail = "abc@mail.com"
+                ParentEmail = "abc@mail.com",
+                ProfileAccessCode = Guid.NewGuid().ToString()
             });
             #endregion
 

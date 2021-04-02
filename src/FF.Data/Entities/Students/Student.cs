@@ -2,6 +2,7 @@
 using FF.Data.Entities.Base;
 using FF.Data.Entities.Classes;
 using FF.Data.Entities.SchoolBuses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -50,6 +51,12 @@ namespace FF.Data.Entities.Students
         /// Student's parent email
         /// </summary>
         public string ParentEmail { get; set; }
+
+        /// <summary>
+        /// Student's profile acces link
+        /// Opens the product detail page
+        /// </summary>
+        public string ProfileAccessCode { get; set; }
 
         /// <summary>
         /// Activity's studentActivities

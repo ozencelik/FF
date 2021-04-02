@@ -50,7 +50,6 @@ namespace FF.Web.Controllers
             return View(students);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -70,7 +69,6 @@ namespace FF.Web.Controllers
             if (ModelState.IsValid)
             {
                 var student = _mapper.Map<Student>(model);
-
                 await _studentService.InsertStudentAsync(student);
             }
             return RedirectToAction(nameof(Index));
@@ -101,7 +99,6 @@ namespace FF.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //İki kez almak ve ordan oraya çevirip durmak çok gereksiz oldu. Silme işlemi yalnızca id ve student modeli üzerinden form tarafında halledilebilir.
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -120,6 +117,21 @@ namespace FF.Web.Controllers
                 await _studentService.DeleteStudentAsync(student);
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(string profileAccessCode)
+        {
+            var student = await _studentService.GetStudentByProfileAccessCodeAsync(profileAccessCode);
+
+            if (student is null)
+            {
+                // Redirect to not found page.
+                return RedirectToAction(nameof(Index));
+            }
+
+            var studentModel = _mapper.Map<StudentModel>(student);
+            return View("Detail", studentModel);
         }
 
         public IActionResult Privacy()
