@@ -1,14 +1,14 @@
-﻿@model FF.Data.Models.Students.StudentModel
+﻿@model FF.Data.Models.Students.UpdateStudentModel
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="modal fade" id="AddLocationForm">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form method="post" asp-controller="Student" asp-action="StudentUpdate">
+            <form method="post" asp-controller="Student" asp-action="Update">
 
                 <!-- Modal Header-->
                 <div class="modal-header">
-                    <h5 class="modal-title">Konum Bilgileri</h5>
+                    <h5 class="modal-title">Öğrenci Ekle</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>×</span>
                     </button>
@@ -18,39 +18,69 @@
                 <div class="modal-body">
                     <!-- text input -->
                     <div class="form-location">
-
                         <div>
                             <h4> Öğrenci Bilgileri </h4>
+                            <input class="form-control" type="hidden" asp-for="Id" value="@Model.Id" />
                         </div>
 
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label name="FirstName">Ad</label>
-                                <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName">
+                                <input class="form-control" type="text" asp-for="FirstName" value="@Model.FirstName" />
                             </div>
                             <div class="col-6">
                                 <label name="LastName">Soyad</label>
-                                <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName">
+                                <input class="form-control" type="text" asp-for="LastName" value="@Model.LastName" />
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label name="Birthday">Doğum Günü</label>
-                                <input type="date" class="form-control" id="Birthday" name="Birthday" value="@Model.Birthday">
+                                <input class="form-control" type="date" asp-for="Birthday" value="@Model.Birthday" />
                             </div>
                             <div class="col-6">
-                                <label name="ClassId">Sınıfı</label>
-                                <input type="text" class="form-control" id="ClassId" name="ClassId" value="@Model.ClassId">
+                                <label>Sınıfı</label>
+                                <select class="form-control" asp-for="ClassId">
+                                    @for (int i = 0; i < Model.Classes.Count; i++)
+                                    {
+                                        if (Model.ClassId == Model.Classes[i].Id)
+                                        {
+                                            <option value="@Model.Classes[i].Id" selected>@Model.Classes[i].Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@Model.Classes[i].Id">@Model.Classes[i].Name</option>
+                                        }
+                                    }
+                                </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
-                                <label name="ParentId">Velisi</label>
-                                @*<input type="text" class="form-control" id="ParentId" name="ParentId" value="@Model.ParentId">*@
+                                <label>Okul Servisi</label>
+                                <select class="form-control" asp-for="SchoolBusId">
+                                    @for (int i = 0; i < Model.SchoolBuses.Count; i++)
+                                    {
+                                        if (Model.SchoolBusId == Model.SchoolBuses[i].Id)
+                                        {
+                                            <option value="@Model.SchoolBuses[i].Id" selected>@Model.SchoolBuses[i].CompanyName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@Model.SchoolBuses[i].Id">@Model.SchoolBuses[i].CompanyName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label>Veli Adı</label>
+                                <input class="form-control" type="text" asp-for="ParentFirstName" value="@Model.ParentFirstName" />
                             </div>
                             <div class="col-6">
-                                <label name="SchoolId">Okulu</label>
-                                <input type="text" class="form-control" id="SchoolId" name="SchoolId" value="@Model.SchoolId">
+                                <label name="">Veli Soyadı</label>
+                                <input class="form-control" type="text" asp-for="ParentLastName" value="@Model.LastName" />
                             </div>
                         </div>
                     </div>

@@ -80,19 +80,23 @@ namespace FF.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var student = await _studentService.GetStudentByIdAsync(id);
-            var studentModel = _mapper.Map<StudentModel>(student);
+            var studentModel = _mapper.Map<UpdateStudentModel>(student);
+            studentModel.SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync();
+            studentModel.Classes = await _classService.GetAllClasssAsync();
+
             return View(studentModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [FromForm] StudentModel model)
+        public async Task<IActionResult> Update(int id, [FromForm] UpdateStudentModel model)
         {
             if (ModelState.IsValid)
             {
-                model.Id = id;
-                var student = _mapper.Map<Student>(model);
-                await _studentService.UpdateStudentAsync(student);
+                var updatedStudent = await _studentService.GetStudentByIdAsync(id);
+                updatedStudent = _mapper.Map<Student>(model);
+
+                await _studentService.UpdateStudentAsync(updatedStudent);
             }
             return RedirectToAction(nameof(Index));
         }

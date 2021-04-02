@@ -66,7 +66,19 @@ namespace FF.Core.Infrastructure
                 SchoolId = school.Id
             };
 
+            var schoolBus1 = new SchoolBus
+            {
+                FirstName = "İlk",
+                LastName = "Öğretmen",
+                Birthday = new DateTime(1980, 06, 01),
+                LicensePlate = "35 ABC 78",
+                PhoneNumber = "0555 555 55 55",
+                CompanyName = "Hızlı Servis 1",
+                SchoolId = school.Id
+            };
+
             dbContext.SchoolBus.Add(schoolBus);
+            dbContext.SchoolBus.Add(schoolBus1);
             dbContext.SaveChanges();
             #endregion
 
@@ -78,7 +90,15 @@ namespace FF.Core.Infrastructure
                 Teacher = teacher
             };
 
+            var kindergartenClass1 = new Class
+            {
+                Name = "2-A",
+                School = school,
+                Teacher = teacher
+            };
+
             dbContext.Class.Add(kindergartenClass);
+            dbContext.Class.Add(kindergartenClass1);
             dbContext.SaveChanges();
             #endregion
 
