@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using FF.Core.Services.Activities;
-using FF.Core.Services.Students;
 using FF.Data.Models.Activities;
 using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Activity = System.Diagnostics.Activity;
 
 namespace FF.Web.Controllers
 {
@@ -48,7 +46,7 @@ namespace FF.Web.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         #endregion
     }
