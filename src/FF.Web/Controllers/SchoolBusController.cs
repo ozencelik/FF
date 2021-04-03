@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FF.Data.Entities.Students;
 using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,6 +6,10 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using FF.Data.Models.Students;
 using FF.Core.Services.SchoolBuses;
+using FF.Core.Services.Activities;
+using FF.Data.Models.SchoolBuses;
+using FF.Data.Models.Activities;
+using System.Collections.Generic;
 
 namespace FF.Web.Controllers
 {
@@ -14,16 +17,19 @@ namespace FF.Web.Controllers
     {
         #region Fields
         private readonly ILogger<SchoolBusController> _logger;
+        private readonly IActivityService _activityService;
         private readonly ISchoolBusService _schoolBusService;
         private readonly IMapper _mapper;
         #endregion
 
         #region Ctor
         public SchoolBusController(ILogger<SchoolBusController> logger,
+            IActivityService activityService,
             ISchoolBusService schoolBusService,
             IMapper mapper)
         {
             _logger = logger;
+            _activityService = activityService;
             _schoolBusService = schoolBusService;
             _mapper = mapper;
         }
@@ -33,8 +39,13 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home()
         {
-            // 
-            return View();
+            // Get schoolBus acitivities (except schoolBus activity)
+            var homeModel = new HomeModel()
+            {
+                Activities = _mapper.Map<IList<ActivityModel>>(await _activityService.GetSchoolBusActivitiesAsync())
+            };
+
+            return View(homeModel);
         }
 
         [HttpGet]

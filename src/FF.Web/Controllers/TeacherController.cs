@@ -9,6 +9,9 @@ using FF.Data.Models.Students;
 using FF.Core.Services.Classes;
 using FF.Core.Services.Teachers;
 using FF.Core.Services.Activities;
+using FF.Data.Models.Teachers;
+using FF.Data.Models.Activities;
+using System.Collections.Generic;
 
 namespace FF.Web.Controllers
 {
@@ -41,11 +44,13 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home()
         {
-            // Get all acitivities
-            var activities = await _activityService.GetAllActivitiesAsync();
+            // Get teacher acitivities (except schoolBus activity)
+            var homeModel = new HomeModel()
+            {
+                Activities = _mapper.Map<IList<ActivityModel>>(await _activityService.GetTeacherActivitiesAsync())
+            };
 
-            //return View(_mapper.Map<IList<ActivityModel>>(activities));
-            return View();
+            return View(homeModel);
         }
 
         [HttpGet]

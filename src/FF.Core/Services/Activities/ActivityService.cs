@@ -29,6 +29,22 @@ namespace FF.Core.Services.Activities
                 .ToListAsync();
         }
 
+        public async Task<IList<Activity>> GetTeacherActivitiesAsync()
+        {
+            return await _activityRepository
+                .Table
+                .Where(x => x.Id != 1 && !x.Deleted)
+                .ToListAsync();
+        }
+
+        public async Task<IList<Activity>> GetSchoolBusActivitiesAsync()
+        {
+            return await _activityRepository
+                .Table
+                .Where(x => x.Id == 1 && !x.Deleted)
+                .ToListAsync();
+        }
+
         public async Task<Activity> GetActivityByIdAsync(int activityId)
         {
             return await _activityRepository

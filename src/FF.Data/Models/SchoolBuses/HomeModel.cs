@@ -1,8 +1,7 @@
 ﻿using FF.Data.Models.Activities;
-using FF.Data.Models.Classes;
 using System.Collections.Generic;
 
-namespace FF.Data.Models.Teachers
+namespace FF.Data.Models.SchoolBuses
 {
     public class HomeModel
     {

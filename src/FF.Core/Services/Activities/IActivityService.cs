@@ -13,6 +13,18 @@ namespace FF.Core.Services.Activities
         Task<IList<Activity>> GetAllActivitiesAsync();
 
         /// <summary>
+        /// Gets teacher activites
+        /// </summary>
+        /// <returns>Activities</returns>
+        Task<IList<Activity>> GetTeacherActivitiesAsync();
+
+        /// <summary>
+        /// Gets schoolBus activites
+        /// </summary>
+        /// <returns>Activities</returns>
+        Task<IList<Activity>> GetSchoolBusActivitiesAsync();
+
+        /// <summary>
         /// Gets an activity
         /// </summary>
         /// <param name="activityId">Activity identifier</param>
