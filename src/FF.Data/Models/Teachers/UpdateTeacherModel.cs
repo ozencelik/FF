@@ -1,6 +1,10 @@
-﻿namespace FF.Data.Models.Teachers
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace FF.Data.Models.Teachers
 {
-    public class TeacherModel
+    public class UpdateTeacherModel
     {
         public int Id { get; set; }
 
