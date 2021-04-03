@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FF.Data.Models.Students;
 using FF.Core.Services.Classes;
 using FF.Core.Services.Teachers;
+using FF.Core.Services.Activities;
 
 namespace FF.Web.Controllers
 {
@@ -15,6 +16,7 @@ namespace FF.Web.Controllers
     {
         #region Fields
         private readonly ILogger<TeacherController> _logger;
+        private readonly IActivityService _activityService;
         private readonly ITeacherService _teacherService;
         private readonly IClassService _classService;
         private readonly IMapper _mapper;
@@ -22,11 +24,13 @@ namespace FF.Web.Controllers
 
         #region Ctor
         public TeacherController(ILogger<TeacherController> logger,
+            IActivityService activityService,
             ITeacherService teacherService,
             IClassService classService,
             IMapper mapper)
         {
             _logger = logger;
+            _activityService = activityService;
             _teacherService = teacherService;
             _classService = classService;
             _mapper = mapper;
@@ -37,6 +41,10 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home()
         {
+            // Get all acitivities
+            var activities = await _activityService.GetAllActivitiesAsync();
+
+            //return View(_mapper.Map<IList<ActivityModel>>(activities));
             return View();
         }
 

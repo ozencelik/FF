@@ -133,6 +133,10 @@ namespace FF.Core.Infrastructure
             #endregion
 
             #region Create Activities
+            var serviceActivity = new Activity
+            {
+                Name = "Servis Aktivitesi"
+            };
             var mealActivity = new Activity
             {
                 Name = "Yemek Aktivitesi"
@@ -141,24 +145,24 @@ namespace FF.Core.Infrastructure
             {
                 Name = "Uyku Aktivitesi"
             };
-            var serviceActivity = new Activity
-            {
-                Name = "Servis Aktivitesi"
-            };
             var medicineActivity = new Activity
             {
                 Name = "İlaç Aktivitesi"
             };
 
+            dbContext.Activity.Add(serviceActivity);
             dbContext.Activity.Add(mealActivity);
             dbContext.Activity.Add(sleepActivity);
-            dbContext.Activity.Add(serviceActivity);
             dbContext.Activity.Add(medicineActivity);
 
             dbContext.SaveChanges();
             #endregion
 
             #region Create Activity Options
+            var serviceActivityOption1 = new ActivityOption { Name = "Binmedi", ActivityId = serviceActivity.Id };
+            var serviceActivityOption2 = new ActivityOption { Name = "Bindi", ActivityId = serviceActivity.Id };
+            var serviceActivityOption3 = new ActivityOption { Name = "İndi", ActivityId = serviceActivity.Id };
+
             var mealActivityOption1 = new ActivityOption { Name = "Yemedi", ActivityId = mealActivity.Id };
             var mealActivityOption2 = new ActivityOption { Name = "Kısmen", ActivityId = mealActivity.Id };
             var mealActivityOption3 = new ActivityOption { Name = "Bitirdi", ActivityId = mealActivity.Id };
@@ -166,12 +170,13 @@ namespace FF.Core.Infrastructure
             var sleepActivityOption1 = new ActivityOption { Name = "Uyumadı", ActivityId = sleepActivity.Id };
             var sleepActivityOption2 = new ActivityOption { Name = "Uyudu", ActivityId = sleepActivity.Id };
 
-            var serviceActivityOption1 = new ActivityOption { Name = "Binmedi", ActivityId = serviceActivity.Id };
-            var serviceActivityOption2 = new ActivityOption { Name = "Bindi", ActivityId = serviceActivity.Id };
-            var serviceActivityOption3 = new ActivityOption { Name = "İndi", ActivityId = serviceActivity.Id };
-
             var medicineActivityOption1 = new ActivityOption { Name = "Aldı", ActivityId = medicineActivity.Id };
             var medicineActivityOption2 = new ActivityOption { Name = "Almadı", ActivityId = medicineActivity.Id };
+
+            dbContext.ActivityOption.Add(serviceActivityOption1);
+            dbContext.ActivityOption.Add(serviceActivityOption2);
+            dbContext.ActivityOption.Add(serviceActivityOption3);
+            dbContext.SaveChanges();
 
             dbContext.ActivityOption.Add(mealActivityOption1);
             dbContext.ActivityOption.Add(mealActivityOption2);
@@ -180,11 +185,6 @@ namespace FF.Core.Infrastructure
 
             dbContext.ActivityOption.Add(sleepActivityOption1);
             dbContext.ActivityOption.Add(sleepActivityOption2);
-            dbContext.SaveChanges();
-
-            dbContext.ActivityOption.Add(serviceActivityOption1);
-            dbContext.ActivityOption.Add(serviceActivityOption2);
-            dbContext.ActivityOption.Add(serviceActivityOption3);
             dbContext.SaveChanges();
 
             dbContext.ActivityOption.Add(medicineActivityOption1);
