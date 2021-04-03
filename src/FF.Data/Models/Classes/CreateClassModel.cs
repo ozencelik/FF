@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FF.Data.Models.Classes
+﻿namespace FF.Data.Models.Classes
 {
     public class CreateClassModel
     {
+        public string Name { get; set; }
 
-        public string ClassName { get; set; }
+        public int SchoolId { get; set; }
 
-        public int Grade { get; set; }
+        public int TeacherId { get; set; }
     }
 }

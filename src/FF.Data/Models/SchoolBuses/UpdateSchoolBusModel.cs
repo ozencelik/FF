@@ -1,15 +1,12 @@
 ﻿using FF.Data.Models.Base;
-using FF.Data.Models.Schools;
 using FF.Data.Models.Students;
 using System.Collections.Generic;
 
 namespace FF.Data.Models.SchoolBuses
 {
-    public class SchoolBusModel : PersonModel
+    public class UpdateSchoolBusModel : PersonModel
     {
         public int SchoolId { get; set; }
-
-        public SchoolModel School { get; set; }
 
         public string LicensePlate { get; set; }
 

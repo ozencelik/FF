@@ -1,20 +1,11 @@
-﻿namespace FF.Data.Models.Teachers
+﻿using FF.Data.Models.Base;
+using FF.Data.Models.Classes;
+using System.Collections.Generic;
+
+namespace FF.Data.Models.Teachers
 {
-    public class TeacherModel
+    public class TeacherModel : PersonModel
     {
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string FullName => $"{FirstName} {LastName}";
-
-        public string PhoneNumber { get; set; }
-
-        public string Email { get; set; }
-
-        public int ClassId { get; set; }
-
+        public IList<ClassModel> Classes { get; set; }
     }
 }

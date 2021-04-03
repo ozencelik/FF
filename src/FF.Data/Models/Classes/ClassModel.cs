@@ -1,12 +1,11 @@
-﻿using FF.Data.Models.Schools;
+﻿using FF.Data.Models.Base;
+using FF.Data.Models.Schools;
 using FF.Data.Models.Teachers;
 
 namespace FF.Data.Models.Classes
 {
-    public class ClassModel
+    public class ClassModel : BaseModel
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public int SchoolId { get; set; }

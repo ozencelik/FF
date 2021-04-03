@@ -1,6 +1,5 @@
 ﻿using FF.Data.Entities.Classes;
 using FF.Data.Entities.SchoolBuses;
-using FF.Data.Entities.Schools;
 using System;
 using System.Collections.Generic;
 

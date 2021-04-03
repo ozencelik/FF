@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FF.Data.Models.Base;
 
 namespace FF.Data.Models.Classes
 {
-    public class UpdateClassModel
+    public class UpdateClassModel : BaseModel
     {
-        public int Id { get; set; }
+        public string Name { get; set; }
 
-        public string ClassName { get; set; }
+        public int SchoolId { get; set; }
 
-        public int Grade { get; set; }
-
+        public int TeacherId { get; set; }
     }
 }

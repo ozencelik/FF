@@ -1,9 +1,9 @@
-﻿namespace FF.Data.Models.Activities
-{
-    public class ActivityOptionModel
-    {
-        public int Id { get; set; }
+﻿using FF.Data.Models.Base;
 
+namespace FF.Data.Models.Activities
+{
+    public class ActivityOptionModel : BaseModel
+    {
         public string Name { get; set; }
 
         public int ActivityId { get; set; }

@@ -1,12 +1,11 @@
 ﻿using FF.Data.Models.Actions;
+using FF.Data.Models.Base;
 using FF.Data.Models.Students;
 
 namespace FF.Data.Models.Activities
 {
-    public class StudentActivityModel
+    public class StudentActivityModel : BaseModel
     {
-        public int Id { get; set; }
-
         public string Description { get; set; }
 
         public int ActionId { get; set; }
