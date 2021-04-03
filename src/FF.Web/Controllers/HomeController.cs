@@ -46,7 +46,7 @@ namespace FF.Web.Controllers
         public IActionResult Index(string code)
         {
             if (string.IsNullOrEmpty(code))
-                return RedirectToAction("Index", "Student");
+                return RedirectToAction("Home", "School");
 
             return RedirectToAction("Detail", "Student", new { profileAccessCode = code });
         }

@@ -5,13 +5,31 @@
       "is_header": true
     },
     {
+      "controller": "School",
+      "action": "Home",
+      "icon": "fa fa-building",
+      "text": "Okul Ana Sayfası"
+    },
+    {
+      "controller": "Teacher",
+      "action": "Home",
+      "icon": "fa fa-users",
+      "text": "Öğretmen Ana Sayfası"
+    },
+    {
+      "controller": "SchoolBus",
+      "action": "Home",
+      "icon": "fa fa-bus",
+      "text": "Servis Ana Sayfası"
+    },
+    {
       "controller": "Student",
       "action": "Index",
       "icon": "fa fa-users",
       "text": "Öğrenci Listesi"
     },
     {
-      "controller": "Service",
+      "controller": "SchoolBus",
       "action": "Index",
       "icon": "fa fa-bus",
       "text": "Servis"

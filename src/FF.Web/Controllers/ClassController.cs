@@ -41,20 +41,12 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var students = await _teacherService.GetAllTeachersAsync();
-
-            return View(students);
+            return View();
         }
 
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var createStudentModel = new CreateStudentModel()
-            {
-                SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync(),
-                Classes = await _classService.GetAllClasssAsync(),
-            };
-
             return View();
         }
 
@@ -62,56 +54,32 @@ namespace FF.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] CreateStudentModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var student = _mapper.Map<Student>(model);
-                await _studentService.InsertStudentAsync(student);
-            }
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var student = await _studentService.GetStudentByIdAsync(id);
-            var studentModel = _mapper.Map<UpdateStudentModel>(student);
-            studentModel.SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync();
-            studentModel.Classes = await _classService.GetAllClasssAsync();
-
-            return View(studentModel);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, [FromForm] UpdateStudentModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var updatedStudent = await _studentService.GetStudentByIdAsync(id);
-                updatedStudent = _mapper.Map<Student>(model);
-
-                await _studentService.UpdateStudentAsync(updatedStudent);
-            }
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var student = await _studentService.GetStudentByIdAsync(id);
-            var studentModel = _mapper.Map<StudentModel>(student);
-            return View("Delete", studentModel);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id, string student_name)
         {
-            if (ModelState.IsValid)
-            {
-                var student = await _studentService.GetStudentByIdAsync(id);
-                await _studentService.DeleteStudentAsync(student);
-            }
             return RedirectToAction(nameof(Index));
         }
 

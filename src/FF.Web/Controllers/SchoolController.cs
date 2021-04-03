@@ -6,29 +6,25 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using FF.Data.Models.Students;
-using FF.Core.Services.Classes;
-using FF.Core.Services.Teachers;
+using FF.Core.Services.SchoolBuses;
 
 namespace FF.Web.Controllers
 {
-    public class TeacherController : Controller
+    public class SchoolController : Controller
     {
         #region Fields
-        private readonly ILogger<TeacherController> _logger;
-        private readonly ITeacherService _teacherService;
-        private readonly IClassService _classService;
+        private readonly ILogger<SchoolController> _logger;
+        private readonly ISchoolBusService _schoolBusService;
         private readonly IMapper _mapper;
         #endregion
 
         #region Ctor
-        public TeacherController(ILogger<TeacherController> logger,
-            ITeacherService teacherService,
-            IClassService classService,
+        public SchoolController(ILogger<SchoolController> logger,
+            ISchoolBusService schoolBusService,
             IMapper mapper)
         {
             _logger = logger;
-            _teacherService = teacherService;
-            _classService = classService;
+            _schoolBusService = schoolBusService;
             _mapper = mapper;
         }
         #endregion
@@ -37,13 +33,14 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home()
         {
+            // 
             return View();
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var students = await _teacherService.GetAllTeachersAsync();
+            var students = await _schoolBusService.GetAllSchoolBusesAsync();
 
             return View(students);
         }

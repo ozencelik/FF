@@ -1,0 +1,97 @@
+﻿@section Styles {
+    <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
+    <script src="~/lib/moment/min/moment.min.js"></script>
+    <script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/demo/analytics.demo.js"></script>
+    <script src="~/lib/highlight.js/highlight.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
+}
+
+<div class="container">
+    <!-- BEGIN row -->
+    <div class="row justify-content-center">
+        <!-- BEGIN col-10 -->
+        <div class="col-xl-10">
+            <!-- BEGIN row -->
+            <div class="row">
+                <!-- BEGIN col-9 -->
+                <div class="col-xl-9">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Aktiviteler</a></li>
+                        <li class="breadcrumb-item active">Yemek Aktivitesi</li>
+                    </ul>
+
+                    <h1 class="page-header">
+                        1-A Sınıfı <small>Lütfen öğrencilerin yemek aktivitelerini belirleyiniz...</small>
+                    </h1>
+
+                    <hr class="mb-4" />
+
+                    <!-- BEGIN #cardGroups -->
+                    <div id="cardGroups" class="mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="cardContent" class="card ">
+                                    <div class="card-body">
+                                        <i class="fas fa-unlock-alt" style="float:right;" onclick="enablecard()"></i>
+                                        <h5 class="card-title">hasan berk</h5>
+                                        <button id="bindi-button" type="button" class="btn btn-primary btn-sm" onclick="disableCard()">Bindi</button>
+                                        <button id="binmedi-button" type="button" class="btn btn-danger btn-sm" onclick="disableCard()">Binmedi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END col-3 -->
+            </div>
+            <!-- END row -->
+        </div>
+        <!-- END col-10 -->
+    </div>
+    <!-- END row -->
+</div>
+<!-- END container -->
+
+
+<script>
+    function enablecard() {
+        var element = document.getElementById("cardContent");
+        element.classList.remove("special-card");
+        document.getElementById("bindi-button").disabled = false;
+        document.getElementById("binmedi-button").disabled = false;
+    }
+
+
+    function disableCard() {
+        var element = document.getElementById("cardContent");
+        element.classList.add("special-card");
+        document.getElementById("bindi-button").disabled = true;
+        document.getElementById("binmedi-button").disabled = true;
+    }
+    /*
+     * Kartın herhangi bir yerine basınca kilidi açıyor
+     *
+    $("#cardContent").click(function () {
+        var lockedElement = document.getElementById("cardContent");
+        lockedElement.classList.remove("special-card");
+        document.getElementById("bindi-button").disabled = false;
+        document.getElementById("binmedi-button").disabled = false;
+        console.log("kilitli değil")
+    });
+    */
+</script>
+
+<style>
+    .special-card {
+        background-color: #1abd36;
+    }
+</style>
+
+

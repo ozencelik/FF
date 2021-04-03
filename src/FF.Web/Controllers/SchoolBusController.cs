@@ -40,9 +40,7 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var students = await _schoolBusService.GetAllSchoolBusesAsync();
-
-            return View(students);
+            return View();
         }
 
         [HttpGet]
