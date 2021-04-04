@@ -122,13 +122,13 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(string profileAccessCode)
         {
+            if (string.IsNullOrEmpty(profileAccessCode))
+                return RedirectToAction("ErrorPage", "Home");
+
             var student = await _studentService.GetStudentByProfileAccessCodeAsync(profileAccessCode);
 
             if (student is null)
-            {
-                // Redirect to not found page.
-                return RedirectToAction(nameof(Index));
-            }
+                return RedirectToAction("ErrorPage", "Home");
 
             var studentModel = _mapper.Map<StudentModel>(student);
             return View("Detail", studentModel);

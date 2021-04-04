@@ -17,68 +17,74 @@
         <div class="col-xl-10">
             <!-- BEGIN row -->
             <div class="row">
-                <!-- BEGIN col-9 -->
-                <div class="col-xl-9">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Aktiviteler</a></li>
-                        <li class="breadcrumb-item active">@Model.Activity.Name</li>
-                    </ul>
+                @if (Model != null)
+                {
+                    <!-- BEGIN col-9 -->
+                    <div class="col-xl-9">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Aktiviteler</a></li>
+                            @if (Model.Activity != null)
+                            {
+                                <li class="breadcrumb-item active">@Model.Activity.Name</li>
+                            }
+                        </ul>
 
-                    <h1 class="page-header">
-                        1-A Sınıfı <small>Lütfen öğrencilerin yemek aktivitelerini belirleyiniz...</small>
-                    </h1>
+                        <h1 class="page-header">
+                            1-A Sınıfı <small>Lütfen öğrencilerin yemek aktivitelerini belirleyiniz...</small>
+                        </h1>
 
-                    <hr class="mb-4" />
+                        <hr class="mb-4" />
 
-                    <!-- BEGIN #cardGroups -->
-                    <div id="cardGroups" class="mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                @if (Model.Students != null)
-                                {
-                                    <form asp-controller="Action" asp-action="Create" method="post">
-                                        <div class="card-columns">
-                                            @for (var i = 0; i < Model.Students.Count; i++)
-                                            {
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <input type="hidden" asp-for="ActivityId" value="@Model.ActivityId" />
-                                                        <input type="hidden" asp-for="StudentActivities[i].StudentId" value="@Model.Students[i].Id" />
-                                                        <h5 class="card-title">@Model.Students[i].FullName</h5>
-                                                        <p class="card-text"><small class="text -muted">Yemek miktarları</small></p>
-                                                        @if (Model.Activity.ActivityOptions != null)
-                                                        {
-                                                            <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                                                                @for (int j = 0; j < Model.Activity.ActivityOptions.Count; j++)
-                                                                {
-                                                                    <label class="btn btn-outline-primary">
-                                                                        <input type="radio"
-                                                                               asp-for="StudentActivities[i].ActivityOptionId"
-                                                                               value="@Model.Activity.ActivityOptions[j].Id" />
-                                                                        @Model.Activity.ActivityOptions[j].Name
-                                                                    </label>
-                                                                }
-                                                            </div>
+                        <!-- BEGIN #cardGroups -->
+                        <div id="cardGroups" class="mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    @if (Model.Students != null)
+                                    {
+                                        <form asp-controller="Action" asp-action="Create" method="post">
+                                            <div class="card-columns">
+                                                @for (var i = 0; i < Model.Students.Count; i++)
+                                                {
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <input type="hidden" asp-for="ActivityId" value="@Model.ActivityId" />
+                                                            <input type="hidden" asp-for="StudentActivities[i].StudentId" value="@Model.Students[i].Id" />
+                                                            <h5 class="card-title">@Model.Students[i].FullName</h5>
+                                                            @*<p class="card-text"><small class="text -muted">Yemek miktarları</small></p>*@
+                                                            @if (Model.Activity.ActivityOptions != null)
+                                                            {
+                                                                <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                                                                    @for (int j = 0; j < Model.Activity.ActivityOptions.Count; j++)
+                                                                    {
+                                                                        <label class="btn btn-outline-primary">
+                                                                            <input type="radio"
+                                                                                   asp-for="StudentActivities[i].ActivityOptionId"
+                                                                                   value="@Model.Activity.ActivityOptions[j].Id" />
+                                                                            @Model.Activity.ActivityOptions[j].Name
+                                                                        </label>
+                                                                    }
+                                                                </div>
 
-                                                        }
+                                                            }
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            }
-                                        </div>
-                                        <button type="submit" value="Submit" class="btn btn-primary">Kaydet</button>
-                                    </form>
-                                }
-                                else
-                                {
-                                    <p>Öğrenci bulunamadı !!!</p>
-                                }
+                                                }
+                                            </div>
+                                            <button type="submit" value="Submit" class="btn btn-primary">Kaydet</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <p>Öğrenci bulunamadı !!!</p>
+                                    }
 
+                                </div>
                             </div>
                         </div>
+                        <!-- END #cardGroups -->
                     </div>
-                    <!-- END #cardGroups -->
-                </div>
-                <!-- END col-3 -->
+                    <!-- END col-3 -->
+                }
             </div>
             <!-- END row -->
         </div>

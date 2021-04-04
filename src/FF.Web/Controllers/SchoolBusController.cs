@@ -37,8 +37,11 @@ namespace FF.Web.Controllers
 
         #region Methods
         [HttpGet]
-        public async Task<IActionResult> Home()
+        public async Task<IActionResult> Home(string accessCode)
         {
+            if (string.IsNullOrEmpty(accessCode)) 
+                return RedirectToAction("ErrorPage", "Home");
+
             // Get schoolBus acitivities (except schoolBus activity)
             var homeModel = new HomeModel()
             {

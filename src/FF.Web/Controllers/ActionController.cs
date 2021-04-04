@@ -48,7 +48,7 @@ namespace FF.Web.Controllers
 
             if (activity == null)
             {
-                // TO DO : Notification ekle ve badRequest dön.
+                _alertService.Danger("Aktivite bulunamadı !");
                 return View();
             }
 

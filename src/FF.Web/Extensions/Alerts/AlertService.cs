@@ -17,22 +17,22 @@ namespace FF.Web.Extensions.Alerts
 
         public void Success(string message, bool dismissable = true)
         {
-            AddAlert(AlertType.Success, message, dismissable);
+            AddAlert(AlertType.Success, string.Concat("<strong>✔️ Başarılı </strong> ", message), dismissable);
         }
 
         public void Information(string message, bool dismissable = true)
         {
-            AddAlert(AlertType.Information, message, dismissable);
+            AddAlert(AlertType.Information, string.Concat("<strong>ℹ️ Bilgilendirme</strong> ", message), dismissable);
         }
 
         public void Warning(string message, bool dismissable = true)
         {
-            AddAlert(AlertType.Warning, message, dismissable);
+            AddAlert(AlertType.Warning, string.Concat("<strong>⚡ Uyarı</strong> ", message), dismissable);
         }
 
         public void Danger(string message, bool dismissable = true)
         {
-            AddAlert(AlertType.Danger, message, dismissable);
+            AddAlert(AlertType.Danger, string.Concat("<strong>❌ Hata</strong> ", message), dismissable);
         }
 
         private void AddAlert(string alertType, string message, bool dismissable)

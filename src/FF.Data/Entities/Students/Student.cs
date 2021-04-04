@@ -53,12 +53,6 @@ namespace FF.Data.Entities.Students
         public string ParentEmail { get; set; }
 
         /// <summary>
-        /// Student's profile acces link
-        /// Opens the product detail page
-        /// </summary>
-        public string ProfileAccessCode { get; set; }
-
-        /// <summary>
         /// Activity's studentActivities
         /// </summary>
         public ICollection<StudentActivity> StudentActivities { get; set; }

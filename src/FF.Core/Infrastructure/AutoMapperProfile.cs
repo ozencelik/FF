@@ -9,8 +9,8 @@ using FF.Data.Models.Actions;
 using FF.Data.Models.Activities;
 using FF.Data.Models.Students;
 using FF.Data.Models.Teachers;
-using FF.Data.Models.SchoolBusses;
 using FF.Data.Models.Classes;
+using FF.Data.Models.SchoolBuses;
 
 namespace FF.Core.Infrastructure
 {
@@ -45,7 +45,6 @@ namespace FF.Core.Infrastructure
             CreateMap<Student, UpdateStudentModel>();
             #endregion
 
-
             #region Teacher
             CreateMap<TeacherModel, Teacher>();
             CreateMap<Teacher, TeacherModel>();
@@ -56,7 +55,6 @@ namespace FF.Core.Infrastructure
             CreateMap<UpdateTeacherModel, Teacher>();
             CreateMap<Teacher, UpdateTeacherModel>();
             #endregion
-
 
             #region SchoolBus
             CreateMap<SchoolBusModel, SchoolBus>();

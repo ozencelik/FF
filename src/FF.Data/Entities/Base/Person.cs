@@ -25,5 +25,11 @@ namespace FF.Data.Entities.Base
         /// Birthday.
         /// </summary>
         public DateTime Birthday { get; set; }
+
+        /// <summary>
+        /// Student's profile acces link
+        /// Opens the product detail page
+        /// </summary>
+        public string ProfileAccessCode { get; set; }
     }
 }
