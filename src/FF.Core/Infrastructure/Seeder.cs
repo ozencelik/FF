@@ -47,10 +47,20 @@ namespace FF.Core.Infrastructure
             {
                 FirstName = "İlk",
                 LastName = "Öğretmen",
-                Birthday = new DateTime(1980, 06, 01)
+                Birthday = new DateTime(1980, 06, 01),
+                ProfileAccessCode = Guid.NewGuid().ToString()
+            };
+
+            var teacher1 = new Teacher
+            {
+                FirstName = "İkinci",
+                LastName = "Öğretmen",
+                Birthday = new DateTime(1980, 06, 01),
+                ProfileAccessCode = Guid.NewGuid().ToString()
             };
 
             dbContext.Teacher.Add(teacher);
+            dbContext.Teacher.Add(teacher1);
             dbContext.SaveChanges();
             #endregion
 
@@ -63,7 +73,8 @@ namespace FF.Core.Infrastructure
                 LicensePlate = "35 ABC 78",
                 PhoneNumber = "0555 555 55 55",
                 CompanyName = "Hızlı Servis",
-                SchoolId = school.Id
+                SchoolId = school.Id,
+                ProfileAccessCode = Guid.NewGuid().ToString()
             };
 
             var schoolBus1 = new SchoolBus
@@ -74,7 +85,8 @@ namespace FF.Core.Infrastructure
                 LicensePlate = "35 ABC 78",
                 PhoneNumber = "0555 555 55 55",
                 CompanyName = "Hızlı Servis 1",
-                SchoolId = school.Id
+                SchoolId = school.Id,
+                ProfileAccessCode = Guid.NewGuid().ToString()
             };
 
             dbContext.SchoolBus.Add(schoolBus);

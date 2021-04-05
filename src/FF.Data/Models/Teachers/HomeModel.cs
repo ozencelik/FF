@@ -6,6 +6,8 @@ namespace FF.Data.Models.Teachers
 {
     public class HomeModel
     {
+        public TeacherModel Teacher { get; set; }
+
         public IList<ActivityModel> Activities { get; set; }
     }
 }

@@ -34,6 +34,13 @@ namespace FF.Core.Services.SchoolBuses
                 && !x.Deleted);
         }
 
+        public async Task<SchoolBus> GetSchoolBusByAccessCodeAsync(string accessCode)
+        {
+            return await _schoolRepository.Table
+                .FirstOrDefaultAsync(x => x.ProfileAccessCode.Equals(accessCode)
+                && !x.Deleted);
+        }
+
         public async Task<int> InsertSchoolBusAsync(SchoolBus school)
         {
             return await _schoolRepository.InsertAsync(school);

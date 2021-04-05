@@ -34,6 +34,13 @@ namespace FF.Core.Services.Teachers
                 && !x.Deleted);
         }
 
+        public async Task<Teacher> GetTeacherByAccessCodeAsync(string accessCode)
+        {
+            return await _teacherRepository.Table
+                .FirstOrDefaultAsync(x => x.ProfileAccessCode.Equals(accessCode)
+                && !x.Deleted);
+        }
+
         public async Task<int> InsertTeacherAsync(Teacher teacher)
         {
             return await _teacherRepository.InsertAsync(teacher);

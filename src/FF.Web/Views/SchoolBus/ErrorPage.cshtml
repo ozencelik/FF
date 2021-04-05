@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "404 Error Page";
+    ViewData["AppClass"] = "app-full-height app-without-header app-full-width";
+    ViewData["AppWithoutHeader"] = true;
+    ViewData["AppWithoutSidebar"] = true;
+    ViewData["AppWithoutContainer"] = true;
+}
+
+<!-- BEGIN error -->
+<div class="error-page">
+    <!-- BEGIN error-page-content -->
+    <div class="error-page-content">
+        <div class="error-img">
+            <div class="error-img-code">404</div>
+            <img src="~/img/page/404.svg" alt="" />
+        </div>
+
+        <h1>Oops!</h1>
+        <br />
+        <h3>Servis bulunamadı !!!</h3>
+        <br />
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Ana sayfaya dön</a>
+    </div>
+    <!-- END error-page-content -->
+</div>
+<!-- END error -->

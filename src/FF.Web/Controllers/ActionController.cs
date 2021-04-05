@@ -75,7 +75,7 @@ namespace FF.Web.Controllers
             await _actionService.InsertActionAsync(action);
 
             action.Activity = await _activityService.GetActivityByIdAsync(action.ActivityId);
-            _alertService.Success($"<strong>{action.Activity.Name}</strong> başarılı bir şekilde kaydedildi ✓");
+            _alertService.Success($"{action.Activity.Name} başarılı bir şekilde kaydedildi ✓");
 
             return await Create(action.ActivityId);
         }

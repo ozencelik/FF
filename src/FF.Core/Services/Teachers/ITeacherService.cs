@@ -20,6 +20,13 @@ namespace FF.Core.Services.Teachers
         Task<Teacher> GetTeacherByIdAsync(int teacherId);
 
         /// <summary>
+        /// Gets a teacher
+        /// </summary>
+        /// <param name="accessCode">Teacher access code</param>
+        /// <returns>Teacher</returns>
+        Task<Teacher> GetTeacherByAccessCodeAsync(string accessCode);
+
+        /// <summary>
         /// Insert the teacher
         /// </summary>
         /// <returns>Teacher Id</returns>

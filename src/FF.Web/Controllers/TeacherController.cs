@@ -42,11 +42,20 @@ namespace FF.Web.Controllers
 
         #region Methods
         [HttpGet]
-        public async Task<IActionResult> Home()
+        public async Task<IActionResult> Home(string accessCode)
         {
-            // Get teacher acitivities (except schoolBus activity)
+            if (string.IsNullOrEmpty(accessCode))
+                return RedirectToAction("ErrorPage", "Home");
+
+            var teacher = await _teacherService.GetTeacherByAccessCodeAsync(accessCode);
+
+            if (teacher is null)
+                return RedirectToAction("ErrorPage");
+
+            // Get schoolBus acitivities (except schoolBus activity)
             var homeModel = new HomeModel()
             {
+                Teacher = _mapper.Map<TeacherModel>(teacher),
                 Activities = _mapper.Map<IList<ActivityModel>>(await _activityService.GetTeacherActivitiesAsync())
             };
 
@@ -106,6 +115,10 @@ namespace FF.Web.Controllers
             return View();
         }
 
+        public IActionResult ErrorPage()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

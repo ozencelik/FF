@@ -20,6 +20,13 @@ namespace FF.Core.Services.SchoolBuses
         Task<SchoolBus> GetSchoolBusByIdAsync(int schoolBusId);
 
         /// <summary>
+        /// Gets a school bus
+        /// </summary>
+        /// <param name="accessCode">SchoolBus access code</param>
+        /// <returns>SchoolBus</returns>
+        Task<SchoolBus> GetSchoolBusByAccessCodeAsync(string accessCode);
+
+        /// <summary>
         /// Insert the school bus
         /// </summary>
         /// <returns>SchoolBus Id</returns>

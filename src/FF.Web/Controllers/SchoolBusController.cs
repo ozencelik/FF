@@ -39,12 +39,18 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home(string accessCode)
         {
-            if (string.IsNullOrEmpty(accessCode)) 
+            if (string.IsNullOrEmpty(accessCode))
                 return RedirectToAction("ErrorPage", "Home");
+
+            var schoolBus = await _schoolBusService.GetSchoolBusByAccessCodeAsync(accessCode);
+
+            if (schoolBus is null)
+                return RedirectToAction("ErrorPage");
 
             // Get schoolBus acitivities (except schoolBus activity)
             var homeModel = new HomeModel()
             {
+                SchoolBus = _mapper.Map<SchoolBusModel>(schoolBus),
                 Activities = _mapper.Map<IList<ActivityModel>>(await _activityService.GetSchoolBusActivitiesAsync())
             };
 
@@ -98,6 +104,11 @@ namespace FF.Web.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Detail(string profileAccessCode)
+        {
+            return View();
+        }
+
+        public IActionResult ErrorPage()
         {
             return View();
         }
