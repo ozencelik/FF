@@ -12,4 +12,10 @@
   <ItemGroup>
     <ProjectReference Include="..\FF.Core\FF.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Parent\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\ParentProfile\" />
+  </ItemGroup>
 </Project>

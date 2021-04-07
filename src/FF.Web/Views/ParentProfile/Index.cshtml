@@ -1,0 +1,229 @@
+﻿@{
+    ViewData["Title"] = "ParentProfile";
+    ViewData["AppContentClass"] = "p-0";
+}
+@section Styles {
+    <link href="~/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/highlight.js/highlight.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="~/js/demo/table-plugins.demo.js"></script>
+    <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/locale/bootstrap-table-tr-TR.min.js"></script>
+
+}
+<!-- BEGIN profile -->
+<div class="profile">
+    <!-- BEGIN profile-header -->
+    <div class="profile-header">
+        <div class="profile-header-cover"></div>
+
+        <div class="profile-header-content" style="align-items:center;">
+            <div class="profile-header-img">
+                <img src="~/img/user/profile.jpg" alt="" />
+            </div>
+            <div class="desktop-sticky-top" style="padding: 10px 0px 0px 10px;">
+                <h4>John Smith</h4>
+                <div class="font-weight-600 mb-3 text-muted mt-n2">@@johnsmith</div>
+            </div>
+
+            <ul class="profile-header-tab nav nav-tabs nav-tabs-v2" style="overflow:hidden;">
+                <li class="nav-item">
+                    <a href="#profile-post" class="nav-link active" data-toggle="tab">
+                        <div class="nav-field">Aktivite Özeti</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile-followers" class="nav-link" data-toggle="tab">
+                        <div class="nav-field">Ayarlar</div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="profile-container">
+
+        <div class="container">
+            <div class="row" style="justify-content:center;">
+                <div class="col-xl-12">
+                    <div class="tab-content p-0">
+                        <!-- BEGIN tab-pane -->
+                        <div class="tab-pane fade show active" id="profile-post">
+                            <div class="row justify-content-center">
+
+                                <!-- BEGIN col-10 -->
+                                <div class="col-xl-12">
+                                    <!-- BEGIN row -->
+                                    <div class="row">
+                                        <!-- BEGIN col-9 -->
+                                        <div class="col-xl-12">
+                                            <ul class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#">AKTİVİTE LİSTESİ</a></li>
+                                            </ul>
+
+                                            <p>Buradan öğrencinizin aktivite listesine ulaşıp filtreleme özelliklerini kullanabilirsiniz.</p>
+
+
+                                            <hr class="mb-4" />
+
+                                            <!-- BEGIN #datatable -->
+                                            <div class="mb-5">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+
+                                                            <table class="table mb-0" data-toggle="table"
+                                                                   data-sort-class="table-active"
+                                                                   data-sortable="true"
+                                                                   data-search="true"
+                                                                   data-pagination="true"
+                                                                   data-show-refresh="true"
+                                                                   data-show-columns="true"
+                                                                   data-height="460">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th data-sortable="true">Tarih</th>
+                                                                        <th data-sortable="true">Aktivite</th>
+                                                                        <th data-sortable="true">Olay</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr><td>12.3.2021 12:30:17</td><td>Yemek</td><td>Biraz <i class="fas fa-utensils" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 08:30:17</td><td>Servis</td><td>İndi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>12.3.2021 08:00:00</td><td>Servis</td><td>Bindi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Tenis</td><td>Oynamadı <i class="fas fa-play" style="color:red"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Oyun</td><td>Oynadı <i class="fas fa-play" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Uyku</td><td>Az <i class="fas fa-bed" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 12:30:17</td><td>Yemek</td><td>Biraz <i class="fas fa-utensils" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 08:30:17</td><td>Servis</td><td>İndi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>12.3.2021 08:00:00</td><td>Servis</td><td>Bindi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Tenis</td><td>Oynamadı <i class="fas fa-play" style="color:red"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Oyun</td><td>Oynadı <i class="fas fa-play" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Uyku</td><td>Az <i class="fas fa-bed" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 12:30:17</td><td>Yemek</td><td>Biraz <i class="fas fa-utensils" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 08:30:17</td><td>Servis</td><td>İndi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>12.3.2021 08:00:00</td><td>Servis</td><td>Bindi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Tenis</td><td>Oynamadı <i class="fas fa-play" style="color:red"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Oyun</td><td>Oynadı <i class="fas fa-play" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Uyku</td><td>Az <i class="fas fa-bed" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 12:30:17</td><td>Yemek</td><td>Biraz <i class="fas fa-utensils" style="color:red"></i></td></tr>
+                                                                    <tr><td>12.3.2021 08:30:17</td><td>Servis</td><td>İndi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>12.3.2021 08:00:00</td><td>Servis</td><td>Bindi <i class="fas fa-sign-in-alt" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Tenis</td><td>Oynamadı <i class="fas fa-play" style="color:red"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Oyun</td><td>Oynadı <i class="fas fa-play" style="color:green"> </i></td></tr>
+                                                                    <tr><td>11.3.2021 08:00:00</td><td>Uyku</td><td>Az <i class="fas fa-bed" style="color:red"></i></td></tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- END #datatable -->
+                                        </div>
+                                        <!-- END col-9-->
+                                    </div>
+                                    <!-- END row -->
+                                </div>
+                                <!-- END col-10 -->
+                            </div>
+                        </div>
+                        <!-- END tab-pane -->
+                        <!-- BEGIN tab-pane -->
+                        <div class="tab-pane fade" id="profile-followers">
+                            <div class="row justify-content-center">
+
+                                <!-- BEGIN col-10 -->
+                                <div class="col-xl-12">
+                                    <!-- BEGIN row -->
+                                    <div class="row">
+                                        <!-- BEGIN col-9 -->
+                                        <div class="col-xl-12">
+                                            <ul class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#">AYARLAR</a></li>
+                                            </ul>
+
+                                            <p>Buradan kullanıcı adınızı görebilir, sınıf ve şifre ayarlarınızı yapabilirsiniz.</p>
+
+
+                                            <hr class="mb-4" />
+
+                                            <div class="mb-5">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Kullanıcı Adı</label>
+                                                                        <input class="form-control" type="text" placeholder="hasanberk" readonly />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleFormControlSelect1">Sınıf Seçiniz</label>
+                                                                        <select class="form-control" id="exampleFormControlSelect1">
+                                                                            <option>1A</option>
+                                                                            <option>2A</option>
+                                                                            <option>3A</option>
+
+                                                                        </select>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Şifre</label>
+                                                                        <input type="password" class="form-control" id="inputPassword3">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="exampleFormControlInput1">Şifreyi Tekrarlayın</label>
+                                                                        <input type="password" class="form-control" id="inputPassword3">
+                                                                    </div>
+                                                                    <div class="form-group text-right">
+                                                                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                                                                    </div>
+                                                                </div>
+                                                                
+
+                                                            </div>
+</form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END col-9-->
+                                    </div>
+                                    <!-- END row -->
+                                </div>
+                                <!-- END col-10 -->
+                            </div>
+                        </div>
+                        <!-- END tab-pane -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- END profile-container -->
