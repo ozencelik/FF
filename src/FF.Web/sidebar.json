@@ -11,6 +11,12 @@
       "text": "Okul Ana Sayfası"
     },
     {
+      "controller": "SchoolStatistics",
+      "action": "Index",
+      "icon": "fa fa-building",
+      "text": "Okul Grafikler"
+    },
+    {
       "controller": "Teacher",
       "action": "Home",
       "icon": "fa fa-users",
