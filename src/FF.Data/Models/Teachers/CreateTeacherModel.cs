@@ -6,6 +6,5 @@ namespace FF.Data.Models.Teachers
 {
     public class CreateTeacherModel : PersonModel
     {
-        public IList<ClassModel> Classes { get; set; }
     }
 }

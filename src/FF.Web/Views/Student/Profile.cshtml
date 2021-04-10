@@ -82,12 +82,8 @@
                                                 <ul class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="#">AKTİVİTE LİSTESİ</a></li>
                                                 </ul>
-
                                                 <p>Buradan öğrencinizin aktivite listesine ulaşıp filtreleme özelliklerini kullanabilirsiniz.</p>
-
-
                                                 <hr class="mb-4" />
-
                                                 <!-- BEGIN #datatable -->
                                                 <div class="mb-5">
                                                     <div class="card">
@@ -114,7 +110,10 @@
                                                                         {
                                                                             <tr>
                                                                                 <td>@sa.Created</td>
-                                                                                <td><i class="fas fa-utensils" style="color: #1f6bff"></i> @sa.Action.Activity.Name</td>
+                                                                                <td>
+                                                                                    <i class="@sa.Action.Activity.Icon" style="color: #1f6bff"></i>
+                                                                                    @sa.Action.Activity.Name
+                                                                                </td>
                                                                                 <td>@sa.ActivityOption.Name</td>
                                                                             </tr>
                                                                         }

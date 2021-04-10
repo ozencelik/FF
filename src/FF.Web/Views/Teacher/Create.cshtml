@@ -1,0 +1,52 @@
+﻿@model FF.Data.Models.Teachers.CreateTeacherModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="modal fade" id="AddLocationForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="Teacher" asp-action="Create">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Öğretmen Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- text input -->
+                    <div class="form-location">
+                        <div>
+                            <h4> Öğretmen Bilgileri </h4>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="FirstName">Ad</label>
+                                <input class="form-control" type="text" asp-for="FirstName" />
+                            </div>
+                            <div class="col-6">
+                                <label name="LastName">Soyad</label>
+                                <input class="form-control" type="text" asp-for="LastName" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="Birthday">Doğum Günü</label>
+                                <input class="form-control" type="date" asp-for="Birthday" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Kaydet</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -35,6 +35,12 @@
       "text": "Öğrenci Listesi"
     },
     {
+      "controller": "Teacher",
+      "action": "Index",
+      "icon": "fa fa-users",
+      "text": "Öğretmen Listesi"
+    },
+    {
       "controller": "Student",
       "action": "Profile",
       "icon": "fa fa-user-circle",
