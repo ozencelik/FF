@@ -147,25 +147,35 @@ namespace FF.Core.Infrastructure
             #region Create Activities
             var serviceActivity = new Activity
             {
-                Name = "Servis Aktivitesi"
+                Name = "Servis Aktivitesi",
+                Icon = "fas fa-bus"
             };
             var mealActivity = new Activity
             {
-                Name = "Yemek Aktivitesi"
+                Name = "Yemek Aktivitesi",
+                Icon = "fas fa-utensils"
             };
             var sleepActivity = new Activity
             {
-                Name = "Uyku Aktivitesi"
+                Name = "Uyku Aktivitesi",
+                Icon = "fas fa-bed"
             };
             var medicineActivity = new Activity
             {
-                Name = "İlaç Aktivitesi"
+                Name = "İlaç Aktivitesi",
+                Icon = "fas fa-magic"
+            };
+            var gameActivity = new Activity
+            {
+                Name = "Oyun Aktivitesi",
+                Icon = "fas fa-play"
             };
 
             dbContext.Activity.Add(serviceActivity);
             dbContext.Activity.Add(mealActivity);
             dbContext.Activity.Add(sleepActivity);
             dbContext.Activity.Add(medicineActivity);
+            dbContext.Activity.Add(gameActivity);
 
             dbContext.SaveChanges();
             #endregion
@@ -185,6 +195,9 @@ namespace FF.Core.Infrastructure
             var medicineActivityOption1 = new ActivityOption { Name = "Aldı", ActivityId = medicineActivity.Id };
             var medicineActivityOption2 = new ActivityOption { Name = "Almadı", ActivityId = medicineActivity.Id };
 
+            var gameActivityOption1 = new ActivityOption { Name = "Oynadı", ActivityId = gameActivity.Id };
+            var gameActivityOption2 = new ActivityOption { Name = "Oynamadı", ActivityId = gameActivity.Id };
+
             dbContext.ActivityOption.Add(serviceActivityOption1);
             dbContext.ActivityOption.Add(serviceActivityOption2);
             dbContext.ActivityOption.Add(serviceActivityOption3);
@@ -201,6 +214,10 @@ namespace FF.Core.Infrastructure
 
             dbContext.ActivityOption.Add(medicineActivityOption1);
             dbContext.ActivityOption.Add(medicineActivityOption2);
+            dbContext.SaveChanges();
+
+            dbContext.ActivityOption.Add(gameActivityOption1);
+            dbContext.ActivityOption.Add(gameActivityOption2);
             dbContext.SaveChanges();
             #endregion
 

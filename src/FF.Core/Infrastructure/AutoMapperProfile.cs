@@ -11,6 +11,8 @@ using FF.Data.Models.Students;
 using FF.Data.Models.Teachers;
 using FF.Data.Models.Classes;
 using FF.Data.Models.SchoolBuses;
+using FF.Data.Models.Base;
+using FF.Data.Entities.Base;
 
 namespace FF.Core.Infrastructure
 {
@@ -18,6 +20,14 @@ namespace FF.Core.Infrastructure
     {
         public AutoMapperProfile()
         {
+            #region Base
+            CreateMap<BaseModel, BaseEntity>();
+            CreateMap<BaseEntity, BaseModel>();
+
+            CreateMap<PersonModel, Person>();
+            CreateMap<Person, PersonModel>();
+            #endregion
+
             #region Activity
             CreateMap<ActivityModel, Activity>();
             CreateMap<Activity, ActivityModel>();

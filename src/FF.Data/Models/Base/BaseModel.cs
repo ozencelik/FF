@@ -8,7 +8,7 @@ namespace FF.Data.Models.Base
 
         public bool Deleted { get; set; }
 
-        public DateTime Created { get; set; }
+        public DateTime Created { get; protected set; } = DateTime.Now;
 
         public DateTime Updated { get; set; }
     }

@@ -35,6 +35,18 @@
       "text": "Öğrenci Listesi"
     },
     {
+      "controller": "Teacher",
+      "action": "Index",
+      "icon": "fa fa-users",
+      "text": "Öğretmen Listesi"
+    },
+    {
+      "controller": "Student",
+      "action": "Profile",
+      "icon": "fa fa-user-circle",
+      "text": "Öğrenci Profil Sayfası"
+    },
+    {
       "controller": "SchoolBus",
       "action": "Index",
       "icon": "fa fa-bus",
@@ -273,12 +285,6 @@
       "action": "Index",
       "icon": "fa fa-user-circle",
       "text": "Profile"
-    },
-    {
-      "controller": "ParentProfile",
-      "action": "Index",
-      "icon": "fa fa-user-circle",
-      "text": "Parent Profile"
     },
     {
       "controller": "Calendar",

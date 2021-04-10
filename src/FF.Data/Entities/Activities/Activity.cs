@@ -12,6 +12,11 @@ namespace FF.Data.Entities.Activities
         public string Name { get; set; }
 
         /// <summary>
+        /// Activity icon class
+        /// </summary>
+        public string Icon { get; set; }
+
+        /// <summary>
         /// Activity's studentActivitiesOptions
         /// </summary>
         public ICollection<ActivityOption> ActivityOptions { get; set; }

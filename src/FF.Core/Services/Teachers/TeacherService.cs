@@ -1,6 +1,7 @@
 ﻿using FF.Data.Entities.Teachers;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace FF.Core.Services.Teachers
         public async Task<Teacher> GetTeacherByIdAsync(int teacherId)
         {
             return await _teacherRepository.Table
+                .Include(t => t.Classes)
                 .FirstOrDefaultAsync(x => x.Id == teacherId
                 && !x.Deleted);
         }
@@ -43,6 +45,7 @@ namespace FF.Core.Services.Teachers
 
         public async Task<int> InsertTeacherAsync(Teacher teacher)
         {
+            teacher.ProfileAccessCode = Guid.NewGuid().ToString();
             return await _teacherRepository.InsertAsync(teacher);
         }
 

@@ -32,6 +32,12 @@ namespace FF.Core.Services.Students
         public async Task<Student> GetStudentByIdAsync(int studentId)
         {
             return await _studentRepository.Table
+                .Include(s => s.Class)
+                .Include(s => s.SchoolBus)
+                .Include(s => s.StudentActivities)
+                    .ThenInclude(sa => sa.Action.Activity)
+                .Include(s => s.StudentActivities)
+                    .ThenInclude(sa => sa.ActivityOption)
                 .FirstOrDefaultAsync(x => x.Id == studentId
                 && !x.Deleted);
         }
@@ -39,6 +45,12 @@ namespace FF.Core.Services.Students
         public async Task<Student> GetStudentByProfileAccessCodeAsync(string code)
         {
             return await _studentRepository.Table
+                .Include(s => s.Class)
+                .Include(s => s.SchoolBus)
+                .Include(s => s.StudentActivities)
+                    .ThenInclude(sa => sa.Action.Activity)
+                .Include(s => s.StudentActivities)
+                    .ThenInclude(sa => sa.ActivityOption)
                 .FirstOrDefaultAsync(x => x.ProfileAccessCode.Equals(code)
                 && !x.Deleted);
         }

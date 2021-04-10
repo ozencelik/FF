@@ -1,0 +1,216 @@
+﻿@model FF.Data.Models.Students.StudentModel
+
+@{
+    ViewData["Title"] = "ParentProfile";
+    ViewData["AppContentClass"] = "p-0";
+}
+@section Styles {
+    <link href="~/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/highlight.js/highlight.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="~/js/demo/table-plugins.demo.js"></script>
+    <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/locale/bootstrap-table-tr-TR.min.js"></script>
+
+}
+<!-- BEGIN profile -->
+<div class="profile">
+
+    @if (Model != null)
+    {
+        <!-- BEGIN profile-header -->
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+
+            <div class="profile-header-content" style="align-items:center;">
+                <div class="profile-header-img">
+                    <img src="~/img/user/profile.jpg" alt="" />
+                </div>
+                <div class="desktop-sticky-top" style="padding: 10px 0px 0px 10px;">
+                    <h4>@Model.FullName</h4>
+                    <div class="font-weight-600 mb-3 text-muted mt-n2">veli emaili yazılabilir</div>
+                </div>
+
+                <ul class="profile-header-tab nav nav-tabs nav-tabs-v2" style="overflow:hidden;">
+                    <li class="nav-item">
+                        <a href="#profile-post" class="nav-link active" data-toggle="tab">
+                            <div class="nav-field">Aktivite Özeti</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile-followers" class="nav-link" data-toggle="tab">
+                            <div class="nav-field">Ayarlar</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="profile-container">
+
+            <div class="container">
+                <div class="row" style="justify-content:center;">
+                    <div class="col-xl-12">
+                        <div class="tab-content p-0">
+                            <!-- BEGIN tab-pane -->
+                            <div class="tab-pane fade show active" id="profile-post">
+                                <div class="row justify-content-center">
+
+                                    <!-- BEGIN col-10 -->
+                                    <div class="col-xl-12">
+                                        <!-- BEGIN row -->
+                                        <div class="row">
+                                            <!-- BEGIN col-9 -->
+                                            <div class="col-xl-12">
+                                                <ul class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="#">AKTİVİTE LİSTESİ</a></li>
+                                                </ul>
+                                                <p>Buradan öğrencinizin aktivite listesine ulaşıp filtreleme özelliklerini kullanabilirsiniz.</p>
+                                                <hr class="mb-4" />
+                                                <!-- BEGIN #datatable -->
+                                                <div class="mb-5">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+
+                                                                <table class="table mb-0" data-toggle="table"
+                                                                       data-sort-class="table-active"
+                                                                       data-sortable="true"
+                                                                       data-search="true"
+                                                                       data-pagination="true"
+                                                                       data-show-refresh="true"
+                                                                       data-show-columns="true"
+                                                                       data-height="460">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th data-sortable="true">Tarih</th>
+                                                                            <th data-sortable="true">Aktivite</th>
+                                                                            <th data-sortable="true">Olay</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach (var sa in Model.StudentActivities)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@sa.Created</td>
+                                                                                <td>
+                                                                                    <i class="@sa.Action.Activity.Icon" style="color: #1f6bff"></i>
+                                                                                    @sa.Action.Activity.Name
+                                                                                </td>
+                                                                                <td>@sa.ActivityOption.Name</td>
+                                                                            </tr>
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- END #datatable -->
+                                            </div>
+                                            <!-- END col-9-->
+                                        </div>
+                                        <!-- END row -->
+                                    </div>
+                                    <!-- END col-10 -->
+                                </div>
+                            </div>
+                            <!-- END tab-pane -->
+                            <!-- BEGIN tab-pane -->
+                            <div class="tab-pane fade" id="profile-followers">
+                                <div class="row justify-content-center">
+
+                                    <!-- BEGIN col-10 -->
+                                    <div class="col-xl-12">
+                                        <!-- BEGIN row -->
+                                        <div class="row">
+                                            <!-- BEGIN col-9 -->
+                                            <div class="col-xl-12">
+                                                <ul class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="#">Hakkımda</a></li>
+                                                </ul>
+
+                                                <p>Buradan profil bilgilerini görüntüleyebilirsiniz.</p>
+
+
+                                                <hr class="mb-4" />
+
+                                                <div class="mb-5">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-fill">
+                                                                            <div>İsim-Soyisim</div>
+                                                                            <div class="text-gray-700">@Model.FullName</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-fill">
+                                                                            <div>Doğum Tarihi</div>
+                                                                            <div class="text-gray-700">@Model.Birthday.ToString("dd/MM/yyyy")</div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="col-xl-6">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-fill">
+                                                                            <div>Sınıf</div>
+                                                                            <div class="text-gray-700">@Model.Class.Name</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-fill">
+                                                                            <div>Servis</div>
+                                                                            <div class="text-gray-700">@Model.SchoolBus.CompanyName</div>
+                                                                            <div class="text-gray-700">@Model.SchoolBus.LicensePlate</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END col-9-->
+                                        </div>
+                                        <!-- END row -->
+                                    </div>
+                                    <!-- END col-10 -->
+                                </div>
+                            </div>
+                            <!-- END tab-pane -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- END profile-container -->
+<style>
+    .d-flex {
+        padding-bottom: 15px;
+    }
+</style>

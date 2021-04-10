@@ -1,6 +1,7 @@
 ﻿using FF.Data.Entities.SchoolBuses;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,6 +44,7 @@ namespace FF.Core.Services.SchoolBuses
 
         public async Task<int> InsertSchoolBusAsync(SchoolBus school)
         {
+            school.ProfileAccessCode = Guid.NewGuid().ToString();
             return await _schoolRepository.InsertAsync(school);
         }
 

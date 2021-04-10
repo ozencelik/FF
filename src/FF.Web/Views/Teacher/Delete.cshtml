@@ -1,0 +1,30 @@
+﻿@model FF.Data.Models.Teachers.TeacherModel
+<!-- modal-md DeleteTeacherForm-->
+<div class="modal fade" id="DeleteTeacherForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="Teacher" asp-action="Delete" asp-route-Teacher_id="@Model.Id" asp-route-Teacher_name="@Model.FirstName">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">İşlem Onayı</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Bu öğretmeni silmek istediğinize emin misiniz?</p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Sil</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
