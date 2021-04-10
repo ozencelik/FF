@@ -9,6 +9,8 @@ namespace FF.Data.Models.Activities
     {
         public string Name { get; set; }
 
+        public string Icon { get; set; }
+
         public IList<ActivityOptionModel> ActivityOptions { get; set; }
 
         public IList<ActionModel> Actions { get; set; }

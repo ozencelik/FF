@@ -42,12 +42,9 @@ namespace FF.Web.Controllers
 
         #region Methods
         [HttpGet]
-        public async Task<IActionResult> Home(string accessCode)
+        public async Task<IActionResult> Home()
         {
-            if (string.IsNullOrEmpty(accessCode))
-                return RedirectToAction("ErrorPage", "Home");
-
-            var teacher = await _teacherService.GetTeacherByAccessCodeAsync(accessCode);
+            var teacher = await _teacherService.GetTeacherByIdAsync(1);
 
             if (teacher is null)
                 return RedirectToAction("ErrorPage");
@@ -61,6 +58,27 @@ namespace FF.Web.Controllers
 
             return View(homeModel);
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> Home(string accessCode)
+        //{
+        //    if (string.IsNullOrEmpty(accessCode))
+        //        return RedirectToAction("ErrorPage", "Home");
+
+        //    var teacher = await _teacherService.GetTeacherByAccessCodeAsync(accessCode);
+
+        //    if (teacher is null)
+        //        return RedirectToAction("ErrorPage");
+
+        //    // Get schoolBus acitivities (except schoolBus activity)
+        //    var homeModel = new HomeModel()
+        //    {
+        //        Teacher = _mapper.Map<TeacherModel>(teacher),
+        //        Activities = _mapper.Map<IList<ActivityModel>>(await _activityService.GetTeacherActivitiesAsync())
+        //    };
+
+        //    return View(homeModel);
+        //}
 
         [HttpGet]
         public async Task<IActionResult> Index()

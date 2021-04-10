@@ -120,19 +120,37 @@ namespace FF.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(string profileAccessCode)
+        public async Task<IActionResult> Detail()
         {
-            if (string.IsNullOrEmpty(profileAccessCode))
-                return RedirectToAction("ErrorPage", "Home");
+            return View();
+        }
 
-            var student = await _studentService.GetStudentByProfileAccessCodeAsync(profileAccessCode);
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            var student = await _studentService.GetStudentByIdAsync(1);
 
             if (student is null)
                 return RedirectToAction("ErrorPage", "Home");
 
             var studentModel = _mapper.Map<StudentModel>(student);
-            return View("Detail", studentModel);
+            return View(studentModel);
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> Profile(string profileAccessCode)
+        //{
+        //    if (string.IsNullOrEmpty(profileAccessCode))
+        //        return RedirectToAction("ErrorPage", "Home");
+
+        //    var student = await _studentService.GetStudentByProfileAccessCodeAsync(profileAccessCode);
+
+        //    if (student is null)
+        //        return RedirectToAction("ErrorPage", "Home");
+
+        //    var studentModel = _mapper.Map<StudentModel>(student);
+        //    return View(studentModel);
+        //}
 
         public IActionResult Privacy()
         {

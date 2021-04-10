@@ -17,7 +17,6 @@
     <Content Remove="Views\SchoolStatistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\ParentProfile\" />
     <Folder Include="Views\SchoolStatistics\" />
   </ItemGroup>
 </Project>
