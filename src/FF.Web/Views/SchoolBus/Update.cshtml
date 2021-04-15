@@ -1,0 +1,65 @@
+﻿@model FF.Data.Models.SchoolBuses.UpdateSchoolBusModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="modal fade" id="AddLocationForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="SchoolBus" asp-action="Update">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Servis Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- text input -->
+                    <div class="form-location">
+                        <div>
+                            <h4> Servis Bilgileri </h4>
+                            <input class="form-control" type="hidden" asp-for="Id" value="@Model.Id" />
+                            <input class="form-control" type="hidden" asp-for="SchoolId" value="@Model.SchoolId" />
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="FirstName">Ad</label>
+                                <input class="form-control" type="text" asp-for="CompanyName" value="@Model.CompanyName" />
+                            </div>
+                            <div class="col-6">
+                                <label name="LastName">Soyad</label>
+                                <input class="form-control" type="text" asp-for="LicensePlate" value="@Model.LicensePlate" />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="FirstName">Ad</label>
+                                <input class="form-control" type="text" asp-for="FirstName" value="@Model.FirstName" />
+                            </div>
+                            <div class="col-6">
+                                <label name="LastName">Soyad</label>
+                                <input class="form-control" type="text" asp-for="LastName" value="@Model.LastName" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="Birthday">Telefon</label>
+                                <input class="form-control" type="number" asp-for="PhoneNumber" value="@Model.PhoneNumber" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Kaydet</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -41,6 +41,12 @@
       "text": "Öğretmen Listesi"
     },
     {
+      "controller": "Class",
+      "action": "Index",
+      "icon": "fa fa-users",
+      "text": "Sınıf Listesi"
+    },
+    {
       "controller": "Student",
       "action": "Profile",
       "icon": "fa fa-user-circle",
@@ -50,7 +56,13 @@
       "controller": "SchoolBus",
       "action": "Index",
       "icon": "fa fa-bus",
-      "text": "Servis"
+      "text": "Servis Listesi"
+    },
+    {
+      "controller": "SchoolBus",
+      "action": "Index1",
+      "icon": "fa fa-bus",
+      "text": "Servis Card"
     },
     {
       "controller": "Analytics",

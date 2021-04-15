@@ -149,6 +149,7 @@ namespace FF.Web.Controllers
         {
             var teacher = await _teacherService.GetTeacherByIdAsync(id);
             var teacherModel = _mapper.Map<TeacherModel>(teacher);
+
             return View(teacherModel);
         }
 

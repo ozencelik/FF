@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using FF.Data.Models.Students;
 using FF.Core.Services.SchoolBuses;
 using FF.Core.Services.Activities;
 using FF.Data.Models.SchoolBuses;
 using FF.Data.Models.Activities;
 using System.Collections.Generic;
+using FF.Data.Entities.SchoolBuses;
+using FF.Web.Extensions.Alerts;
 
 namespace FF.Web.Controllers
 {
@@ -20,18 +21,21 @@ namespace FF.Web.Controllers
         private readonly IActivityService _activityService;
         private readonly ISchoolBusService _schoolBusService;
         private readonly IMapper _mapper;
+        private readonly AlertService _alertService;
         #endregion
 
         #region Ctor
         public SchoolBusController(ILogger<SchoolBusController> logger,
             IActivityService activityService,
             ISchoolBusService schoolBusService,
-            IMapper mapper)
+            IMapper mapper,
+            AlertService alertService)
         {
             _logger = logger;
             _activityService = activityService;
             _schoolBusService = schoolBusService;
             _mapper = mapper;
+            _alertService = alertService;
         }
         #endregion
 
@@ -78,50 +82,98 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            return View(await _schoolBusService.GetAllSchoolBusesAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index1()
+        {
             return View();
         }
 
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            return View();
+            return View(new CreateSchoolBusModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm] CreateStudentModel model)
+        public async Task<IActionResult> Create([FromForm] CreateSchoolBusModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var schoolBus = _mapper.Map<SchoolBus>(model);
+                schoolBus.SchoolId = 1;
+                await _schoolBusService.InsertSchoolBusAsync(schoolBus);
+                _alertService.Success("Yeni servis başarılı bir şekilde kaydedildi.");
+            }
+            else
+            {
+                _alertService.Danger("Servis kayıt işlemi sırasında hata oluştu !");
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            return View();
+            var schoolBus = await _schoolBusService.GetSchoolBusByIdAsync(id);
+            var schoolBusModel = _mapper.Map<UpdateSchoolBusModel>(schoolBus);
+
+            return View(schoolBusModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [FromForm] UpdateStudentModel model)
+        public async Task<IActionResult> Update(int id, [FromForm] UpdateSchoolBusModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var updatedSchoolBus = await _schoolBusService.GetSchoolBusByIdAsync(id);
+                updatedSchoolBus = _mapper.Map<SchoolBus>(model);
+
+                await _schoolBusService.UpdateSchoolBusAsync(updatedSchoolBus);
+                _alertService.Success("Servis güncelleme işlemi yapıldı.");
+            }
+            else
+            {
+                _alertService.Danger("Servis güncelleme işlemi sırasında hata oluştu !");
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var schoolBus = await _schoolBusService.GetSchoolBusByIdAsync(id);
+            var schoolBusModel = _mapper.Map<SchoolBusModel>(schoolBus);
+
+            return View(schoolBusModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id, string student_name)
+        public async Task<IActionResult> Delete(int id, string school_bus_name)
         {
+            if (ModelState.IsValid)
+            {
+                var teacher = await _schoolBusService.GetSchoolBusByIdAsync(id);
+                await _schoolBusService.DeleteSchoolBusAsync(teacher);
+                _alertService.Success("Servis silme işlemi yapıldı.");
+            }
+            else
+            {
+                _alertService.Danger("Servis silme işlemi sırasında hata oluştu !");
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(string profileAccessCode)
+        public async Task<IActionResult> Detail()
         {
             return View();
         }

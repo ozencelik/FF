@@ -1,5 +1,5 @@
-﻿using FF.Data.Entities.Classes;
-using FF.Data.Entities.SchoolBuses;
+﻿using FF.Data.Models.Classes;
+using FF.Data.Models.SchoolBuses;
 using System;
 using System.Collections.Generic;
 
@@ -23,10 +23,10 @@ namespace FF.Data.Models.Students
 
         public int ClassId { get; set; }
 
-        public IList<Class> Classes { get; set; }
+        public IList<ClassModel> Classes { get; set; }
 
         public int SchoolBusId { get; set; }
 
-        public IList<SchoolBus> SchoolBuses { get; set; }
+        public IList<SchoolBusModel> SchoolBuses { get; set; }
     }
 }

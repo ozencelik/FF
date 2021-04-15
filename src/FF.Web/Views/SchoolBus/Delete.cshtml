@@ -1,0 +1,30 @@
+﻿@model FF.Data.Models.SchoolBuses.SchoolBusModel
+<!-- modal-md DeleteSchoolBusForm-->
+<div class="modal fade" id="DeleteSchoolBusForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="SchoolBus" asp-action="Delete" asp-route-SchoolBus_id="@Model.Id" asp-route-SchoolBus_name="@Model.FirstName">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">İşlem Onayı</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Bu servisi silmek istediğinize emin misiniz?</p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Sil</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

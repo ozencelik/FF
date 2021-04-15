@@ -1,0 +1,62 @@
+﻿@model FF.Data.Models.SchoolBuses.CreateSchoolBusModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="modal fade" id="AddLocationForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="SchoolBus" asp-action="Create">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Servis Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- text input -->
+                    <div class="form-location">
+                        <div>
+                            <h4> Servis Bilgileri </h4>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label>Firma Adı</label>
+                                <input class="form-control" type="text" asp-for="CompanyName" />
+                            </div>
+                            <div class="col-6">
+                                <label>Plaka No</label>
+                                <input class="form-control" type="text" asp-for="LicensePlate" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label>Servis Sorumlusu Adı</label>
+                                <input class="form-control" type="text" asp-for="FirstName" />
+                            </div>
+                            <div class="col-6">
+                                <label>Soyadı</label>
+                                <input class="form-control" type="text" asp-for="LastName" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label>Telefon</label>
+                                <input class="form-control" type="text" asp-for="PhoneNumber" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Kaydet</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

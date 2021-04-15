@@ -1,0 +1,60 @@
+﻿@model FF.Data.Models.Classes.UpdateClassModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="modal fade" id="AddLocationForm">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form method="post" asp-controller="Class" asp-action="Update">
+
+                <!-- Modal Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Sınıf Ekle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- text input -->
+                    <div class="form-location">
+                        <div>
+                            <h4> Sınıf Bilgileri </h4>
+                            <input class="form-control" type="hidden" asp-for="Id" value="@Model.Id" />
+                            <input class="form-control" type="hidden" asp-for="SchoolId" value="@Model.SchoolId" />
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label name="FirstName">Ad</label>
+                                <input class="form-control" type="text" asp-for="Name" value="@Model.Name" />
+                            </div>
+                            <div class="col-6">
+                                <label>Sınıf Öğretmeni</label>
+                                <select class="form-control" asp-for="TeacherId">
+                                    @for (int i = 0; i < Model.Teachers.Count; i++)
+                                    {
+                                        if (Model.TeacherId == Model.Teachers[i].Id)
+                                        {
+                                            <option value="@Model.Teachers[i].Id" selected>@Model.Teachers[i].FullName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@Model.Teachers[i].Id">@Model.Teachers[i].FullName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal" onclick="saveModal(this)">Kaydet</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

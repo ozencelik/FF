@@ -13,7 +13,5 @@ namespace FF.Data.Models.SchoolBuses
         public string PhoneNumber { get; set; }
 
         public string CompanyName { get; set; }
-
-        public IList<StudentModel> Students { get; set; }
     }
 }

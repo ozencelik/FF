@@ -10,7 +10,7 @@ namespace FF.Core.Services.Classes
         /// Gets all classes
         /// </summary>
         /// <returns>Classes</returns>
-        Task<IList<Class>> GetAllClasssAsync();
+        Task<IList<Class>> GetAllClassesAsync();
 
         /// <summary>
         /// Gets a class

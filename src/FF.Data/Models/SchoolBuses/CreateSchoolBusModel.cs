@@ -1,6 +1,4 @@
 ﻿using FF.Data.Models.Base;
-using FF.Data.Models.Students;
-using System.Collections.Generic;
 
 namespace FF.Data.Models.SchoolBuses
 {
@@ -13,7 +11,5 @@ namespace FF.Data.Models.SchoolBuses
         public string PhoneNumber { get; set; }
 
         public string CompanyName { get; set; }
-
-        public IList<StudentModel> Students { get; set; }
     }
 }

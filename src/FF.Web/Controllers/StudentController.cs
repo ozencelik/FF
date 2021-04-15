@@ -11,6 +11,9 @@ using FF.Core.Services.Classes;
 using FF.Core.Services.Schools;
 using FF.Core.Services.SchoolBuses;
 using FF.Web.Extensions.Alerts;
+using FF.Data.Models.SchoolBuses;
+using System.Collections.Generic;
+using FF.Data.Models.Classes;
 
 namespace FF.Web.Controllers
 {
@@ -59,8 +62,8 @@ namespace FF.Web.Controllers
         {
             var createStudentModel = new CreateStudentModel()
             {
-                SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync(),
-                Classes = await _classService.GetAllClasssAsync(),
+                SchoolBuses = _mapper.Map<IList<SchoolBusModel>>(await _schoolBusService.GetAllSchoolBusesAsync()),
+                Classes = _mapper.Map<IList<ClassModel>>(await _classService.GetAllClassesAsync()),
             };
 
             return View(createStudentModel);
@@ -89,8 +92,8 @@ namespace FF.Web.Controllers
         {
             var student = await _studentService.GetStudentByIdAsync(id);
             var studentModel = _mapper.Map<UpdateStudentModel>(student);
-            studentModel.SchoolBuses = await _schoolBusService.GetAllSchoolBusesAsync();
-            studentModel.Classes = await _classService.GetAllClasssAsync();
+            studentModel.SchoolBuses = _mapper.Map<IList<SchoolBusModel>>(await _schoolBusService.GetAllSchoolBusesAsync());
+            studentModel.Classes = _mapper.Map<IList<ClassModel>>(await _classService.GetAllClassesAsync());
 
             return View(studentModel);
         }

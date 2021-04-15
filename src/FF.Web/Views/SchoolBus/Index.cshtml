@@ -1,17 +1,89 @@
-﻿@section Styles {
-    <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+﻿@model List<FF.Data.Entities.SchoolBuses.SchoolBus>
+@{
+    ViewData["Title"] = "Servis Listesi";
+}
+
+@section Styles {
+    <link href="~/lib/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+
 }
 
 @section Scripts {
-    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
-    <script src="~/lib/moment/min/moment.min.js"></script>
-    <script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="~/js/demo/analytics.demo.js"></script>
     <script src="~/lib/highlight.js/highlight.min.js"></script>
     <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="~/js/demo/table-plugins.demo.js"></script>
     <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
 }
 
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        var PlaceHolderElement = $('#PlaceHolderTop')
+        $('#CreateSchoolBusButton').click(function (event) {
+            var url = $(this).data('url');
+            $.get(url).done(function (data) {
+
+                PlaceHolderElement.html(data);
+                PlaceHolderElement.find('.modal').modal('show');
+            });
+            PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
+                PlaceHolderElement.find('.modal').modal('hide');
+            });
+            window.SchoolBus.reload();
+        });
+
+        $('.UpdateSchoolBusButton').click(function (event) {
+
+            var url = $(this).data('url');
+            var id = $(this).attr('data-id');
+            $.get(url + '/' + id).done(function (data) {
+
+                PlaceHolderElement.html(data);
+                PlaceHolderElement.find('.modal').modal('show');
+            });
+            PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
+                PlaceHolderElement.find('.modal').modal('hide');
+            });
+            window.SchoolBus.reload();
+        });
+
+        $('.DeleteSchoolBusButton').click(function (event) {
+
+            var url = $(this).data('url');
+            var id = $(this).attr('data-id');
+            $.get(url + '/' + id).done(function (data) {
+
+                PlaceHolderElement.html(data);
+                PlaceHolderElement.find('.modal').modal('show');
+            });
+            PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
+                PlaceHolderElement.find('.modal').modal('hide');
+                window.SchoolBus.reload();
+            });
+        });
+
+    });
+</script>
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div id="PlaceHolderTop"></div>
+<!-- BEGIN container -->
 <div class="container">
     <!-- BEGIN row -->
     <div class="row justify-content-center">
@@ -22,34 +94,65 @@
                 <!-- BEGIN col-9 -->
                 <div class="col-xl-9">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Aktiviteler</a></li>
-                        <li class="breadcrumb-item active">Yemek Aktivitesi</li>
+                        <li class="breadcrumb-item"><a href="#">SERVİS LİSTESİ</a></li>
                     </ul>
 
                     <h1 class="page-header">
-                        1-A Sınıfı <small>Lütfen öğrencilerin yemek aktivitelerini belirleyiniz...</small>
+                        <div class="row">
+                            <div class="col-xl-9">
+                                Servis Bilgileri <small> </small>
+                            </div>
+                            <div class="col-xl-3">
+                                <a class="btn btn-outline-success float-right" id="CreateSchoolBusButton" data-toggle="modal" data-target="#AddSchoolBusForm" data-url='@Url.Action("Create","SchoolBus")'>Yeni Servis</a>
+                            </div>
+                        </div>
                     </h1>
 
                     <hr class="mb-4" />
 
-                    <!-- BEGIN #cardGroups -->
-                    <div id="cardGroups" class="mb-5">
+                    <!-- BEGIN #datatable -->
+                    <div id="datatable" class="mb-5">
                         <div class="card">
                             <div class="card-body">
-                                <div id="cardContent" class="card ">
-                                    <div class="card-body">
-                                        <i class="fas fa-unlock-alt" style="float:right;" onclick="enablecard()"></i>
-                                        <h5 class="card-title">hasan berk</h5>
-                                        <button id="bindi-button" type="button" class="btn btn-primary btn-sm" onclick="disableCard()">Bindi</button>
-                                        <button id="binmedi-button" type="button" class="btn btn-danger btn-sm" onclick="disableCard()">Binmedi</button>
-                                    </div>
-                                </div>
+                                @if (Model != null)
+                                {
+                                    <table id="datatableDefault" class="table text-nowrap w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Firma Adı</th>
+                                                <th>Telefon</th>
+                                                <th>Plaka No</th>
+                                                <th>Sorumlu Ad-Soyad</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var schoolBus in Model)
+                                            {
+                                                <tr>
+                                                    <td>@schoolBus.CompanyName</td>
+                                                    <td>@schoolBus.PhoneNumber</td>
+                                                    <td>@schoolBus.LicensePlate</td>
+                                                    <td>@schoolBus.FullName</td>
+                                                    <td>
+                                                        <a class="text-primary ml-1 UpdateSchoolBusButton" data-toggle="modal" data-target="#UpdateSchoolBusForm" data-id="@schoolBus.Id" data-url='@Url.Action("Update","SchoolBus")'><i class="fa fa-marker" type="button"></i></a>
+                                                        <a class="text-danger ml-1 DeleteSchoolBusButton" data-toggle="modal" data-target="#DeleteSchoolBusForm" data-id="@schoolBus.Id" data-url='@Url.Action("Delete","SchoolBus")'><i class="fa fa-trash-alt" type="button"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                                else
+                                {
+                                    <p>Servis bulunamadı !!!</p>
+                                }
                             </div>
                         </div>
                     </div>
-
+                    <!-- END #datatable -->
                 </div>
-                <!-- END col-3 -->
+                <!-- END col-9-->
             </div>
             <!-- END row -->
         </div>
@@ -58,40 +161,3 @@
     <!-- END row -->
 </div>
 <!-- END container -->
-
-
-<script>
-    function enablecard() {
-        var element = document.getElementById("cardContent");
-        element.classList.remove("special-card");
-        document.getElementById("bindi-button").disabled = false;
-        document.getElementById("binmedi-button").disabled = false;
-    }
-
-
-    function disableCard() {
-        var element = document.getElementById("cardContent");
-        element.classList.add("special-card");
-        document.getElementById("bindi-button").disabled = true;
-        document.getElementById("binmedi-button").disabled = true;
-    }
-    /*
-     * Kartın herhangi bir yerine basınca kilidi açıyor
-     *
-    $("#cardContent").click(function () {
-        var lockedElement = document.getElementById("cardContent");
-        lockedElement.classList.remove("special-card");
-        document.getElementById("bindi-button").disabled = false;
-        document.getElementById("binmedi-button").disabled = false;
-        console.log("kilitli değil")
-    });
-    */
-</script>
-
-<style>
-    .special-card {
-        background-color: #1abd36;
-    }
-</style>
-
-

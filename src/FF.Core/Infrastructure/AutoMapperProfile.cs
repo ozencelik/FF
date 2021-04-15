@@ -77,7 +77,7 @@ namespace FF.Core.Infrastructure
             CreateMap<SchoolBus, UpdateSchoolBusModel>();
             #endregion
 
-            #region Classroom
+            #region Class
             CreateMap<ClassModel, Class>();
             CreateMap<Class, ClassModel>();
 

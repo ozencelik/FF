@@ -21,15 +21,17 @@ namespace FF.Core.Services.Classes
         #endregion
 
         #region Methods
-        public async Task<IList<Class>> GetAllClasssAsync()
+        public async Task<IList<Class>> GetAllClassesAsync()
         {
             return await _classRepository.Table
+                .Include(c => c.Teacher)
                 .Where(x => !x.Deleted).ToListAsync();
         }
 
         public async Task<Class> GetClassByIdAsync(int classId)
         {
             return await _classRepository.Table
+                .Include(c => c.Teacher)
                 .FirstOrDefaultAsync(x => x.Id == classId
                 && !x.Deleted);
         }

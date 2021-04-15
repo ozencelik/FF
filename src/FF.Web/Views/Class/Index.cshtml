@@ -1,6 +1,6 @@
-﻿@model List<FF.Data.Entities.Teachers.Teacher>
+﻿@model List<FF.Data.Entities.Classes.Class>
 @{
-    ViewData["Title"] = "Öğretmen Listesi";
+    ViewData["Title"] = "Sınıf Listesi";
 }
 
 @section Styles {
@@ -34,7 +34,7 @@
 <script>
     $(function () {
         var PlaceHolderElement = $('#PlaceHolderTop')
-        $('#CreateTeacherButton').click(function (event) {
+        $('#CreateClassButton').click(function (event) {
             var url = $(this).data('url');
             $.get(url).done(function (data) {
 
@@ -44,10 +44,10 @@
             PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
                 PlaceHolderElement.find('.modal').modal('hide');
             });
-            window.Teacher.reload();
+            window.Class.reload();
         });
 
-        $('.UpdateTeacherButton').click(function (event) {
+        $('.UpdateClassButton').click(function (event) {
 
             var url = $(this).data('url');
             var id = $(this).attr('data-id');
@@ -59,10 +59,10 @@
             PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
                 PlaceHolderElement.find('.modal').modal('hide');
             });
-            window.Teacher.reload();
+            window.Class.reload();
         });
 
-        $('.DeleteTeacherButton').click(function (event) {
+        $('.DeleteClassButton').click(function (event) {
 
             var url = $(this).data('url');
             var id = $(this).attr('data-id');
@@ -73,7 +73,7 @@
             });
             PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
                 PlaceHolderElement.find('.modal').modal('hide');
-                window.Teacher.reload();
+                window.Class.reload();
             });
         });
 
@@ -94,16 +94,16 @@
                 <!-- BEGIN col-9 -->
                 <div class="col-xl-9">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">ÖĞRETMEN LİSTESİ</a></li>
+                        <li class="breadcrumb-item"><a href="#">SINIF LİSTESİ</a></li>
                     </ul>
 
                     <h1 class="page-header">
                         <div class="row">
                             <div class="col-xl-9">
-                                Öğretmen Bilgileri <small> </small>
+                                Sınıf Bilgileri <small> </small>
                             </div>
                             <div class="col-xl-3">
-                                <a class="btn btn-outline-success float-right" id="CreateTeacherButton" data-toggle="modal" data-target="#AddTeacherForm" data-url='@Url.Action("Create","Teacher")'>Yeni Öğretmen</a>
+                                <a class="btn btn-outline-success float-right" id="CreateClassButton" data-toggle="modal" data-target="#AddClassForm" data-url='@Url.Action("Create","Class")'>Yeni Sınıf</a>
                             </div>
                         </div>
                     </h1>
@@ -119,20 +119,19 @@
                                     <table id="datatableDefault" class="table text-nowrap w-100">
                                         <thead>
                                             <tr>
-                                                <th>Ad-Soyad</th>
-                                                <th>Doğum Tarihi</th>
-                                                <th></th>
+                                                <th>Sınıf</th>
+                                                <th>Öğretmen</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var teacher in Model)
+                                            @foreach (var classroom in Model)
                                             {
                                                 <tr>
-                                                    <td>@teacher.FullName</td>
-                                                    <td>@teacher.Birthday</td>
+                                                    <td>@classroom.Name</td>
+                                                    <td>@classroom.Teacher.FullName</td>
                                                     <td>
-                                                        <a class="text-primary ml-1 UpdateTeacherButton" data-toggle="modal" data-target="#UpdateTeacherForm" data-id="@teacher.Id" data-url='@Url.Action("Update","Teacher")'><i class="fa fa-marker" type="button"></i></a>
-                                                        <a class="text-danger ml-1 DeleteTeacherButton" data-toggle="modal" data-target="#DeleteTeacherForm" data-id="@teacher.Id" data-url='@Url.Action("Delete","Teacher")'><i class="fa fa-trash-alt" type="button"></i></a>
+                                                        <a class="text-primary ml-1 UpdateClassButton" data-toggle="modal" data-target="#UpdateClassForm" data-id="@classroom.Id" data-url='@Url.Action("Update","Class")'><i class="fa fa-marker" type="button"></i></a>
+                                                        <a class="text-danger ml-1 DeleteClassButton" data-toggle="modal" data-target="#DeleteClassForm" data-id="@classroom.Id" data-url='@Url.Action("Delete","Class")'><i class="fa fa-trash-alt" type="button"></i></a>
                                                     </td>
                                                 </tr>
                                             }
@@ -141,7 +140,7 @@
                                 }
                                 else
                                 {
-                                    <p>Öğretmen bulunamadı !!!</p>
+                                    <p>Sınıf bulunamadı !!!</p>
                                 }
                             </div>
                         </div>
