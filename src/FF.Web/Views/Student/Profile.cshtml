@@ -28,7 +28,97 @@
     <script src="~/js/demo/table-plugins.demo.js"></script>
     <script src="~/js/demo/sidebar-scrollspy.demo.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/locale/bootstrap-table-tr-TR.min.js"></script>
+    <script src="~/lib/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="~/js/demo/highlightjs.demo.js"></script>
+    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
 
+    <script>var apexLineChartOptions = {
+            chart: {
+                height: 350,
+                type: 'line',
+                shadow: {
+                    enabled: true,
+                    color: COLOR_GRAY_500,
+                    top: 18,
+                    left: 7,
+                    blur: 10,
+                    opacity: 1
+                },
+                toolbar: {
+                    show: false
+                }
+            },
+            title: {
+                text: 'Öğrencim aktiviteleri kaç kez yapmış',
+                align: 'center'
+            },
+            colors: [COLOR_RED, COLOR_TEAL, COLOR_GRAY_500, COLOR_BLUE],
+            dataLabels: {
+                enabled: true,
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            },
+            series: [{
+                name: 'Uyku',
+                data: [28, 29, 33, 36, 32, 32, 33]
+            }, {
+                name: 'Yemek',
+                data: [19, 21, 21, 18, 23, 24, 27]
+            }, {
+                name: 'Yemek',
+                data: [15, 15, 19, 19, 15, 19, 18]
+            }, {
+                name: 'Tenis',
+                data: [16, 16, 14, 20, 12, 17, 15]
+            }],
+            grid: {
+                borderColor: COLOR_GRAY_200,
+                row: {
+                    colors: [COLOR_GRAY_200, 'transparent'],
+                    opacity: 0.5
+                },
+            },
+            markers: {
+                size: 4
+            },
+            xaxis: {
+                categories: ['01 /03/2021', '08/03/2021', '15/03/2021', '22/03/2021', '29/03/2021', '05/04/2021', '12/04/2021'],
+                axisBorder: {
+                    show: true,
+                    color: COLOR_GRAY_300,
+                    height: 1,
+                    width: '100%',
+                    offsetX: 0,
+                    offsetY: -1
+                },
+                axisTicks: {
+                    show: true,
+                    borderType: 'solid',
+                    color: COLOR_GRAY_300,
+                    height: 6,
+                    offsetX: 0,
+                    offsetY: 0
+                }
+            },
+            yaxis: {
+                min: 5,
+                max: 40
+            },
+            legend: {
+                show: true,
+                position: 'top',
+                offsetY: -10,
+                horizontalAlign: 'right',
+                floating: true
+            }
+        };
+        var apexLineChart = new ApexCharts(
+            document.querySelector('#apexLineChart'),
+            apexLineChartOptions
+        );
+        apexLineChart.render();</script>
 }
 <!-- BEGIN profile -->
 <div class="profile">
@@ -56,10 +146,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="#profile-followers" class="nav-link" data-toggle="tab">
-                            <div class="nav-field">Ayarlar</div>
+                            <div class="nav-field">Hakkında</div>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="#profile-graphics" class="nav-link" data-toggle="tab">
+                            <div class="nav-field">Grafikler</div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -189,6 +283,44 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END col-9-->
+                                        </div>
+                                        <!-- END row -->
+                                    </div>
+                                    <!-- END col-10 -->
+                                </div>
+                            </div>
+                            <!-- END tab-pane -->
+                            <!-- BEGIN tab-pane -->
+                            <div class="tab-pane fade" id="profile-graphics">
+                                <div class="row justify-content-center">
+
+                                    <!-- BEGIN col-10 -->
+                                    <div class="col-xl-12">
+                                        <!-- BEGIN row -->
+                                        <div class="row">
+                                            <!-- BEGIN col-9 -->
+                                            <div class="col-xl-12">
+                                                <ul class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="#">Grafikler</a></li>
+                                                </ul>
+
+                                                <p>Buradan profil bilgilerini görüntüleyebilirsiniz.</p>
+
+
+                                                <hr class="mb-4" />
+
+                                                <div class="mb-5">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h6>AKTİVİTE GRAFİĞİ</h6>
+                                                            <div class="fs-13px">Aktiviteler haftada kaç kez yapılıyor.</div>
+
+                                                            <div id="apexLineChart"></div>
                                                         </div>
                                                     </div>
                                                 </div>
