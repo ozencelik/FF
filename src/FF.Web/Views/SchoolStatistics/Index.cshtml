@@ -5,85 +5,139 @@
 <h1 class="page-header mb-3">
     asdasa. <small> here's what's happening with your store today.</small>
 </h1>
-<!-- BEGIN row -->
 <div class="row">
-
     <!-- BEGIN col-6 -->
-    <div class="col-xl-6">
-        <!-- BEGIN card -->
-        <div class="card mb-3">
-            <!-- BEGIN card-body -->
-            <div class="card-body">
-                <div class="d-flex mb-3">
-                    <div class="flex-grow-1">
-                        <h5 class="mb-1">Sayı İstatistikleri</h5>
-                        <div class="fs-13px">Kategoriye göre istatistikler.</div>
+    <div class="col-xl-12">
+          <div class="row">
+            <!-- BEGIN col-6 -->
+            <div class="col-sm-4">
+               
+                <!-- BEGIN card -->
+                <div class="card mb-3 overflow-hidden fs-13px border-0 bg-gradient-custom-teal" style="min-height: 202px;">
+                    <!-- BEGIN card-img-overlay -->
+                    <div class="card-img-overlay mb-n4 mr-n4 d-flex" style="bottom: 0; top: auto;">
+                        <img src="~/img/Schoolpage/class.png" alt="" class="ml-auto d-block mb-n3" style="max-height: 105px" />
                     </div>
+                    <!-- END card-img-overlay -->
+                    <!-- BEGIN card-body -->
+                    <div class="card-body position-relative">
+                        <h5 class="text-white-transparent-8 mb-3 fs-16px">Sınıflar</h5>
+                        <h3 class="text-white mt-n1">60.5k</h3>
+                        <div class="progress bg-black-transparent-5 mb-2" style="height: 6px">
+                            <div class="progrss-bar progress-bar-striped bg-white" style="width: 50%"></div>
+                        </div>
+                        <div class="text-white-transparent-8 mb-4"><i class="fa fa-caret-up"></i> 33% increase <br />compare to last week</div>
+                        <div><a href="#" class="text-white d-flex align-items-center text-decoration-none">Sınıfları Görüntüle <i class="fa fa-chevron-right ml-2 text-white-transparent-5"></i></a></div>
+                    </div>
+                    <!-- END card-body -->
                 </div>
-
-
-
-                <div class="fs-15px">
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="flex-grow-1 d-flex align-items-center">
-                            <i class="fa fa-address-book fs-20px fa-fw text-primary mr-2"></i> Eğitmen Sayısı
-                        </div>
-                        <div class="font-weight-600 text-dark">10</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="flex-grow-1 d-flex align-items-center">
-                            <i class="fa fa-home fs-20px fa-fw text-primary mr-2"></i> Sınıf Sayısı
-                        </div>
-                        <div class="font-weight-600 text-dark">6</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="flex-grow-1 d-flex align-items-center">
-                            <i class="fa fa-child fs-20px fa-fw text-primary mr-2"></i> Öğrenci sayısı
-                        </div>
-                        <div class="font-weight-600 text-dark">170</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="flex-grow-1 d-flex align-items-center">
-                            <i class="fa fa-play fs-20px fa-fw text-primary mr-2"></i> Aktivite Sayısı
-                        </div>
-                        <div class="font-weight-600 text-dark">5</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-15px">
-                        <div class="flex-grow-1 d-flex align-items-center">
-                            <i class="fa fa-bus fs-20px fa-fw text-primary mr-2"></i> Servis Sayısı
-                        </div>
-                        <div class="font-weight-600 text-dark">4</div>
-                    </div>
-                </div>
+                <!-- END card -->
             </div>
-            <!-- END card-body -->
-        </div>
-        <!-- END card -->
-    </div>
-    <!-- END col-6 -->
-    <!-- BEGIN col-6 -->
-
-
-    <div class="col-xl-6">
-        <!-- BEGIN #chartJsPieChart -->
-        <div id="chartJsPieChart" class="mb-5">
-            <div class="card">
-                <div class="card-body">
-                    <h6>AKTİVİTE AĞIRLIK GRAFİĞİ</h6>
-                    <div class="fs-13px">Öğrencilerin haftalık toplam aktiviteleri.</div>
-                    <canvas id="pieChart"></canvas>
+            <!-- END col-6 -->
+            <!-- BEGIN col-6 -->
+            <div class="col-sm-4">
+               
+                <!-- BEGIN card -->
+                <div class="card mb-3 overflow-hidden fs-13px border-0 bg-gradient-custom-indigo" style="min-height: 202px;">
+                    <!-- BEGIN card-img-overlay -->
+                    <div class="card-img-overlay mb-n4 mr-n4 d-flex" style="bottom: 0; top: auto;">
+                        <img src="~/img/Schoolpage/teacher.png" alt="" class="ml-auto d-block mb-n3" style="max-height: 105px" />
+                    </div>
+                    <!-- end card-img-overlay -->
+                    <!-- BEGIN card-body -->
+                    <div class="card-body position-relative">
+                        <h5 class="text-white-transparent-8 mb-3 fs-16px">Öğretmenler</h5>
+                        <h3 class="text-white mt-n1">320.4k</h3>
+                        <div class="progress bg-black-transparent-5 mb-2" style="height: 6px">
+                            <div class="progrss-bar progress-bar-striped bg-white" style="width: 80%"></div>
+                        </div>
+                        <div class="text-white-transparent-8 mb-4"><i class="fa fa-caret-up"></i> 20% increase <br />compare to last week</div>
+                        <div><a href="/Teacher" class="text-white d-flex align-items-center text-decoration-none">Öğretmenleri Görüntüle <i class="fa fa-chevron-right ml-2 text-white-transparent-5"></i></a></div>
+                    </div>
+                    <!-- END card-body -->
                 </div>
-
+                <!-- END card -->
             </div>
+            <!-- BEGIN col-6 -->
+               <!-- BEGIN col-6 -->
+            <div class="col-sm-4">
+                <!-- BEGIN card -->
+                <div class="card mb-3 overflow-hidden fs-13px border-0 bg-gradient-custom-orange" style="min-height: 202px;">
+                    <!-- BEGIN card-img-overlay -->
+                    <div class="card-img-overlay mb-n4 mr-n4 d-flex" style="bottom: 0; top: auto;">
+                        <img src="~/img/Schoolpage/student.png" alt="" class="ml-auto d-block mb-n3" style="max-height: 105px" />
+                    </div>
+                    <!-- END card-img-overlay -->
+                    <!-- BEGIN card-body -->
+                    <div class="card-body position-relative">
+                        <h5 class="text-white-transparent-8 mb-3 fs-16px">Öğrenciler</h5>
+                        <h3 class="text-white mt-n1">56</h3>
+                        <div class="progress bg-black-transparent-5 mb-2" style="height: 6px">
+                            <div class="progrss-bar progress-bar-striped bg-white" style="width: 80%"></div>
+                        </div>
+                        <div class="text-white-transparent-8 mb-4"><i class="fa fa-caret-up"></i> 16% increase <br />compare to last week</div>
+                        <div><a href="/Student" class="text-white d-flex align-items-center text-decoration-none">Öğrencileri Görüntüle <i class="fa fa-chevron-right ml-2 text-white-transparent-5"></i></a></div>
+                    </div>
+                    <!-- BEGIN card-body -->
+                </div>
+                <!-- END card -->
+               
+            </div>
+            <!-- END col-6 -->
+            <!-- BEGIN col-6 -->
+            <div class="col-sm-6">
+                <!-- BEGIN card -->
+                <div class="card mb-3 overflow-hidden fs-13px border-0 bg-gradient-custom-pink" style="min-height: 202px;">
+                    <!-- BEGIN card-img-overlay -->
+                    <div class="card-img-overlay mb-n4 mr-n4 d-flex" style="bottom: 0; top: auto;">
+                        <img src="~/img/Schoolpage/activity.png" alt="" class="ml-auto d-block mb-n3" style="max-height: 105px" />
+                    </div>
+                    <!-- END card-img-overlay -->
+                    <!-- BEGIN card-body -->
+                    <div class="card-body position-relative">
+                        <h5 class="text-white-transparent-8 mb-3 fs-16px">Aktiviteler</h5>
+                        <h3 class="text-white mt-n1">30</h3>
+                        <div class="progress bg-black-transparent-5 mb-2" style="height: 6px">
+                            <div class="progrss-bar progress-bar-striped bg-white" style="width: 80%"></div>
+                        </div>
+                        <div class="text-white-transparent-8 mb-4"><i class="fa fa-caret-down"></i> 5% decrease <br />compare to last week</div>
+                        <div><a href="#" class="text-white d-flex align-items-center text-decoration-none">Aktiviteleri Görüntüle <i class="fa fa-chevron-right ml-2 text-white-transparent-5"></i></a></div>
+                    </div>
+                    <!-- END card-body -->
+                </div>
+                <!-- END card -->
+            </div>
+            <!-- BEGIN col-6 -->
+               <!-- BEGIN col-6 -->
+            <div class="col-sm-6">
+                <!-- BEGIN card -->
+                <div class="card mb-3 overflow-hidden fs-13px border-0 bg-gradient-custom-teal" style="min-height: 202px;">
+                    <!-- BEGIN card-img-overlay -->
+                    <div class="card-img-overlay mb-n4 mr-n4 d-flex" style="bottom: 0; top: auto;">
+                        <img src="~/img/Schoolpage/bus.png" alt="" class="ml-auto d-block mb-n3" style="max-height: 105px" />
+                    </div>
+                    <!-- END card-img-overlay -->
+                    <!-- BEGIN card-body -->
+                    <div class="card-body position-relative">
+                        <h5 class="text-white-transparent-8 mb-3 fs-16px">Servisler</h5>
+                        <h3 class="text-white mt-n1">30</h3>
+                        <div class="progress bg-black-transparent-5 mb-2" style="height: 6px">
+                            <div class="progrss-bar progress-bar-striped bg-white" style="width: 80%"></div>
+                        </div>
+                        <div class="text-white-transparent-8 mb-4"><i class="fa fa-caret-down"></i> 5% decrease <br />compare to last week</div>
+                        <div><a href="#" class="text-white d-flex align-items-center text-decoration-none">Servisleri Görüntüle <i class="fa fa-chevron-right ml-2 text-white-transparent-5"></i></a></div>
+                    </div>
+                    <!-- END card-body -->
+                </div>
+                <!-- END card -->
+            </div>
+            <!-- BEGIN col-6 -->
         </div>
-        <!-- END #chartJsPieChart -->
-
     </div>
-
-    <!-- END col-6 -->
-      
+    
+    
 </div>
-<!-- END row -->
+
 <!-- BEGIN row -->
 <div class="row">
     <!-- BEGIN col-6 -->
@@ -106,47 +160,6 @@
     <!-- END col-6 -->
 </div>
 <!-- END row -->
-<!-- BEGIN row -->
-<div class="row">
-    <!-- BEGIN col-6 -->
-    <div class="col-xl-6">
-        
-
-    </div>
-    <!-- END col-6 -->
-    <!-- BEGIN col-6 -->
-    <div class="col-xl-6">
-
-
-    </div>
-    <!-- END col-6 -->
-</div>
-<!-- END row -->
-
-
-<div class="container">
-    <!-- BEGIN row -->
-    <div class="row justify-content-center">
-        <!-- BEGIN col-10 -->
-        <div class="col-xl-10">
-            <!-- BEGIN row -->
-            <div class="row">
-                <!-- BEGIN col-9 -->
-                <div class="col-xl-9">
-
-
-
-                </div>
-                <!-- END col-9-->
-
-            </div>
-            <!-- END row -->
-        </div>
-        <!-- END col-10 -->
-    </div>
-    <!-- END row -->
-</div>
-
 
 <!-- script -->
 @section Scripts {
@@ -257,5 +270,6 @@
                     borderWidth: 0
                 }]
             }
-        });</script>
+        });
+    </script>
 }
