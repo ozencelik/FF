@@ -14,5 +14,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Parent\Index.cshtml" />
+    <Content Remove="Views\SchoolStatistics\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\SchoolStatistics\" />
   </ItemGroup>
 </Project>

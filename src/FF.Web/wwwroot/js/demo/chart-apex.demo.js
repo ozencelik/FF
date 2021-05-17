@@ -7,6 +7,7 @@ Website: http://www.seantheme.com/asp-studio/
 
 var handleRenderApexChart = function() {
 	// apexLineChart
+
 	var apexLineChartOptions = {
 		chart: {
 			height: 350,
