@@ -1,22 +1,12 @@
-﻿using FF.Data.Models.Classes;
+﻿using FF.Data.Models.Base;
+using FF.Data.Models.Classes;
 using FF.Data.Models.SchoolBuses;
-using System;
 using System.Collections.Generic;
 
 namespace FF.Data.Models.Students
 {
-    public class UpdateStudentModel
+    public class UpdateStudentModel : PersonModel
     {
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string FullName => $"{FirstName} {LastName}";
-
-        public DateTime Birthday { get; set; }
-
         public string ParentFirstName { get; set; }
 
         public string ParentLastName { get; set; }

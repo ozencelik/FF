@@ -11,5 +11,7 @@ namespace FF.Data.Models.Base
         public string FullName => $"{FirstName} {LastName}";
 
         public DateTime Birthday { get; set; }
+
+        public string ProfileAccessCode { get; set; }
     }
 }
