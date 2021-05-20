@@ -1,4 +1,5 @@
 ﻿using FF.Data.Entities.Schools;
+using FF.Data.Models.Schools;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,6 +12,13 @@ namespace FF.Core.Services.Schools
         /// </summary>
         /// <returns>Schools</returns>
         Task<IList<School>> GetAllSchoolsAsync();
+
+        /// <summary>
+        /// Gets non deleted counts for
+        /// activity, student etc.
+        /// </summary>
+        /// <returns>DashboardModel</returns>
+        Task<DashboardModel> GetDashboardCardsCount();
 
         /// <summary>
         /// Gets a school

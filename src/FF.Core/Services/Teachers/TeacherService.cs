@@ -22,6 +22,15 @@ namespace FF.Core.Services.Teachers
         #endregion
 
         #region Methods
+        public async Task<int> GetTeachersCount()
+        {
+            // TO DO : Date filter can be added.
+            return await _teacherRepository
+                .Table
+                .Where(x => !x.Deleted)
+                .CountAsync();
+        }
+
         public async Task<IList<Teacher>> GetAllTeachersAsync()
         {
             return await _teacherRepository.Table

@@ -7,6 +7,12 @@ namespace FF.Core.Services.SchoolBuses
     public interface ISchoolBusService
     {
         /// <summary>
+        /// Gets all schoolBuses count
+        /// </summary>
+        /// <returns>SchoolBuses' count</returns>
+        Task<int> GetSchoolBusesCount();
+
+        /// <summary>
         /// Gets all school buses
         /// </summary>
         /// <returns>SchoolBuses</returns>

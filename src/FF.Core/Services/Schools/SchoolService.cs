@@ -1,4 +1,10 @@
-﻿using FF.Data.Entities.Schools;
+﻿using FF.Core.Services.Activities;
+using FF.Core.Services.Classes;
+using FF.Core.Services.SchoolBuses;
+using FF.Core.Services.Students;
+using FF.Core.Services.Teachers;
+using FF.Data.Entities.Schools;
+using FF.Data.Models.Schools;
 using FF.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -11,12 +17,27 @@ namespace FF.Core.Services.Schools
     {
         #region Fields
         private readonly IRepository<School> _schoolRepository;
+        private readonly IActivityService _activityService;
+        private readonly IClassService _classService;
+        private readonly ITeacherService _teacherService;
+        private readonly IStudentService _studentService;
+        private readonly ISchoolBusService _schoolBusService;
         #endregion
 
         #region Ctor
-        public SchoolService(IRepository<School> schoolRepository)
+        public SchoolService(IRepository<School> schoolRepository,
+            IActivityService activityService,
+            IClassService classService,
+            ITeacherService teacherService,
+            IStudentService studentService,
+            ISchoolBusService schoolBusService)
         {
             _schoolRepository = schoolRepository;
+            _activityService = activityService;
+            _classService = classService;
+            _teacherService = teacherService;
+            _studentService = studentService;
+            _schoolBusService = schoolBusService;
         }
         #endregion
 
@@ -25,6 +46,18 @@ namespace FF.Core.Services.Schools
         {
             return await _schoolRepository.Table
                 .Where(x => !x.Deleted).ToListAsync();
+        }
+
+        public async Task<DashboardModel> GetDashboardCardsCount()
+        {
+            return new DashboardModel()
+            {
+                ActivitiesCount = await _activityService.GetActiviesCount(),
+                ClassesCount = await _classService.GetClassesCount(),
+                TeachersCount = await _teacherService.GetTeachersCount(),
+                StudentsCount = await _studentService.GetStudentsCount(),
+                SchoolBusesCount = await _schoolBusService.GetSchoolBusesCount()
+            };
         }
 
         public async Task<School> GetSchoolByIdAsync(int schoolId)

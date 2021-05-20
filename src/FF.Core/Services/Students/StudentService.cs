@@ -22,6 +22,15 @@ namespace FF.Core.Services.Students
         #endregion
 
         #region Methods
+        public async Task<int> GetStudentsCount()
+        {
+            // TO DO : Date filter can be added.
+            return await _studentRepository
+                .Table
+                .Where(x => !x.Deleted)
+                .CountAsync();
+        }
+
         public async Task<IList<Student>> GetAllStudentsAsync()
         {
             return await _studentRepository.Table

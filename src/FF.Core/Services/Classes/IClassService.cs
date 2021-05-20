@@ -7,6 +7,12 @@ namespace FF.Core.Services.Classes
     public interface IClassService
     {
         /// <summary>
+        /// Gets all classes count
+        /// </summary>
+        /// <returns>Classes' count</returns>
+        Task<int> GetClassesCount();
+
+        /// <summary>
         /// Gets all classes
         /// </summary>
         /// <returns>Classes</returns>

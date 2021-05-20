@@ -21,6 +21,15 @@ namespace FF.Core.Services.Activities
         #endregion
 
         #region Methods
+        public async Task<int> GetActiviesCount()
+        {
+            // TO DO : Date filter can be added.
+            return await _activityRepository
+                .Table
+                .Where(x => !x.Deleted)
+                .CountAsync();
+        }
+
         public async Task<IList<Activity>> GetAllActivitiesAsync()
         {
             return await _activityRepository

@@ -21,6 +21,14 @@ namespace FF.Core.Services.Classes
         #endregion
 
         #region Methods
+        public async Task<int> GetClassesCount()
+        {
+            // TO DO : Date filter can be added.
+            return await _classRepository
+                .Table
+                .Where(x => !x.Deleted)
+                .CountAsync();
+        }
         public async Task<IList<Class>> GetAllClassesAsync()
         {
             return await _classRepository.Table

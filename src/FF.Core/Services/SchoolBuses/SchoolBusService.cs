@@ -22,6 +22,15 @@ namespace FF.Core.Services.SchoolBuses
         #endregion
 
         #region Methods
+        public async Task<int> GetSchoolBusesCount()
+        {
+            // TO DO : Date filter can be added.
+            return await _schoolRepository
+                .Table
+                .Where(x => !x.Deleted)
+                .CountAsync();
+        }
+
         public async Task<IList<SchoolBus>> GetAllSchoolBusesAsync()
         {
             return await _schoolRepository.Table

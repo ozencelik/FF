@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FF.Data.Entities.Students;
 using FF.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,6 +6,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using FF.Data.Models.Students;
 using FF.Core.Services.SchoolBuses;
+using FF.Core.Services.Schools;
 
 namespace FF.Web.Controllers
 {
@@ -15,16 +15,19 @@ namespace FF.Web.Controllers
         #region Fields
         private readonly ILogger<SchoolController> _logger;
         private readonly ISchoolBusService _schoolBusService;
+        private readonly ISchoolService _schoolService;
         private readonly IMapper _mapper;
         #endregion
 
         #region Ctor
         public SchoolController(ILogger<SchoolController> logger,
             ISchoolBusService schoolBusService,
+            ISchoolService schoolService,
             IMapper mapper)
         {
             _logger = logger;
             _schoolBusService = schoolBusService;
+            _schoolService = schoolService;
             _mapper = mapper;
         }
         #endregion
@@ -33,8 +36,14 @@ namespace FF.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Home()
         {
-            // 
-            return View();
+            var dashboardModel = await _schoolService.GetDashboardCardsCount();
+            dashboardModel.ActivitiesPageLink = Url.Action("Index", "Acitiviy");
+            dashboardModel.ClassesPageLink = Url.Action("Index", "Class");
+            dashboardModel.TeachersPageLink = Url.Action("Index", "Teacher");
+            dashboardModel.StudentsPageLink = Url.Action("Index", "Student");
+            dashboardModel.SchoolBusesPageLink = Url.Action("Index", "SchoolBus");
+
+            return View(dashboardModel);
         }
 
         [HttpGet]

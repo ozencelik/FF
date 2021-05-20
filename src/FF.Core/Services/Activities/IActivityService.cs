@@ -7,6 +7,12 @@ namespace FF.Core.Services.Activities
     public interface IActivityService
     {
         /// <summary>
+        /// Gets all activites count
+        /// </summary>
+        /// <returns>Activites' count</returns>
+        Task<int> GetActiviesCount();
+
+        /// <summary>
         /// Gets all activites
         /// </summary>
         /// <returns>Activities</returns>

@@ -7,6 +7,12 @@ namespace FF.Core.Services.Teachers
     public interface ITeacherService
     {
         /// <summary>
+        /// Gets all teachers' count
+        /// </summary>
+        /// <returns>Teachers' count</returns>
+        Task<int> GetTeachersCount();
+
+        /// <summary>
         /// Gets all teachers
         /// </summary>
         /// <returns>Teachers</returns>

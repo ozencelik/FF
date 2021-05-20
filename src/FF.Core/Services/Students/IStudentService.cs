@@ -7,6 +7,12 @@ namespace FF.Core.Services.Students
     public interface IStudentService
     {
         /// <summary>
+        /// Gets all students count
+        /// </summary>
+        /// <returns>Students' count</returns>
+        Task<int> GetStudentsCount();
+
+        /// <summary>
         /// Gets all categories
         /// </summary>
         /// <returns>Students</returns>
